@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Search, X, Menu, ArrowUpRight } from "lucide-react";
+
 import { Brandmark } from "@/components/brand/Brandmark";
 import { navigation, services } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -11,14 +12,24 @@ export function Nav() {
   const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    window.addEventListener("scroll", onScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   useEffect(() => {
     document.body.style.overflow = mobile ? "hidden" : "";
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -30,101 +41,351 @@ export function Nav() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-500",
+          `
+            fixed
+            inset-x-0
+            z-50
+            transition-all
+            duration-500
+          `,
           solid
-            ? "border-b border-hairline bg-background/90 backdrop-blur-xl"
-            : "border-b border-transparent bg-transparent",
+            ? `
+                top-0
+                bg-[#18164b]/95
+                border-b
+                border-white/10
+                backdrop-blur-xl
+                shadow-[0_8px_30px_rgba(0,0,0,0.15)]
+              `
+            : `
+                top-[28px]
+                bg-transparent
+              `,
         )}
         onMouseLeave={() => setMega(false)}
       >
-        <div className="shell flex h-16 items-center justify-between gap-3 sm:h-20 sm:gap-6">
-          <a href="#top" aria-label="Kunnected FM home" className="shrink-0">
-            <Brandmark tone="invert" />
+        {/* NAVBAR */}
+        <div
+          className="
+            mx-auto
+            flex
+            h-[72px]
+            w-full
+            max-w-[1360px]
+            items-center
+            px-6
+
+            md:px-8
+            lg:px-10
+            xl:px-12
+          "
+        >
+          {/* LOGO */}
+          <a
+            href="#top"
+            aria-label="KUnnected FM home"
+            className="
+              flex
+              shrink-0
+              items-center
+            "
+          >
+            <Brandmark
+              tone="invert"
+              className="
+                h-[46px]
+                w-auto
+
+                sm:h-[48px]
+                lg:h-[50px]
+              "
+            />
           </a>
 
-          <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
-            {navigation.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                onMouseEnter={() => setMega(Boolean("mega" in l && l.mega))}
-                onFocus={() => setMega(Boolean("mega" in l && l.mega))}
-                className="relative py-2 text-[0.9375rem] font-medium tracking-tight text-white/85 transition-colors hover:text-active"
-              >
-                {l.label}
-                {"mega" in l && l.mega && mega && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute inset-x-0 -bottom-px h-px bg-active"
-                  />
-                )}
-              </a>
-            ))}
+          {/* DESKTOP NAV */}
+          <nav
+            aria-label="Primary"
+            className="
+              ml-[70px]
+              hidden
+              items-center
+              gap-8
+
+              lg:flex
+
+              xl:ml-[90px]
+              xl:gap-10
+            "
+          >
+            {navigation.map((item) => {
+              const hasMega = "mega" in item && item.mega;
+
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onMouseEnter={() => setMega(Boolean(hasMega))}
+                  onFocus={() => setMega(Boolean(hasMega))}
+                  className="
+                    relative
+                    flex
+                    h-[72px]
+                    items-center
+                    whitespace-nowrap
+
+                    text-[17px]
+                    font-medium
+                    tracking-[-0.01em]
+
+                    text-white/90
+
+                    transition-colors
+                    duration-300
+
+                    hover:text-white
+
+                    xl:text-[18px]
+                  "
+                >
+                  {item.label}
+
+                  {hasMega && mega && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="
+                        absolute
+                        inset-x-0
+                        bottom-[10px]
+                        h-[2px]
+                        bg-[#5baaff]
+                      "
+                    />
+                  )}
+                </a>
+              );
+            })}
           </nav>
 
-          <div className="flex items-center gap-2">
+          {/* SEARCH */}
+          <div
+            className="
+              ml-auto
+              flex
+              items-center
+              gap-2
+            "
+          >
             <button
               type="button"
               aria-label="Search the site"
-              className={cn(
-                "hidden h-11 w-11 items-center justify-center rounded-full transition-colors sm:inline-flex",
-                solid ? "text-white hover:bg-white/10" : "text-white hover:bg-white/10",
-              )}
+              className="
+                hidden
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-full
+                text-white
+
+                transition-colors
+
+                hover:bg-white/10
+
+                sm:inline-flex
+              "
             >
-              <Search className="h-[1.05rem] w-[1.05rem]" />
+              <Search className="h-[19px] w-[19px]" />
             </button>
 
+            {/* MOBILE MENU */}
             <button
               type="button"
               aria-label="Open menu"
               onClick={() => setMobile(true)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white lg:hidden"
+              className="
+                inline-flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-full
+                text-white
+
+                transition-colors
+                hover:bg-white/10
+
+                lg:hidden
+              "
             >
-              <Menu className="h-5 w-5" />
+              <Menu className="h-[22px] w-[22px]" />
             </button>
           </div>
         </div>
 
+        {/* MEGA MENU */}
         <AnimatePresence>
           {mega && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden border-t border-hairline bg-[#121217] lg:block"
+              initial={{
+                opacity: 0,
+                y: -8,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: -8,
+              }}
+              transition={{
+                duration: 0.28,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="
+                hidden
+                border-t
+                border-white/10
+                bg-[#121032]/98
+                shadow-2xl
+                backdrop-blur-xl
+
+                lg:block
+              "
             >
-              <div className="shell grid grid-cols-[1.6fr_1fr] gap-16 py-12">
+              <div
+                className="
+                  mx-auto
+                  grid
+                  max-w-[1360px]
+                  grid-cols-[1.55fr_0.75fr]
+                  gap-12
+                  px-10
+                  py-9
+
+                  xl:px-12
+                "
+              >
                 <div>
-                  <p className="eyebrow text-muted-foreground">Service lines</p>
-                  <ul className="mt-6 grid grid-cols-3 gap-x-10 gap-y-1">
-                    {services.map((s) => (
-                      <li key={s.slug}>
+                  <p
+                    className="
+                      text-[12px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.18em]
+                      text-white/45
+                    "
+                  >
+                    Service lines
+                  </p>
+
+                  <ul
+                    className="
+                      mt-5
+                      grid
+                      grid-cols-3
+                      gap-x-10
+                    "
+                  >
+                    {services.map((service) => (
+                      <li key={service.slug}>
                         <a
                           href="#services"
-                          className="group flex items-baseline justify-between gap-3 border-b border-hairline py-3 text-base text-white/85 transition-colors hover:text-active"
+                          className="
+                            group
+                            flex
+                            items-center
+                            justify-between
+                            gap-3
+                            border-b
+                            border-white/10
+                            py-3.5
+
+                            text-[15px]
+                            text-white/80
+
+                            transition-colors
+
+                            hover:text-white
+                          "
                         >
-                          {s.title}
-                          <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-0 transition-opacity group-hover:opacity-100" />
+                          {service.title}
+
+                          <ArrowUpRight
+                            className="
+                              h-4
+                              w-4
+                              opacity-0
+                              transition-all
+                              group-hover:opacity-100
+                            "
+                          />
                         </a>
                       </li>
                     ))}
                   </ul>
                 </div>
-                <div className="bg-[#16161c] border border-hairline p-8 text-white">
-                  <p className="eyebrow text-white/60">Always on</p>
-                  <p className="mt-6 font-display text-2xl leading-tight font-semibold tracking-tight">
+
+                <div
+                  className="
+                    border
+                    border-white/10
+                    bg-white/[0.04]
+                    p-6
+                    text-white
+                  "
+                >
+                  <p
+                    className="
+                      text-[11px]
+                      font-semibold
+                      uppercase
+                      tracking-[0.18em]
+                      text-white/50
+                    "
+                  >
+                    Always on
+                  </p>
+
+                  <p
+                    className="
+                      mt-4
+                      font-display
+                      text-2xl
+                      font-semibold
+                      leading-snug
+                    "
+                  >
                     A 24/7 operations desk sits behind every service line.
                   </p>
-                  <p className="mt-4 text-base leading-relaxed text-white/75">
-                    One helpdesk, one escalation path, one accountable team across the entire
-                    student accommodation estate.
+
+                  <p
+                    className="
+                      mt-4
+                      text-[15px]
+                      leading-relaxed
+                      text-white/65
+                    "
+                  >
+                    One helpdesk, one escalation path and one accountable
+                    team across the entire student accommodation estate.
                   </p>
+
                   <a
                     href="#process"
-                    className="mt-8 inline-flex items-center gap-2 text-base font-medium text-white hover:text-active underline underline-offset-4"
+                    className="
+                      mt-6
+                      inline-flex
+                      items-center
+                      gap-2
+                      text-[15px]
+                      font-medium
+                      text-white
+                      hover:text-[#65b0ff]
+                    "
                   >
-                    How we operate <ArrowUpRight className="h-4 w-4" />
+                    How we operate
+                    <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </div>
               </div>
@@ -133,42 +394,147 @@ export function Nav() {
         </AnimatePresence>
       </header>
 
+      {/* MOBILE OVERLAY */}
       <AnimatePresence>
         {mobile && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 overflow-y-auto bg-background text-white lg:hidden"
-          >
-            <div className="shell flex h-16 items-center justify-between sm:h-20">
-              <Brandmark tone="invert" />
-              <button
-                type="button"
-                aria-label="Close menu"
-                onClick={() => setMobile(false)}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white hover:text-active"
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobile(false)}
+              className="
+                fixed
+                inset-0
+                z-[60]
+                bg-black/60
+                backdrop-blur-[2px]
+                lg:hidden
+              "
+            />
+
+            {/* MOBILE DRAWER */}
+            <motion.aside
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{
+                duration: 0.38,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="
+                fixed
+                inset-y-0
+                left-0
+                z-[70]
+
+                flex
+                w-[86%]
+                max-w-[370px]
+                flex-col
+
+                bg-[#15123f]
+                text-white
+
+                shadow-[20px_0_60px_rgba(0,0,0,0.4)]
+
+                lg:hidden
+              "
+            >
+              <div
+                className="
+                  flex
+                  h-[76px]
+                  items-center
+                  justify-between
+                  border-b
+                  border-white/10
+                  px-5
+                "
               >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-            <nav aria-label="Mobile" className="shell mt-3 flex flex-col pb-8 sm:mt-6 sm:pb-10">
-              {navigation.map((l, i) => (
-                <motion.a
-                  key={l.label}
-                  href={l.href}
+                <Brandmark
+                  tone="invert"
+                  className="h-[44px]"
+                />
+
+                <button
+                  type="button"
+                  aria-label="Close menu"
                   onClick={() => setMobile(false)}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.06 * i, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="border-b border-white/15 py-4 font-display text-2xl font-semibold tracking-tight transition-colors hover:text-active sm:py-5 sm:text-3xl"
+                  className="
+                    flex
+                    h-10
+                    w-10
+                    items-center
+                    justify-center
+                    rounded-full
+                    hover:bg-white/10
+                  "
                 >
-                  {l.label}
-                </motion.a>
-              ))}
-            </nav>
-          </motion.div>
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <nav
+                aria-label="Mobile"
+                className="
+                  flex
+                  flex-col
+                  overflow-y-auto
+                  px-5
+                  py-5
+                "
+              >
+                {navigation.map((item, index) => (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setMobile(false)}
+                    initial={{
+                      opacity: 0,
+                      x: -15,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    transition={{
+                      delay: index * 0.05,
+                    }}
+                    className="
+                      flex
+                      min-h-[64px]
+                      items-center
+                      justify-between
+
+                      border-b
+                      border-white/10
+
+                      font-display
+                      text-[22px]
+                      font-medium
+
+                      text-white/90
+
+                      transition-colors
+
+                      hover:text-[#65b0ff]
+                    "
+                  >
+                    {item.label}
+
+                    <ArrowUpRight
+                      className="
+                        h-4
+                        w-4
+                        text-white/40
+                      "
+                    />
+                  </motion.a>
+                ))}
+              </nav>
+            </motion.aside>
+          </>
         )}
       </AnimatePresence>
     </>

@@ -1,30 +1,7 @@
 import { cn } from "@/lib/utils";
 import kuLogo from "@/assets/ku-gpt.png";
 
-/**
- * KUnnected FM brand lockup using approved logo artwork.
- * White-background variant preferred per client brief.
- */
 export function Brandmark({
-  className,
-  tone = "core",
-}: {
-  className?: string;
-  tone?: "core" | "invert";
-}) {
-  return (
-    <ArcMark
-      className={className}
-      tone={tone}
-    />
-  );
-}
-
-/**
- * The KUnnect icon geometry:
- * interlocking arcs = connection, flow, integrated systems.
- */
-export function ArcMark({
   className,
   tone = "core",
 }: {
@@ -34,25 +11,17 @@ export function ArcMark({
   return (
     <img
       src={kuLogo}
-      alt="KUnnected FM logo"
+      alt="KUnnected FM"
       width={280}
       height={80}
       className={cn(
         `
-          h-11
+          block
+          h-[44px]
           w-auto
-          max-w-full
+          max-w-[240px]
           object-contain
-
-          sm:h-12
-
-          md:h-14
-
-          lg:h-16
-
-          xl:h-[72px]
-
-          2xl:h-[76px]
+          object-left
         `,
         tone === "invert" && "brightness-0 invert",
         className,
@@ -61,10 +30,6 @@ export function ArcMark({
   );
 }
 
-/**
- * Pattern 1 / Pattern 2 from the brand book,
- * as a tileable background.
- */
 export function ArcPattern({
   className,
   opacity = 0.08,

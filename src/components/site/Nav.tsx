@@ -51,14 +51,14 @@ export function Nav() {
           solid
             ? `
                 top-0
-                bg-[#18164b]/95
+                bg-[#18164b]/96
                 border-b
                 border-white/10
                 backdrop-blur-xl
-                shadow-[0_8px_30px_rgba(0,0,0,0.15)]
+                shadow-[0_10px_36px_rgba(0,0,0,0.18)]
               `
             : `
-                top-[28px]
+                top-[26px]
                 bg-transparent
               `,
         )}
@@ -69,15 +69,16 @@ export function Nav() {
           className="
             mx-auto
             flex
-            h-[72px]
+            h-[94px]
             w-full
-            max-w-[1360px]
+            max-w-[1440px]
             items-center
             px-6
 
             md:px-8
+            lg:h-[102px]
             lg:px-10
-            xl:px-12
+            xl:px-14
           "
         >
           {/* LOGO */}
@@ -93,11 +94,12 @@ export function Nav() {
             <Brandmark
               tone="invert"
               className="
-                h-[46px]
+                h-[58px]
                 w-auto
 
-                sm:h-[48px]
-                lg:h-[50px]
+                sm:h-[62px]
+                lg:h-[68px]
+                xl:h-[72px]
               "
             />
           </a>
@@ -106,15 +108,15 @@ export function Nav() {
           <nav
             aria-label="Primary"
             className="
-              ml-[70px]
+              ml-[82px]
               hidden
               items-center
-              gap-8
+              gap-10
 
               lg:flex
 
-              xl:ml-[90px]
-              xl:gap-10
+              xl:ml-[105px]
+              xl:gap-12
             "
           >
             {navigation.map((item) => {
@@ -129,22 +131,23 @@ export function Nav() {
                   className="
                     relative
                     flex
-                    h-[72px]
+                    h-[102px]
                     items-center
                     whitespace-nowrap
 
-                    text-[17px]
-                    font-medium
-                    tracking-[-0.01em]
+                    text-[20px]
+                    font-extrabold
+                    tracking-[-0.015em]
 
-                    text-white/90
+                    text-white/95
 
-                    transition-colors
+                    transition-all
                     duration-300
 
+                    hover:-translate-y-[1px]
                     hover:text-white
 
-                    xl:text-[18px]
+                    xl:text-[21px]
                   "
                 >
                   {item.label}
@@ -155,8 +158,9 @@ export function Nav() {
                       className="
                         absolute
                         inset-x-0
-                        bottom-[10px]
-                        h-[2px]
+                        bottom-[18px]
+                        h-[3px]
+                        rounded-full
                         bg-[#5baaff]
                       "
                     />
@@ -166,13 +170,13 @@ export function Nav() {
             })}
           </nav>
 
-          {/* SEARCH */}
+          {/* SEARCH + MOBILE MENU */}
           <div
             className="
               ml-auto
               flex
               items-center
-              gap-2
+              gap-3
             "
           >
             <button
@@ -180,8 +184,8 @@ export function Nav() {
               aria-label="Search the site"
               className="
                 hidden
-                h-10
-                w-10
+                h-12
+                w-12
                 items-center
                 justify-center
                 rounded-full
@@ -189,35 +193,34 @@ export function Nav() {
 
                 transition-colors
 
-                hover:bg-white/10
+                hover:bg-white/12
 
                 sm:inline-flex
               "
             >
-              <Search className="h-[19px] w-[19px]" />
+              <Search className="h-[23px] w-[23px]" />
             </button>
 
-            {/* MOBILE MENU */}
             <button
               type="button"
               aria-label="Open menu"
               onClick={() => setMobile(true)}
               className="
                 inline-flex
-                h-10
-                w-10
+                h-12
+                w-12
                 items-center
                 justify-center
                 rounded-full
                 text-white
 
                 transition-colors
-                hover:bg-white/10
+                hover:bg-white/12
 
                 lg:hidden
               "
             >
-              <Menu className="h-[22px] w-[22px]" />
+              <Menu className="h-[26px] w-[26px]" />
             </button>
           </div>
         </div>
@@ -257,23 +260,23 @@ export function Nav() {
                 className="
                   mx-auto
                   grid
-                  max-w-[1360px]
+                  max-w-[1440px]
                   grid-cols-[1.55fr_0.75fr]
                   gap-12
                   px-10
-                  py-9
+                  py-10
 
-                  xl:px-12
+                  xl:px-14
                 "
               >
                 <div>
                   <p
                     className="
-                      text-[12px]
-                      font-semibold
+                      text-[13px]
+                      font-extrabold
                       uppercase
-                      tracking-[0.18em]
-                      text-white/45
+                      tracking-[0.2em]
+                      text-white/50
                     "
                   >
                     Service lines
@@ -281,10 +284,10 @@ export function Nav() {
 
                   <ul
                     className="
-                      mt-5
+                      mt-6
                       grid
                       grid-cols-3
-                      gap-x-10
+                      gap-x-11
                     "
                   >
                     {services.map((service) => (
@@ -299,10 +302,11 @@ export function Nav() {
                             gap-3
                             border-b
                             border-white/10
-                            py-3.5
+                            py-4
 
-                            text-[15px]
-                            text-white/80
+                            text-[16px]
+                            font-semibold
+                            text-white/82
 
                             transition-colors
 
@@ -317,6 +321,8 @@ export function Nav() {
                               w-4
                               opacity-0
                               transition-all
+                              group-hover:translate-x-0.5
+                              group-hover:-translate-y-0.5
                               group-hover:opacity-100
                             "
                           />
@@ -328,20 +334,22 @@ export function Nav() {
 
                 <div
                   className="
+                    rounded-[28px]
                     border
                     border-white/10
-                    bg-white/[0.04]
-                    p-6
+                    bg-white/[0.05]
+                    p-7
                     text-white
+                    shadow-[0_20px_50px_rgba(0,0,0,0.18)]
                   "
                 >
                   <p
                     className="
-                      text-[11px]
-                      font-semibold
+                      text-[12px]
+                      font-extrabold
                       uppercase
-                      tracking-[0.18em]
-                      text-white/50
+                      tracking-[0.2em]
+                      text-white/55
                     "
                   >
                     Always on
@@ -351,9 +359,10 @@ export function Nav() {
                     className="
                       mt-4
                       font-display
-                      text-2xl
-                      font-semibold
+                      text-[28px]
+                      font-extrabold
                       leading-snug
+                      tracking-[-0.02em]
                     "
                   >
                     A 24/7 operations desk sits behind every service line.
@@ -362,24 +371,24 @@ export function Nav() {
                   <p
                     className="
                       mt-4
-                      text-[15px]
+                      text-[16px]
                       leading-relaxed
-                      text-white/65
+                      text-white/68
                     "
                   >
-                    One helpdesk, one escalation path and one accountable
-                    team across the entire student accommodation estate.
+                    One helpdesk, one escalation path and one accountable team
+                    across the entire student accommodation estate.
                   </p>
 
                   <a
                     href="#process"
                     className="
-                      mt-6
+                      mt-7
                       inline-flex
                       items-center
                       gap-2
-                      text-[15px]
-                      font-medium
+                      text-[16px]
+                      font-bold
                       text-white
                       hover:text-[#65b0ff]
                     "
@@ -429,8 +438,8 @@ export function Nav() {
                 z-[70]
 
                 flex
-                w-[86%]
-                max-w-[370px]
+                w-[88%]
+                max-w-[410px]
                 flex-col
 
                 bg-[#15123f]
@@ -444,7 +453,7 @@ export function Nav() {
               <div
                 className="
                   flex
-                  h-[76px]
+                  h-[92px]
                   items-center
                   justify-between
                   border-b
@@ -454,7 +463,10 @@ export function Nav() {
               >
                 <Brandmark
                   tone="invert"
-                  className="h-[44px]"
+                  className="
+                    h-[58px]
+                    max-w-[270px]
+                  "
                 />
 
                 <button
@@ -463,15 +475,15 @@ export function Nav() {
                   onClick={() => setMobile(false)}
                   className="
                     flex
-                    h-10
-                    w-10
+                    h-12
+                    w-12
                     items-center
                     justify-center
                     rounded-full
                     hover:bg-white/10
                   "
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-6 w-6" />
                 </button>
               </div>
 
@@ -481,8 +493,8 @@ export function Nav() {
                   flex
                   flex-col
                   overflow-y-auto
-                  px-5
-                  py-5
+                  px-6
+                  py-6
                 "
               >
                 {navigation.map((item, index) => (
@@ -503,7 +515,7 @@ export function Nav() {
                     }}
                     className="
                       flex
-                      min-h-[64px]
+                      min-h-[72px]
                       items-center
                       justify-between
 
@@ -511,10 +523,11 @@ export function Nav() {
                       border-white/10
 
                       font-display
-                      text-[22px]
-                      font-medium
+                      text-[25px]
+                      font-extrabold
+                      tracking-[-0.02em]
 
-                      text-white/90
+                      text-white/92
 
                       transition-colors
 
@@ -525,8 +538,8 @@ export function Nav() {
 
                     <ArrowUpRight
                       className="
-                        h-4
-                        w-4
+                        h-5
+                        w-5
                         text-white/40
                       "
                     />

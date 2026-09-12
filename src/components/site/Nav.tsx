@@ -1,33 +1,24 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Search, X, Menu, ArrowUpRight } from "lucide-react";
+import {
+  Search,
+  X,
+  Menu,
+  ArrowUpRight,
+} from "lucide-react";
 
 import { Brandmark } from "@/components/brand/Brandmark";
 import { navigation, services } from "@/lib/site";
-import { cn } from "@/lib/utils";
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
   const [mega, setMega] = useState(false);
   const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
+    if (typeof document === "undefined") {
+      return;
+    }
 
-    onScroll();
-
-    window.addEventListener("scroll", onScroll, {
-      passive: true,
-    });
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
-
-  useEffect(() => {
     document.body.style.overflow = mobile ? "hidden" : "";
 
     return () => {
@@ -35,33 +26,28 @@ export function Nav() {
     };
   }, [mobile]);
 
-  const solid = scrolled || mega;
+  const closeMobileMenu = () => {
+    setMobile(false);
+  };
 
   return (
     <>
       <header
-        className={cn(
-          `
-            fixed
-            inset-x-0
-            z-50
-            transition-all
-            duration-500
-          `,
-          solid
-            ? `
-                top-0
-                bg-[#18164b]/96
-                border-b
-                border-white/10
-                backdrop-blur-xl
-                shadow-[0_10px_36px_rgba(0,0,0,0.18)]
-              `
-            : `
-                top-[26px]
-                bg-transparent
-              `,
-        )}
+        className="
+          fixed
+          inset-x-0
+          top-0
+          z-50
+
+          border-b
+          border-white/10
+
+          bg-[#18164b]
+
+          shadow-[0_10px_36px_rgba(0,0,0,0.18)]
+
+          transition-none
+        "
         onMouseLeave={() => setMega(false)}
       >
         {/* NAVBAR */}
@@ -69,15 +55,17 @@ export function Nav() {
           className="
             mx-auto
             flex
-            h-[94px]
+            h-[102px]
             w-full
             max-w-[1440px]
             items-center
+
             px-6
 
             md:px-8
-            lg:h-[102px]
+
             lg:px-10
+
             xl:px-14
           "
         >
@@ -94,12 +82,14 @@ export function Nav() {
             <Brandmark
               tone="invert"
               className="
-                h-[58px]
+                h-[64px]
                 w-auto
 
-                sm:h-[62px]
+                sm:h-[66px]
+
                 lg:h-[68px]
-                xl:h-[72px]
+
+                xl:h-[70px]
               "
             />
           </a>
@@ -120,19 +110,26 @@ export function Nav() {
             "
           >
             {navigation.map((item) => {
-              const hasMega = "mega" in item && item.mega;
+              const hasMega =
+                "mega" in item &&
+                Boolean(item.mega);
 
               return (
                 <a
                   key={item.label}
                   href={item.href}
-                  onMouseEnter={() => setMega(Boolean(hasMega))}
-                  onFocus={() => setMega(Boolean(hasMega))}
+                  onMouseEnter={() => {
+                    setMega(hasMega);
+                  }}
+                  onFocus={() => {
+                    setMega(hasMega);
+                  }}
                   className="
                     relative
                     flex
                     h-[102px]
                     items-center
+
                     whitespace-nowrap
 
                     text-[20px]
@@ -141,10 +138,9 @@ export function Nav() {
 
                     text-white/95
 
-                    transition-all
+                    transition-colors
                     duration-300
 
-                    hover:-translate-y-[1px]
                     hover:text-white
 
                     xl:text-[21px]
@@ -158,8 +154,10 @@ export function Nav() {
                       className="
                         absolute
                         inset-x-0
-                        bottom-[18px]
+                        bottom-[17px]
+
                         h-[3px]
+
                         rounded-full
                         bg-[#5baaff]
                       "
@@ -170,7 +168,7 @@ export function Nav() {
             })}
           </nav>
 
-          {/* SEARCH + MOBILE MENU */}
+          {/* RIGHT SIDE */}
           <div
             className="
               ml-auto
@@ -179,6 +177,7 @@ export function Nav() {
               gap-3
             "
           >
+            {/* SEARCH */}
             <button
               type="button"
               aria-label="Search the site"
@@ -188,12 +187,14 @@ export function Nav() {
                 w-12
                 items-center
                 justify-center
+
                 rounded-full
+
                 text-white
 
                 transition-colors
 
-                hover:bg-white/12
+                hover:bg-white/10
 
                 sm:inline-flex
               "
@@ -201,6 +202,7 @@ export function Nav() {
               <Search className="h-[23px] w-[23px]" />
             </button>
 
+            {/* MOBILE MENU BUTTON */}
             <button
               type="button"
               aria-label="Open menu"
@@ -211,11 +213,14 @@ export function Nav() {
                 w-12
                 items-center
                 justify-center
+
                 rounded-full
+
                 text-white
 
                 transition-colors
-                hover:bg-white/12
+
+                hover:bg-white/10
 
                 lg:hidden
               "
@@ -247,11 +252,13 @@ export function Nav() {
               }}
               className="
                 hidden
+
                 border-t
                 border-white/10
-                bg-[#121032]/98
+
+                bg-[#121032]
+
                 shadow-2xl
-                backdrop-blur-xl
 
                 lg:block
               "
@@ -263,12 +270,14 @@ export function Nav() {
                   max-w-[1440px]
                   grid-cols-[1.55fr_0.75fr]
                   gap-12
+
                   px-10
                   py-10
 
                   xl:px-14
                 "
               >
+                {/* SERVICES */}
                 <div>
                   <p
                     className="
@@ -299,9 +308,12 @@ export function Nav() {
                             flex
                             items-center
                             justify-between
+
                             gap-3
+
                             border-b
                             border-white/10
+
                             py-4
 
                             text-[16px]
@@ -319,10 +331,13 @@ export function Nav() {
                             className="
                               h-4
                               w-4
+
                               opacity-0
+
                               transition-all
-                              group-hover:translate-x-0.5
+
                               group-hover:-translate-y-0.5
+                              group-hover:translate-x-0.5
                               group-hover:opacity-100
                             "
                           />
@@ -332,14 +347,20 @@ export function Nav() {
                   </ul>
                 </div>
 
+                {/* RIGHT CARD */}
                 <div
                   className="
                     rounded-[28px]
+
                     border
                     border-white/10
+
                     bg-white/[0.05]
+
                     p-7
+
                     text-white
+
                     shadow-[0_20px_50px_rgba(0,0,0,0.18)]
                   "
                 >
@@ -358,7 +379,9 @@ export function Nav() {
                   <p
                     className="
                       mt-4
+
                       font-display
+
                       text-[28px]
                       font-extrabold
                       leading-snug
@@ -371,6 +394,7 @@ export function Nav() {
                   <p
                     className="
                       mt-4
+
                       text-[16px]
                       leading-relaxed
                       text-white/68
@@ -384,16 +408,20 @@ export function Nav() {
                     href="#process"
                     className="
                       mt-7
+
                       inline-flex
                       items-center
                       gap-2
+
                       text-[16px]
                       font-bold
                       text-white
+
                       hover:text-[#65b0ff]
                     "
                   >
                     How we operate
+
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </div>
@@ -403,30 +431,45 @@ export function Nav() {
         </AnimatePresence>
       </header>
 
-      {/* MOBILE OVERLAY */}
+      {/* MOBILE BACKDROP */}
       <AnimatePresence>
         {mobile && (
           <>
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobile(false)}
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              exit={{
+                opacity: 0,
+              }}
+              onClick={closeMobileMenu}
               className="
                 fixed
                 inset-0
                 z-[60]
+
                 bg-black/60
+
                 backdrop-blur-[2px]
+
                 lg:hidden
               "
             />
 
-            {/* MOBILE DRAWER */}
+            {/* MOBILE SIDEBAR */}
             <motion.aside
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
+              initial={{
+                x: "-100%",
+              }}
+              animate={{
+                x: 0,
+              }}
+              exit={{
+                x: "-100%",
+              }}
               transition={{
                 duration: 0.38,
                 ease: [0.16, 1, 0.3, 1],
@@ -442,7 +485,8 @@ export function Nav() {
                 max-w-[410px]
                 flex-col
 
-                bg-[#15123f]
+                bg-[#18164b]
+
                 text-white
 
                 shadow-[20px_0_60px_rgba(0,0,0,0.4)]
@@ -450,21 +494,24 @@ export function Nav() {
                 lg:hidden
               "
             >
+              {/* MOBILE HEADER */}
               <div
                 className="
                   flex
-                  h-[92px]
+                  h-[96px]
                   items-center
                   justify-between
+
                   border-b
                   border-white/10
+
                   px-5
                 "
               >
                 <Brandmark
                   tone="invert"
                   className="
-                    h-[58px]
+                    h-[60px]
                     max-w-[270px]
                   "
                 />
@@ -472,14 +519,18 @@ export function Nav() {
                 <button
                   type="button"
                   aria-label="Close menu"
-                  onClick={() => setMobile(false)}
+                  onClick={closeMobileMenu}
                   className="
                     flex
                     h-12
                     w-12
                     items-center
                     justify-center
+
                     rounded-full
+
+                    transition-colors
+
                     hover:bg-white/10
                   "
                 >
@@ -487,12 +538,14 @@ export function Nav() {
                 </button>
               </div>
 
+              {/* MOBILE LINKS */}
               <nav
                 aria-label="Mobile"
                 className="
                   flex
                   flex-col
                   overflow-y-auto
+
                   px-6
                   py-6
                 "
@@ -501,7 +554,7 @@ export function Nav() {
                   <motion.a
                     key={item.label}
                     href={item.href}
-                    onClick={() => setMobile(false)}
+                    onClick={closeMobileMenu}
                     initial={{
                       opacity: 0,
                       x: -15,
@@ -523,6 +576,7 @@ export function Nav() {
                       border-white/10
 
                       font-display
+
                       text-[25px]
                       font-extrabold
                       tracking-[-0.02em]

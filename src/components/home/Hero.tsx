@@ -11,6 +11,7 @@ import heroAsset from "@/assets/hero-campus.jpg";
 
 import { ArcPattern } from "@/components/brand/Brandmark";
 import { LineReveal } from "@/components/motion/Reveal";
+
 import { company } from "@/lib/site";
 
 export function Hero() {
@@ -57,7 +58,9 @@ export function Hero() {
         style={
           reduced
             ? undefined
-            : { y }
+            : {
+                y,
+              }
         }
         className="
           absolute
@@ -103,7 +106,13 @@ export function Hero() {
       />
 
       <ArcPattern
-        className="text-[#3F80CF]"
+        className="
+          absolute
+          inset-0
+          h-full
+          w-full
+          text-[#3F80CF]
+        "
         opacity={0.06}
       />
 
@@ -116,12 +125,10 @@ export function Hero() {
           shell
           relative
           z-10
-
           flex
           min-h-[calc(100svh-80px)]
           flex-col
           justify-center
-
           py-10
 
           sm:min-h-[calc(100svh-88px)]
@@ -137,7 +144,9 @@ export function Hero() {
           initial={
             reduced
               ? false
-              : { opacity: 0 }
+              : {
+                  opacity: 0,
+                }
           }
           animate={{
             opacity: 1,
@@ -159,13 +168,11 @@ export function Hero() {
         <h1
           className="
             mt-5
-
             max-w-[15ch]
 
             text-[3rem]
             font-extrabold
             leading-[0.95]
-
             text-white
 
             sm:text-[4rem]
@@ -185,8 +192,8 @@ export function Hero() {
               "Operations",
             ]}
             lineClassName="
-              text-white
               font-extrabold
+              text-white
             "
           />
         </h1>
@@ -196,14 +203,11 @@ export function Hero() {
         <div
           className="
             mt-8
-
             grid
-
             gap-7
 
             border-t
             border-white/10
-
             pt-6
 
             lg:mt-9
@@ -238,7 +242,6 @@ export function Hero() {
 
               text-base
               leading-relaxed
-
               text-white/85
 
               sm:text-lg
@@ -298,7 +301,6 @@ export function Hero() {
 
                 text-sm
                 font-semibold
-
                 text-white
 
                 transition-all
@@ -332,7 +334,6 @@ export function Hero() {
 
                 text-sm
                 font-semibold
-
                 text-white
 
                 transition-all
@@ -355,7 +356,9 @@ export function Hero() {
           initial={
             reduced
               ? false
-              : { opacity: 0 }
+              : {
+                  opacity: 0,
+                }
           }
           animate={{
             opacity: 1,
@@ -366,12 +369,10 @@ export function Hero() {
           }}
           className="
             mt-6
-
             max-w-2xl
 
             text-sm
             leading-relaxed
-
             text-white/75
 
             sm:text-base
@@ -389,7 +390,9 @@ export function Hero() {
         style={
           reduced
             ? undefined
-            : { opacity: fade }
+            : {
+                opacity: fade,
+              }
         }
         className="
           absolute
@@ -403,7 +406,6 @@ export function Hero() {
           text-[0.6875rem]
           uppercase
           tracking-[0.18em]
-
           text-white/50
 
           lg:flex

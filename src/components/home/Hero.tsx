@@ -27,15 +27,26 @@ export function Hero() {
         w-full
         overflow-hidden
         bg-core
+
         pt-20
+        pb-8
+
         sm:pt-[88px]
+        sm:pb-10
+
+        lg:min-h-[calc(100svh-96px)]
         lg:pt-24
+        lg:pb-0
       "
     >
       {/* BACKGROUND IMAGE */}
       <motion.div
         style={reduced ? undefined : { y }}
-        className="absolute inset-0 h-[118%]"
+        className="
+          absolute
+          inset-0
+          h-[118%]
+        "
       >
         <img
           src={heroAsset}
@@ -43,12 +54,16 @@ export function Hero() {
           width={1920}
           height={1088}
           fetchPriority="high"
-          className="h-full w-full object-cover"
+          className="
+            h-full
+            w-full
+            object-cover
+          "
         />
       </motion.div>
 
       {/* OVERLAYS */}
-      <div className="absolute inset-0 bg-[#201A57]/68" />
+      <div className="absolute inset-0 bg-[#201A57]/70" />
 
       <div
         className="
@@ -56,13 +71,19 @@ export function Hero() {
           inset-0
           bg-gradient-to-t
           from-[#201A57]/96
-          via-[#201A57]/25
-          to-[#201A57]/48
+          via-[#201A57]/28
+          to-[#201A57]/50
         "
       />
 
       <ArcPattern
-        className="absolute inset-0 h-full w-full text-[#3F80CF]"
+        className="
+          absolute
+          inset-0
+          h-full
+          w-full
+          text-[#3F80CF]
+        "
         opacity={0.055}
       />
 
@@ -74,12 +95,10 @@ export function Hero() {
           z-10
           flex
           flex-col
-          justify-start
-          py-10
-          min-h-[calc(100svh-80px)]
 
-          sm:min-h-[calc(100svh-88px)]
-          sm:py-12
+          py-8
+
+          sm:py-10
 
           lg:min-h-[calc(100svh-96px)]
           lg:justify-center
@@ -118,23 +137,27 @@ export function Hero() {
             mt-4
             w-full
             max-w-full
-            text-[clamp(1.8rem,7.2vw,2.25rem)]
-            font-semibold
-            leading-[1.02]
-            tracking-[-0.03em]
+
+            text-[clamp(1.65rem,6.6vw,2.05rem)]
+            font-medium
+            leading-[1.08]
+            tracking-[-0.025em]
             text-white
 
-            min-[390px]:text-[clamp(1.95rem,7.5vw,2.5rem)]
+            min-[390px]:text-[clamp(1.78rem,6.8vw,2.25rem)]
 
             sm:mt-5
             sm:max-w-[16ch]
-            sm:text-[3rem]
-            sm:leading-[1]
-            sm:tracking-[-0.035em]
+            sm:text-[2.8rem]
+            sm:leading-[1.04]
+            sm:tracking-[-0.03em]
 
-            md:text-[3.7rem]
-            lg:text-[4.4rem]
-            xl:text-[5rem]
+            md:text-[3.45rem]
+
+            lg:text-[4.2rem]
+            lg:leading-[1]
+
+            xl:text-[4.8rem]
           "
         >
           <LineReveal
@@ -147,7 +170,7 @@ export function Hero() {
             lineClassName="
               block
               whitespace-nowrap
-              font-semibold
+              font-medium
               text-white
             "
           />
@@ -156,16 +179,16 @@ export function Hero() {
         {/* Bottom hero content */}
         <div
           className="
-            mt-6
+            mt-5
             grid
-            gap-5
+            gap-4
             border-t
             border-white/10
-            pt-5
+            pt-4
 
-            sm:mt-7
-            sm:gap-6
-            sm:pt-6
+            sm:mt-6
+            sm:gap-5
+            sm:pt-5
 
             lg:mt-8
             lg:grid-cols-[1fr_auto]
@@ -185,9 +208,9 @@ export function Hero() {
             }}
             className="
               max-w-xl
-              text-[14px]
-              leading-7
-              text-white/84
+              text-[13.5px]
+              leading-6
+              text-white/82
 
               sm:text-[15px]
               sm:leading-7
@@ -210,13 +233,20 @@ export function Hero() {
               duration: 0.9,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+            className="
+              flex
+              flex-col
+              gap-3
+
+              sm:flex-row
+              sm:flex-wrap
+            "
           >
             <a
               href="#services"
               className="
                 inline-flex
-                min-h-[48px]
+                min-h-[46px]
                 items-center
                 justify-center
                 gap-2
@@ -225,10 +255,11 @@ export function Hero() {
                 border-active
                 bg-active
                 px-6
-                text-[14px]
+                text-[13.5px]
                 font-semibold
                 text-white
                 transition-all
+
                 hover:bg-active/90
                 hover:shadow-[0_0_20px_rgba(63,128,207,0.35)]
 
@@ -246,7 +277,7 @@ export function Hero() {
               href="#projects"
               className="
                 inline-flex
-                min-h-[48px]
+                min-h-[46px]
                 items-center
                 justify-center
                 gap-2
@@ -254,10 +285,11 @@ export function Hero() {
                 border
                 border-white/20
                 px-6
-                text-[14px]
+                text-[13.5px]
                 font-semibold
                 text-white
                 transition-all
+
                 hover:bg-white/10
 
                 sm:min-h-[50px]
@@ -281,13 +313,13 @@ export function Hero() {
             duration: 0.8,
           }}
           className="
-            mt-5
+            mt-4
             max-w-2xl
             text-[13px]
             leading-6
-            text-white/70
+            text-white/68
 
-            sm:mt-6
+            sm:mt-5
             sm:text-[14px]
             sm:leading-7
 
@@ -312,6 +344,7 @@ export function Hero() {
           uppercase
           tracking-[0.18em]
           text-white/50
+
           lg:flex
         "
       >

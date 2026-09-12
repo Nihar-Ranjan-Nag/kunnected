@@ -27,34 +27,15 @@ export function Hero() {
         w-full
         overflow-hidden
         bg-core
-
-        min-h-[calc(100svh-80px)]
         pt-20
-
-        sm:min-h-[calc(100svh-88px)]
         sm:pt-[88px]
-
-        lg:min-h-[calc(100svh-96px)]
         lg:pt-24
       "
     >
-      {/* =========================================
-          BACKGROUND IMAGE
-      ========================================== */}
-
+      {/* BACKGROUND IMAGE */}
       <motion.div
-        style={
-          reduced
-            ? undefined
-            : {
-                y,
-              }
-        }
-        className="
-          absolute
-          inset-0
-          h-[118%]
-        "
+        style={reduced ? undefined : { y }}
+        className="absolute inset-0 h-[118%]"
       >
         <img
           src={heroAsset}
@@ -62,25 +43,12 @@ export function Hero() {
           width={1920}
           height={1088}
           fetchPriority="high"
-          className="
-            h-full
-            w-full
-            object-cover
-          "
+          className="h-full w-full object-cover"
         />
       </motion.div>
 
-      {/* =========================================
-          OVERLAYS
-      ========================================== */}
-
-      <div
-        className="
-          absolute
-          inset-0
-          bg-[#201A57]/68
-        "
-      />
+      {/* OVERLAYS */}
+      <div className="absolute inset-0 bg-[#201A57]/68" />
 
       <div
         className="
@@ -94,53 +62,34 @@ export function Hero() {
       />
 
       <ArcPattern
-        className="
-          absolute
-          inset-0
-          h-full
-          w-full
-          text-[#3F80CF]
-        "
+        className="absolute inset-0 h-full w-full text-[#3F80CF]"
         opacity={0.055}
       />
 
-      {/* =========================================
-          CONTENT
-      ========================================== */}
-
+      {/* CONTENT */}
       <div
         className="
           shell
           relative
           z-10
           flex
-
-          min-h-[calc(100svh-80px)]
           flex-col
-          justify-center
-
-          py-8
+          justify-start
+          py-10
+          min-h-[calc(100svh-80px)]
 
           sm:min-h-[calc(100svh-88px)]
-          sm:py-11
+          sm:py-12
 
           lg:min-h-[calc(100svh-96px)]
+          lg:justify-center
           lg:py-14
         "
       >
         {/* Eyebrow */}
-
         <motion.p
-          initial={
-            reduced
-              ? false
-              : {
-                  opacity: 0,
-                }
-          }
-          animate={{
-            opacity: 1,
-          }}
+          initial={reduced ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{
             delay: 0.15,
             duration: 0.8,
@@ -148,18 +97,15 @@ export function Hero() {
           className="
             eyebrow
             max-w-full
-
             text-[9px]
             leading-5
             tracking-[0.16em]
-
             text-[#6FA9EF]
 
             sm:text-[10px]
             sm:tracking-[0.2em]
 
             md:text-[11px]
-
             lg:text-[12px]
           "
         >
@@ -167,33 +113,28 @@ export function Hero() {
         </motion.p>
 
         {/* Main Heading */}
-
         <h1
           className="
             mt-4
             w-full
             max-w-full
-
-            text-[clamp(1.9rem,8.3vw,2.45rem)]
-            font-bold
-            leading-[1.04]
-            tracking-[-0.035em]
+            text-[clamp(1.8rem,7.2vw,2.25rem)]
+            font-semibold
+            leading-[1.02]
+            tracking-[-0.03em]
             text-white
 
-            min-[390px]:text-[clamp(2.05rem,8vw,2.75rem)]
+            min-[390px]:text-[clamp(1.95rem,7.5vw,2.5rem)]
 
             sm:mt-5
             sm:max-w-[16ch]
-            sm:text-[3.25rem]
-            sm:leading-[1.02]
-            sm:tracking-[-0.04em]
+            sm:text-[3rem]
+            sm:leading-[1]
+            sm:tracking-[-0.035em]
 
-            md:text-[4rem]
-
-            lg:text-[4.65rem]
-            lg:leading-[0.98]
-
-            xl:text-[5.25rem]
+            md:text-[3.7rem]
+            lg:text-[4.4rem]
+            xl:text-[5rem]
           "
         >
           <LineReveal
@@ -206,14 +147,13 @@ export function Hero() {
             lineClassName="
               block
               whitespace-nowrap
-              font-bold
+              font-semibold
               text-white
             "
           />
         </h1>
 
         {/* Bottom hero content */}
-
         <div
           className="
             mt-6
@@ -235,20 +175,9 @@ export function Hero() {
           "
         >
           {/* Subheadline */}
-
           <motion.p
-            initial={
-              reduced
-                ? false
-                : {
-                    opacity: 0,
-                    y: 18,
-                  }
-            }
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
+            initial={reduced ? false : { opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: 0.75,
               duration: 0.9,
@@ -256,15 +185,14 @@ export function Hero() {
             }}
             className="
               max-w-xl
-
-              text-[14.5px]
+              text-[14px]
               leading-7
               text-white/84
 
-              sm:text-[16px]
+              sm:text-[15px]
               sm:leading-7
 
-              md:text-[17px]
+              md:text-[16px]
               md:leading-8
 
               lg:text-[18px]
@@ -274,33 +202,15 @@ export function Hero() {
           </motion.p>
 
           {/* CTAs */}
-
           <motion.div
-            initial={
-              reduced
-                ? false
-                : {
-                    opacity: 0,
-                    y: 18,
-                  }
-            }
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
+            initial={reduced ? false : { opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: 0.9,
               duration: 0.9,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="
-              flex
-              flex-col
-              gap-3
-
-              sm:flex-row
-              sm:flex-wrap
-            "
+            className="flex flex-col gap-3 sm:flex-row sm:flex-wrap"
           >
             <a
               href="#services"
@@ -314,15 +224,11 @@ export function Hero() {
                 border
                 border-active
                 bg-active
-
                 px-6
-
                 text-[14px]
                 font-semibold
                 text-white
-
                 transition-all
-
                 hover:bg-active/90
                 hover:shadow-[0_0_20px_rgba(63,128,207,0.35)]
 
@@ -347,15 +253,11 @@ export function Hero() {
                 rounded-full
                 border
                 border-white/20
-
                 px-6
-
                 text-[14px]
                 font-semibold
                 text-white
-
                 transition-all
-
                 hover:bg-white/10
 
                 sm:min-h-[50px]
@@ -371,18 +273,9 @@ export function Hero() {
         </div>
 
         {/* Tagline */}
-
         <motion.p
-          initial={
-            reduced
-              ? false
-              : {
-                  opacity: 0,
-                }
-          }
-          animate={{
-            opacity: 1,
-          }}
+          initial={reduced ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{
             delay: 1.1,
             duration: 0.8,
@@ -390,13 +283,12 @@ export function Hero() {
           className="
             mt-5
             max-w-2xl
-
-            text-[13.5px]
+            text-[13px]
             leading-6
             text-white/70
 
             sm:mt-6
-            sm:text-[15px]
+            sm:text-[14px]
             sm:leading-7
 
             lg:text-base
@@ -406,18 +298,9 @@ export function Hero() {
         </motion.p>
       </div>
 
-      {/* =========================================
-          SCROLL INDICATOR
-      ========================================== */}
-
+      {/* SCROLL INDICATOR */}
       <motion.div
-        style={
-          reduced
-            ? undefined
-            : {
-                opacity: fade,
-              }
-        }
+        style={reduced ? undefined : { opacity: fade }}
         className="
           absolute
           bottom-7
@@ -425,12 +308,10 @@ export function Hero() {
           hidden
           items-center
           gap-2
-
           text-[0.6875rem]
           uppercase
           tracking-[0.18em]
           text-white/50
-
           lg:flex
         "
       >

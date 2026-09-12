@@ -78,7 +78,7 @@ export function Hero() {
         className="
           absolute
           inset-0
-          bg-[#201A57]/65
+          bg-[#201A57]/68
         "
       />
 
@@ -87,9 +87,9 @@ export function Hero() {
           absolute
           inset-0
           bg-gradient-to-t
-          from-[#201A57]/95
-          via-transparent
-          to-[#201A57]/50
+          from-[#201A57]/96
+          via-[#201A57]/25
+          to-[#201A57]/48
         "
       />
 
@@ -101,7 +101,7 @@ export function Hero() {
           w-full
           text-[#3F80CF]
         "
-        opacity={0.06}
+        opacity={0.055}
       />
 
       {/* =========================================
@@ -118,10 +118,11 @@ export function Hero() {
           min-h-[calc(100svh-80px)]
           flex-col
           justify-center
-          py-9
+
+          py-8
 
           sm:min-h-[calc(100svh-88px)]
-          sm:py-12
+          sm:py-11
 
           lg:min-h-[calc(100svh-96px)]
           lg:py-14
@@ -147,15 +148,19 @@ export function Hero() {
           className="
             eyebrow
             max-w-full
-            text-[10px]
+
+            text-[9px]
             leading-5
-            tracking-[0.18em]
-            text-[#3F80CF]
+            tracking-[0.16em]
 
-            sm:text-[11px]
-            sm:tracking-[0.22em]
+            text-[#6FA9EF]
 
-            md:text-[12px]
+            sm:text-[10px]
+            sm:tracking-[0.2em]
+
+            md:text-[11px]
+
+            lg:text-[12px]
           "
         >
           {company.purpose}
@@ -165,27 +170,30 @@ export function Hero() {
 
         <h1
           className="
-            mt-5
+            mt-4
             w-full
             max-w-full
 
-            text-[clamp(2.15rem,10vw,2.85rem)]
-            font-extrabold
-            leading-[0.96]
-            tracking-[-0.045em]
+            text-[clamp(1.9rem,8.3vw,2.45rem)]
+            font-bold
+            leading-[1.04]
+            tracking-[-0.035em]
             text-white
 
-            min-[390px]:text-[clamp(2.4rem,10vw,3.15rem)]
+            min-[390px]:text-[clamp(2.05rem,8vw,2.75rem)]
 
-            sm:max-w-[15ch]
-            sm:text-[4rem]
-            sm:tracking-[-0.05em]
+            sm:mt-5
+            sm:max-w-[16ch]
+            sm:text-[3.25rem]
+            sm:leading-[1.02]
+            sm:tracking-[-0.04em]
 
-            md:text-[5rem]
+            md:text-[4rem]
 
-            lg:text-[5.8rem]
+            lg:text-[4.65rem]
+            lg:leading-[0.98]
 
-            xl:text-[6.4rem]
+            xl:text-[5.25rem]
           "
         >
           <LineReveal
@@ -198,7 +206,7 @@ export function Hero() {
             lineClassName="
               block
               whitespace-nowrap
-              font-extrabold
+              font-bold
               text-white
             "
           />
@@ -208,18 +216,18 @@ export function Hero() {
 
         <div
           className="
-            mt-7
+            mt-6
             grid
-            gap-6
+            gap-5
             border-t
             border-white/10
             pt-5
 
-            sm:mt-8
-            sm:gap-7
+            sm:mt-7
+            sm:gap-6
             sm:pt-6
 
-            lg:mt-9
+            lg:mt-8
             lg:grid-cols-[1fr_auto]
             lg:items-end
             lg:gap-10
@@ -248,14 +256,18 @@ export function Hero() {
             }}
             className="
               max-w-xl
-              text-[15px]
+
+              text-[14.5px]
               leading-7
-              text-white/85
+              text-white/84
 
-              sm:text-lg
-              sm:leading-relaxed
+              sm:text-[16px]
+              sm:leading-7
 
-              lg:text-xl
+              md:text-[17px]
+              md:leading-8
+
+              lg:text-[18px]
             "
           >
             {company.subheadline}
@@ -294,6 +306,7 @@ export function Hero() {
               href="#services"
               className="
                 inline-flex
+                min-h-[48px]
                 items-center
                 justify-center
                 gap-2
@@ -303,9 +316,8 @@ export function Hero() {
                 bg-active
 
                 px-6
-                py-3.5
 
-                text-sm
+                text-[14px]
                 font-semibold
                 text-white
 
@@ -314,9 +326,11 @@ export function Hero() {
                 hover:bg-active/90
                 hover:shadow-[0_0_20px_rgba(63,128,207,0.35)]
 
+                sm:min-h-[50px]
                 sm:px-7
-                sm:py-4
-                sm:text-base
+                sm:text-[15px]
+
+                lg:text-base
               "
             >
               Explore Services
@@ -326,6 +340,7 @@ export function Hero() {
               href="#projects"
               className="
                 inline-flex
+                min-h-[48px]
                 items-center
                 justify-center
                 gap-2
@@ -334,9 +349,8 @@ export function Hero() {
                 border-white/20
 
                 px-6
-                py-3.5
 
-                text-sm
+                text-[14px]
                 font-semibold
                 text-white
 
@@ -344,9 +358,11 @@ export function Hero() {
 
                 hover:bg-white/10
 
+                sm:min-h-[50px]
                 sm:px-7
-                sm:py-4
-                sm:text-base
+                sm:text-[15px]
+
+                lg:text-base
               "
             >
               View Our Work
@@ -372,13 +388,18 @@ export function Hero() {
             duration: 0.8,
           }}
           className="
-            mt-6
+            mt-5
             max-w-2xl
-            text-sm
-            leading-relaxed
-            text-white/75
 
-            sm:text-base
+            text-[13.5px]
+            leading-6
+            text-white/70
+
+            sm:mt-6
+            sm:text-[15px]
+            sm:leading-7
+
+            lg:text-base
           "
         >
           {company.tagline}
@@ -404,6 +425,7 @@ export function Hero() {
           hidden
           items-center
           gap-2
+
           text-[0.6875rem]
           uppercase
           tracking-[0.18em]

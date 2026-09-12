@@ -4,14 +4,11 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-
 import { ArrowDown } from "lucide-react";
 
 import heroAsset from "@/assets/hero-campus.jpg";
-
 import { ArcPattern } from "@/components/brand/Brandmark";
 import { LineReveal } from "@/components/motion/Reveal";
-
 import { company } from "@/lib/site";
 
 export function Hero() {
@@ -19,17 +16,8 @@ export function Hero() {
 
   const { scrollY } = useScroll();
 
-  const y = useTransform(
-    scrollY,
-    [0, 900],
-    [0, 160],
-  );
-
-  const fade = useTransform(
-    scrollY,
-    [0, 620],
-    [1, 0],
-  );
+  const y = useTransform(scrollY, [0, 900], [0, 160]);
+  const fade = useTransform(scrollY, [0, 620], [1, 0]);
 
   return (
     <section
@@ -126,10 +114,11 @@ export function Hero() {
           relative
           z-10
           flex
+
           min-h-[calc(100svh-80px)]
           flex-col
           justify-center
-          py-10
+          py-9
 
           sm:min-h-[calc(100svh-88px)]
           sm:py-12
@@ -157,7 +146,16 @@ export function Hero() {
           }}
           className="
             eyebrow
+            max-w-full
+            text-[10px]
+            leading-5
+            tracking-[0.18em]
             text-[#3F80CF]
+
+            sm:text-[11px]
+            sm:tracking-[0.22em]
+
+            md:text-[12px]
           "
         >
           {company.purpose}
@@ -168,14 +166,20 @@ export function Hero() {
         <h1
           className="
             mt-5
-            max-w-[15ch]
+            w-full
+            max-w-full
 
-            text-[3rem]
+            text-[clamp(2.15rem,10vw,2.85rem)]
             font-extrabold
-            leading-[0.95]
+            leading-[0.96]
+            tracking-[-0.045em]
             text-white
 
+            min-[390px]:text-[clamp(2.4rem,10vw,3.15rem)]
+
+            sm:max-w-[15ch]
             sm:text-[4rem]
+            sm:tracking-[-0.05em]
 
             md:text-[5rem]
 
@@ -192,6 +196,8 @@ export function Hero() {
               "Operations",
             ]}
             lineClassName="
+              block
+              whitespace-nowrap
               font-extrabold
               text-white
             "
@@ -202,13 +208,16 @@ export function Hero() {
 
         <div
           className="
-            mt-8
+            mt-7
             grid
-            gap-7
-
+            gap-6
             border-t
             border-white/10
-            pt-6
+            pt-5
+
+            sm:mt-8
+            sm:gap-7
+            sm:pt-6
 
             lg:mt-9
             lg:grid-cols-[1fr_auto]
@@ -239,12 +248,12 @@ export function Hero() {
             }}
             className="
               max-w-xl
-
-              text-base
-              leading-relaxed
+              text-[15px]
+              leading-7
               text-white/85
 
               sm:text-lg
+              sm:leading-relaxed
 
               lg:text-xl
             "
@@ -288,12 +297,9 @@ export function Hero() {
                 items-center
                 justify-center
                 gap-2
-
                 rounded-full
-
                 border
                 border-active
-
                 bg-active
 
                 px-6
@@ -323,9 +329,7 @@ export function Hero() {
                 items-center
                 justify-center
                 gap-2
-
                 rounded-full
-
                 border
                 border-white/20
 
@@ -370,7 +374,6 @@ export function Hero() {
           className="
             mt-6
             max-w-2xl
-
             text-sm
             leading-relaxed
             text-white/75
@@ -398,11 +401,9 @@ export function Hero() {
           absolute
           bottom-7
           right-6
-
           hidden
           items-center
           gap-2
-
           text-[0.6875rem]
           uppercase
           tracking-[0.18em]
@@ -412,7 +413,6 @@ export function Hero() {
         "
       >
         Scroll
-
         <ArrowDown className="h-3.5 w-3.5" />
       </motion.div>
     </section>

@@ -7,7 +7,6 @@ import {
 import { ArrowDown } from "lucide-react";
 
 import heroAsset from "@/assets/hero-campus.jpg";
-import { ArcPattern } from "@/components/brand/Brandmark";
 import { LineReveal } from "@/components/motion/Reveal";
 import { company } from "@/lib/site";
 
@@ -74,17 +73,6 @@ export function Hero() {
           via-[#201A57]/28
           to-[#201A57]/50
         "
-      />
-
-      <ArcPattern
-        className="
-          absolute
-          inset-0
-          h-full
-          w-full
-          text-[#3F80CF]
-        "
-        opacity={0.055}
       />
 
       {/* CONTENT */}

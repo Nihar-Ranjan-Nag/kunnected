@@ -15,7 +15,6 @@ import {
 
 import { Reveal } from "@/components/motion/Reveal";
 import { ArcPattern } from "@/components/brand/Brandmark";
-import { SectionUnderline } from "@/components/home/Stats";
 
 import {
   company,
@@ -103,7 +102,6 @@ export function CaseStudy() {
           z-10
 
           mx-auto
-
           w-full
           max-w-[1380px]
 
@@ -117,7 +115,7 @@ export function CaseStudy() {
         "
       >
         {/* =================================================
-            TOP INTRO
+            MAIN TWO-COLUMN AREA
         ================================================== */}
 
         <div
@@ -129,15 +127,16 @@ export function CaseStudy() {
             border-b
             border-white/10
 
-            pb-8
+            pb-10
 
-            sm:pb-10
+            sm:gap-10
+            sm:pb-12
 
             lg:grid-cols-[1.03fr_0.97fr]
-            lg:items-center
-            lg:gap-14
+            lg:items-start
+            lg:gap-12
 
-            xl:gap-16
+            xl:gap-14
           "
         >
           {/* =================================================
@@ -222,11 +221,8 @@ export function CaseStudy() {
                   text-white
 
                   sm:text-[2.6rem]
-
                   md:text-[3rem]
-
                   lg:text-[3.35rem]
-
                   xl:text-[3.65rem]
                 "
               >
@@ -235,7 +231,6 @@ export function CaseStudy() {
                 <span
                   className="
                     block
-
                     text-[#69AEF7]
                   "
                 >
@@ -244,7 +239,7 @@ export function CaseStudy() {
               </h2>
             </Reveal>
 
-            {/* PROJECT DESCRIPTION */}
+            {/* DESCRIPTION */}
 
             <Reveal delay={0.12}>
               <p
@@ -254,7 +249,6 @@ export function CaseStudy() {
                   max-w-2xl
 
                   text-[14px]
-
                   leading-7
 
                   text-white/58
@@ -307,7 +301,6 @@ export function CaseStudy() {
                     max-w-2xl
 
                     text-[14px]
-
                     leading-7
 
                     text-white/70
@@ -322,319 +315,363 @@ export function CaseStudy() {
           </div>
 
           {/* =================================================
-              MAIN PROJECT IMAGE
+              RIGHT IMAGE GALLERY
+              ALIGNED WITH MAIN HEADING
           ================================================== */}
 
-          <Reveal>
-            <div
-              className="
-                group
-                relative
+          <div
+            className="
+              flex
+              min-w-0
+              flex-col
 
-                h-[300px]
+              gap-4
 
-                overflow-hidden
+              sm:gap-5
 
-                rounded-[22px]
+              lg:mt-[60px]
 
-                border
-                border-white/10
+              xl:mt-[60px]
+            "
+          >
+            {/* =================================================
+                ROW 1 — LARGE IMAGE
+            ================================================== */}
 
-                bg-[#121217]
-
-                shadow-[0_24px_60px_rgba(0,0,0,0.18)]
-
-                sm:h-[360px]
-
-                lg:h-[390px]
-
-                xl:h-[410px]
-              "
-            >
-              <img
-                src={caseAsset}
-                alt="Khalifa University student accommodation buildings"
-                width={1600}
-                height={1000}
-                loading="lazy"
+            <Reveal>
+              <div
                 className="
-                  h-full
+                  group
+                  relative
+
+                  h-[300px]
                   w-full
 
-                  object-cover
+                  overflow-hidden
 
-                  transition-transform
-                  duration-700
-
-                  group-hover:scale-[1.035]
-                "
-              />
-
-              {/* IMAGE OVERLAY */}
-
-              <div
-                className="
-                  pointer-events-none
-
-                  absolute
-                  inset-0
-
-                  bg-gradient-to-t
-
-                  from-[#11102f]/75
-                  via-transparent
-                  to-transparent
-                "
-              />
-
-              {/* IMAGE LABEL */}
-
-              <div
-                className="
-                  absolute
-
-                  bottom-5
-                  left-5
-
-                  rounded-full
-
-                  border
-                  border-white/15
-
-                  bg-[#201A57]/75
-
-                  px-4
-                  py-2
-
-                  text-[10px]
-
-                  font-bold
-                  uppercase
-
-                  tracking-[0.16em]
-
-                  text-white/80
-
-                  backdrop-blur-lg
-                "
-              >
-                Khalifa University
-              </div>
-            </div>
-          </Reveal>
-        </div>
-
-        {/* =================================================
-            SECONDARY IMAGE GALLERY
-        ================================================== */}
-
-        <div
-          className="
-            mt-6
-
-            grid
-            grid-cols-1
-
-            gap-4
-
-            sm:grid-cols-2
-
-            lg:gap-5
-          "
-        >
-          {/* STUDENT LIVING */}
-
-          <Reveal delay={0.1}>
-            <div
-              className="
-                group
-
-                relative
-
-                h-[210px]
-
-                overflow-hidden
-
-                rounded-[20px]
-
-                border
-                border-white/10
-
-                bg-[#121217]
-
-                sm:h-[250px]
-
-                lg:h-[270px]
-              "
-            >
-              <img
-                src={studentAsset}
-                alt="Student living space"
-                width={1408}
-                height={1008}
-                loading="lazy"
-                className="
-                  h-full
-                  w-full
-
-                  object-cover
-
-                  transition-transform
-                  duration-700
-
-                  group-hover:scale-[1.045]
-                "
-              />
-
-              <div
-                className="
-                  pointer-events-none
-
-                  absolute
-                  inset-0
-
-                  bg-gradient-to-t
-
-                  from-[#11102f]/70
-                  via-transparent
-                  to-transparent
-                "
-              />
-
-              <div
-                className="
-                  absolute
-
-                  bottom-4
-                  left-4
-
-                  rounded-full
+                  rounded-[22px]
 
                   border
                   border-white/10
 
-                  bg-[#201A57]/60
+                  bg-[#121217]
 
-                  px-3.5
-                  py-2
+                  shadow-[0_22px_55px_rgba(0,0,0,0.17)]
 
-                  backdrop-blur-md
+                  sm:h-[350px]
+
+                  lg:h-[310px]
+
+                  xl:h-[330px]
                 "
               >
-                <span
+                <img
+                  src={caseAsset}
+                  alt="Khalifa University student accommodation buildings"
+                  width={1600}
+                  height={1000}
+                  loading="lazy"
                   className="
+                    h-full
+                    w-full
+
+                    object-cover
+
+                    transition-transform
+                    duration-700
+
+                    group-hover:scale-[1.035]
+                  "
+                />
+
+                <div
+                  className="
+                    pointer-events-none
+
+                    absolute
+                    inset-0
+
+                    bg-gradient-to-t
+
+                    from-[#11102f]/75
+                    via-transparent
+                    to-transparent
+                  "
+                />
+
+                <div
+                  className="
+                    absolute
+
+                    bottom-4
+                    left-4
+
+                    rounded-full
+
+                    border
+                    border-white/15
+
+                    bg-[#201A57]/75
+
+                    px-4
+                    py-2
+
                     text-[10px]
 
                     font-bold
                     uppercase
 
-                    tracking-[0.15em]
+                    tracking-[0.16em]
 
                     text-white/80
+
+                    backdrop-blur-lg
+
+                    sm:bottom-5
+                    sm:left-5
                   "
                 >
-                  Student Living
-                </span>
+                  Khalifa University
+                </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
 
-          {/* CAMPUS ENVIRONMENT */}
+            {/* =================================================
+                ROW 2 — TWO IMAGES
+            ================================================== */}
 
-          <Reveal delay={0.16}>
             <div
               className="
-                group
+                grid
+                grid-cols-1
 
-                relative
+                gap-4
 
-                h-[210px]
-
-                overflow-hidden
-
-                rounded-[20px]
-
-                border
-                border-white/10
-
-                bg-[#121217]
-
-                sm:h-[250px]
-
-                lg:h-[270px]
+                sm:grid-cols-2
+                sm:gap-5
               "
             >
-              <img
-                src={campusAsset}
-                alt="Campus architecture"
-                width={1920}
-                height={1088}
-                loading="lazy"
-                className="
-                  h-full
-                  w-full
+              {/* =============================================
+                  STUDENT LIVING
+              ============================================== */}
 
-                  object-cover
-
-                  transition-transform
-                  duration-700
-
-                  group-hover:scale-[1.045]
-                "
-              />
-
-              <div
-                className="
-                  pointer-events-none
-
-                  absolute
-                  inset-0
-
-                  bg-gradient-to-t
-
-                  from-[#11102f]/70
-                  via-transparent
-                  to-transparent
-                "
-              />
-
-              <div
-                className="
-                  absolute
-
-                  bottom-4
-                  left-4
-
-                  rounded-full
-
-                  border
-                  border-white/10
-
-                  bg-[#201A57]/60
-
-                  px-3.5
-                  py-2
-
-                  backdrop-blur-md
-                "
+              <Reveal
+                delay={0.1}
+                className="h-full"
               >
-                <span
+                <div
                   className="
-                    text-[10px]
+                    group
+                    relative
 
-                    font-bold
-                    uppercase
+                    h-[220px]
 
-                    tracking-[0.15em]
+                    overflow-hidden
 
-                    text-white/80
+                    rounded-[20px]
+
+                    border
+                    border-white/10
+
+                    bg-[#121217]
+
+                    shadow-[0_12px_32px_rgba(0,0,0,0.12)]
+
+                    sm:h-[220px]
+
+                    lg:h-[185px]
+
+                    xl:h-[200px]
                   "
                 >
-                  Campus Environment
-                </span>
-              </div>
+                  <img
+                    src={studentAsset}
+                    alt="Student living space"
+                    width={1408}
+                    height={1008}
+                    loading="lazy"
+                    className="
+                      h-full
+                      w-full
+
+                      object-cover
+
+                      transition-transform
+                      duration-700
+
+                      group-hover:scale-[1.05]
+                    "
+                  />
+
+                  <div
+                    className="
+                      pointer-events-none
+
+                      absolute
+                      inset-0
+
+                      bg-gradient-to-t
+
+                      from-[#11102f]/72
+                      via-transparent
+                      to-transparent
+                    "
+                  />
+
+                  <div
+                    className="
+                      absolute
+
+                      bottom-3
+                      left-3
+
+                      rounded-full
+
+                      border
+                      border-white/10
+
+                      bg-[#201A57]/70
+
+                      px-3
+                      py-1.5
+
+                      backdrop-blur-lg
+
+                      sm:bottom-4
+                      sm:left-4
+                    "
+                  >
+                    <span
+                      className="
+                        text-[9px]
+
+                        font-bold
+                        uppercase
+
+                        tracking-[0.14em]
+
+                        text-white/80
+
+                        xl:text-[10px]
+                      "
+                    >
+                      Student Living
+                    </span>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* =============================================
+                  CAMPUS ENVIRONMENT
+              ============================================== */}
+
+              <Reveal
+                delay={0.16}
+                className="h-full"
+              >
+                <div
+                  className="
+                    group
+                    relative
+
+                    h-[220px]
+
+                    overflow-hidden
+
+                    rounded-[20px]
+
+                    border
+                    border-white/10
+
+                    bg-[#121217]
+
+                    shadow-[0_12px_32px_rgba(0,0,0,0.12)]
+
+                    sm:h-[220px]
+
+                    lg:h-[185px]
+
+                    xl:h-[200px]
+                  "
+                >
+                  <img
+                    src={campusAsset}
+                    alt="Campus architecture"
+                    width={1920}
+                    height={1088}
+                    loading="lazy"
+                    className="
+                      h-full
+                      w-full
+
+                      object-cover
+
+                      transition-transform
+                      duration-700
+
+                      group-hover:scale-[1.05]
+                    "
+                  />
+
+                  <div
+                    className="
+                      pointer-events-none
+
+                      absolute
+                      inset-0
+
+                      bg-gradient-to-t
+
+                      from-[#11102f]/72
+                      via-transparent
+                      to-transparent
+                    "
+                  />
+
+                  <div
+                    className="
+                      absolute
+
+                      bottom-3
+                      left-3
+
+                      rounded-full
+
+                      border
+                      border-white/10
+
+                      bg-[#201A57]/70
+
+                      px-3
+                      py-1.5
+
+                      backdrop-blur-lg
+
+                      sm:bottom-4
+                      sm:left-4
+                    "
+                  >
+                    <span
+                      className="
+                        text-[9px]
+
+                        font-bold
+                        uppercase
+
+                        tracking-[0.14em]
+
+                        text-white/80
+
+                        xl:text-[10px]
+                      "
+                    >
+                      Campus Environment
+                    </span>
+                  </div>
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
+          </div>
         </div>
 
         {/* =================================================
@@ -650,11 +687,6 @@ export function CaseStudy() {
 
               gap-5
 
-              border-t
-              border-white/10
-
-              pt-9
-
               sm:mt-14
 
               lg:grid-cols-[1fr_0.7fr]
@@ -664,8 +696,6 @@ export function CaseStudy() {
               xl:mt-16
             "
           >
-            {/* LEFT */}
-
             <div>
               <div
                 className="
@@ -736,25 +766,18 @@ export function CaseStudy() {
               >
                 Complete support across
 
-                <span
-                  className="
-                    text-[#69AEF7]
-                  "
-                >
+                <span className="text-[#69AEF7]">
                   {" "}
                   every aspect of student living.
                 </span>
               </h3>
             </div>
 
-            {/* RIGHT */}
-
             <p
               className="
                 max-w-[480px]
 
                 text-[14px]
-
                 leading-7
 
                 text-white/50
@@ -772,7 +795,7 @@ export function CaseStudy() {
         </Reveal>
 
         {/* =================================================
-            FOUR OPERATIONAL CARDS
+            OPERATIONAL CARDS
         ================================================== */}
 
         <div
@@ -780,7 +803,6 @@ export function CaseStudy() {
             mt-8
 
             grid
-
             grid-cols-1
 
             gap-4
@@ -859,7 +881,6 @@ function ScopeCard({
     <div
       className="
         group
-
         relative
 
         flex
@@ -886,18 +907,13 @@ function ScopeCard({
         duration-300
 
         hover:-translate-y-1
-
         hover:border-active/30
-
         hover:bg-white/[0.055]
-
         hover:shadow-[0_20px_50px_rgba(0,0,0,0.16)]
 
         sm:p-6
       "
     >
-      {/* TOP HOVER ACCENT */}
-
       <span
         className="
           absolute
@@ -917,12 +933,9 @@ function ScopeCard({
         "
       />
 
-      {/* NUMBER ROW */}
-
       <div
         className="
           flex
-
           items-center
           justify-between
 
@@ -975,16 +988,12 @@ function ScopeCard({
               duration-300
 
               group-hover:scale-150
-
               group-hover:bg-active
-
               group-hover:shadow-[0_0_10px_rgba(63,128,207,0.7)]
             "
           />
         </span>
       </div>
-
-      {/* TITLE */}
 
       <h3
         className="
@@ -1006,12 +1015,9 @@ function ScopeCard({
         {title}
       </h3>
 
-      {/* ITEMS */}
-
       <ul
         className="
           mt-4
-
           space-y-2.5
         "
       >
@@ -1025,7 +1031,6 @@ function ScopeCard({
               gap-2.5
 
               text-[12.5px]
-
               leading-5
 
               text-white/58
@@ -1049,14 +1054,10 @@ function ScopeCard({
               "
             />
 
-            <span>
-              {item}
-            </span>
+            <span>{item}</span>
           </li>
         ))}
       </ul>
-
-      {/* BOTTOM ACCENT */}
 
       <div
         className="
@@ -1156,9 +1157,7 @@ export function Testimonials() {
           2xl:px-0
         "
       >
-        {/* =================================================
-            HEADER
-        ================================================== */}
+        {/* HEADER */}
 
         <Reveal>
           <div>
@@ -1225,13 +1224,12 @@ export function Testimonials() {
                 text-white
 
                 sm:text-[2.4rem]
-
                 md:text-[2.7rem]
-
                 lg:text-[3rem]
               "
             >
               What the University
+
               <span className="text-[#69AEF7]">
                 {" "}
                 Teams Say
@@ -1239,8 +1237,6 @@ export function Testimonials() {
             </h2>
           </div>
         </Reveal>
-
-        {/* SUPPORT TEXT */}
 
         <Reveal delay={0.08}>
           <p
@@ -1250,7 +1246,6 @@ export function Testimonials() {
               max-w-3xl
 
               text-[14px]
-
               leading-7
 
               text-white/55
@@ -1268,9 +1263,7 @@ export function Testimonials() {
           </p>
         </Reveal>
 
-        {/* =================================================
-            TESTIMONIAL CARD
-        ================================================== */}
+        {/* TESTIMONIAL CARD */}
 
         <div
           className="
@@ -1319,17 +1312,19 @@ export function Testimonials() {
                 }}
                 transition={{
                   duration: 0.5,
-                  ease: [0.16, 1, 0.3, 1],
+                  ease: [
+                    0.16,
+                    1,
+                    0.3,
+                    1,
+                  ],
                 }}
               >
-                {/* STARS */}
-
                 <div
                   className="
                     mb-5
 
                     flex
-
                     items-center
 
                     gap-1.5
@@ -1355,8 +1350,6 @@ export function Testimonials() {
                   ))}
                 </div>
 
-                {/* QUOTE */}
-
                 <p
                   className="
                     max-w-[38ch]
@@ -1372,16 +1365,12 @@ export function Testimonials() {
                     text-white
 
                     sm:text-[2rem]
-
                     md:text-[2.25rem]
-
                     lg:text-[2.5rem]
                   "
                 >
                   &ldquo;{quotes[i].quote}&rdquo;
                 </p>
-
-                {/* AUTHOR */}
 
                 <footer
                   className="
@@ -1399,7 +1388,6 @@ export function Testimonials() {
                   <span
                     className="
                       font-semibold
-
                       text-white/85
                     "
                   >
@@ -1409,7 +1397,6 @@ export function Testimonials() {
                   <span
                     className="
                       mx-2
-
                       text-white/25
                     "
                   >
@@ -1423,9 +1410,7 @@ export function Testimonials() {
               </motion.blockquote>
             </AnimatePresence>
 
-            {/* =================================================
-                CONTROLS
-            ================================================== */}
+            {/* CONTROLS */}
 
             <div
               className="
@@ -1433,7 +1418,6 @@ export function Testimonials() {
 
                 flex
                 flex-wrap
-
                 items-center
 
                 gap-3
@@ -1444,8 +1428,6 @@ export function Testimonials() {
                 pt-6
               "
             >
-              {/* PREVIOUS */}
-
               <button
                 type="button"
                 onClick={() => go(-1)}
@@ -1470,21 +1452,12 @@ export function Testimonials() {
                   duration-300
 
                   hover:border-active
-
                   hover:bg-active/10
-
                   hover:text-active
                 "
               >
-                <ArrowLeft
-                  className="
-                    h-4
-                    w-4
-                  "
-                />
+                <ArrowLeft className="h-4 w-4" />
               </button>
-
-              {/* NEXT */}
 
               <button
                 type="button"
@@ -1510,21 +1483,12 @@ export function Testimonials() {
                   duration-300
 
                   hover:border-active
-
                   hover:bg-active/10
-
                   hover:text-active
                 "
               >
-                <ArrowRight
-                  className="
-                    h-4
-                    w-4
-                  "
-                />
+                <ArrowRight className="h-4 w-4" />
               </button>
-
-              {/* COUNT */}
 
               <span
                 className="
@@ -1564,7 +1528,6 @@ export function CtaBand() {
       id="contact"
       className="
         relative
-
         overflow-hidden
 
         border-t
@@ -1575,10 +1538,6 @@ export function CtaBand() {
         text-white
       "
     >
-      {/* =====================================================
-          BACKGROUND ARC
-      ====================================================== */}
-
       <ArcPattern
         className="
           absolute
@@ -1591,10 +1550,6 @@ export function CtaBand() {
         "
         opacity={0.06}
       />
-
-      {/* =====================================================
-          CONTAINER
-      ====================================================== */}
 
       <div
         className="
@@ -1624,9 +1579,7 @@ export function CtaBand() {
           2xl:px-0
         "
       >
-        {/* =================================================
-            CONTACT HEADER
-        ================================================== */}
+        {/* CONTACT HEADER */}
 
         <Reveal>
           <div
@@ -1694,18 +1647,13 @@ export function CtaBand() {
               text-white
 
               sm:text-[2.6rem]
-
               md:text-[3rem]
-
               lg:text-[3.35rem]
             "
           >
             Get in
-            <span
-              className="
-                text-[#69AEF7]
-              "
-            >
+
+            <span className="text-[#69AEF7]">
               {" "}
               Touch
             </span>
@@ -1720,7 +1668,6 @@ export function CtaBand() {
               max-w-2xl
 
               text-[15px]
-
               leading-7
 
               text-muted-foreground
@@ -1733,16 +1680,13 @@ export function CtaBand() {
           </p>
         </Reveal>
 
-        {/* =================================================
-            CONTACT GRID
-        ================================================== */}
+        {/* CONTACT GRID */}
 
         <div
           className="
             mt-8
 
             grid
-
             grid-cols-1
 
             gap-5
@@ -1760,9 +1704,7 @@ export function CtaBand() {
             lg:gap-8
           "
         >
-          {/* =================================================
-              CONTACT INFORMATION CARD
-          ================================================== */}
+          {/* CONTACT INFO */}
 
           <Reveal
             delay={0.14}
@@ -1787,7 +1729,6 @@ export function CtaBand() {
                 duration-300
 
                 hover:border-active/70
-
                 hover:shadow-[0_0_45px_rgba(63,128,207,0.18)]
 
                 sm:p-7
@@ -1795,8 +1736,6 @@ export function CtaBand() {
                 lg:p-8
               "
             >
-              {/* CARD TITLE */}
-
               <h3
                 className="
                   flex
@@ -1832,14 +1771,11 @@ export function CtaBand() {
                 Contact Info
               </h3>
 
-              {/* ADDRESS */}
-
               <div
                 className="
                   mt-6
 
                   flex
-
                   items-start
 
                   gap-3
@@ -1868,12 +1804,7 @@ export function CtaBand() {
                     text-active
                   "
                 >
-                  <MapPin
-                    className="
-                      h-5
-                      w-5
-                    "
-                  />
+                  <MapPin className="h-5 w-5" />
                 </div>
 
                 <div className="min-w-0">
@@ -1896,7 +1827,6 @@ export function CtaBand() {
                       mt-1
 
                       text-[13px]
-
                       leading-6
 
                       text-muted-foreground
@@ -1912,8 +1842,6 @@ export function CtaBand() {
                   </p>
                 </div>
               </div>
-
-              {/* WEBSITE */}
 
               <div
                 className="
@@ -1935,7 +1863,6 @@ export function CtaBand() {
                     -mx-2
 
                     flex
-
                     items-center
 
                     gap-3
@@ -1972,16 +1899,10 @@ export function CtaBand() {
                       transition-colors
 
                       group-hover:bg-active/15
-
                       group-hover:text-active
                     "
                   >
-                    <Globe
-                      className="
-                        h-4
-                        w-4
-                      "
-                    />
+                    <Globe className="h-4 w-4" />
                   </div>
 
                   <div className="min-w-0">
@@ -2027,9 +1948,7 @@ export function CtaBand() {
             </div>
           </Reveal>
 
-          {/* =================================================
-              OFFICE / SUPPORT CARD
-          ================================================== */}
+          {/* OFFICE SUPPORT */}
 
           <Reveal
             delay={0.18}
@@ -2085,7 +2004,6 @@ export function CtaBand() {
                     mt-4
 
                     text-[14px]
-
                     leading-7
 
                     text-muted-foreground
@@ -2098,8 +2016,6 @@ export function CtaBand() {
                   hours for support, meetings, and planned
                   maintenance coordination.
                 </p>
-
-                {/* OFFICE HOURS */}
 
                 <div
                   className="
@@ -2133,7 +2049,6 @@ export function CtaBand() {
                       mt-2
 
                       text-[14px]
-
                       leading-6
 
                       text-white/80
@@ -2144,12 +2059,9 @@ export function CtaBand() {
                 </div>
               </div>
 
-              {/* 24/7 SUPPORT */}
-
               <div
                 className="
                   mt-auto
-
                   pt-8
                 "
               >
@@ -2208,7 +2120,6 @@ export function CtaBand() {
                       mt-3
 
                       text-[12px]
-
                       leading-6
 
                       text-muted-foreground

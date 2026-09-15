@@ -27,7 +27,9 @@ import {
 
 export function Nav() {
   const [mega, setMega] = useState(false);
-  const [mobile, setMobile] = useState(false);
+
+  const [mobile, setMobile] =
+    useState(false);
 
   const [searchOpen, setSearchOpen] =
     useState(false);
@@ -90,7 +92,9 @@ export function Nav() {
   ========================================== */
 
   useEffect(() => {
-    if (typeof document === "undefined") {
+    if (
+      typeof document === "undefined"
+    ) {
       return;
     }
 
@@ -111,9 +115,10 @@ export function Nav() {
       return;
     }
 
-    const timer = window.setTimeout(() => {
-      searchInputRef.current?.focus();
-    }, 180);
+    const timer =
+      window.setTimeout(() => {
+        searchInputRef.current?.focus();
+      }, 180);
 
     return () => {
       window.clearTimeout(timer);
@@ -171,12 +176,13 @@ export function Nav() {
       }
     }
 
-    const serviceMatch = services.find(
-      (service) =>
-        service.title
-          .toLowerCase()
-          .includes(query),
-    );
+    const serviceMatch =
+      services.find(
+        (service) =>
+          service.title
+            .toLowerCase()
+            .includes(query),
+      );
 
     if (serviceMatch) {
       const section =
@@ -199,31 +205,46 @@ export function Nav() {
     <>
       {/* =========================================
           HEADER
+          TRANSPARENT INITIALLY
+          GLASS AFTER SCROLL
       ========================================== */}
 
       <header
         className={`
           fixed
+
           inset-x-0
           top-0
+
           z-50
 
           border-b
 
-          transition-[background-color,border-color,box-shadow]
+          transition-[background-color,border-color,box-shadow,backdrop-filter]
           duration-300
           ease-out
 
           ${
             scrolled
               ? `
-                border-white/10
-                bg-[#18164b]
-                shadow-[0_10px_36px_rgba(0,0,0,0.18)]
+                border-white/[0.07]
+
+                bg-[#18164b]/[0.18]
+
+                backdrop-blur-[12px]
+                backdrop-saturate-150
+
+                shadow-[0_8px_30px_rgba(0,0,0,0.11)]
+
+                supports-[backdrop-filter]:bg-[#18164b]/[0.14]
               `
               : `
                 border-transparent
+
                 bg-transparent
+
+                backdrop-blur-none
+
                 shadow-none
               `
           }
@@ -239,17 +260,24 @@ export function Nav() {
         <div
           className={`
             mx-auto
+
             flex
+
             w-full
             max-w-[1380px]
 
             items-center
 
             px-4
+
             sm:px-5
+
             md:px-7
+
             lg:px-8
+
             xl:px-10
+
             2xl:px-0
 
             transition-[height,padding]
@@ -259,17 +287,21 @@ export function Nav() {
             ${
               scrolled
                 ? `
-                  h-[74px]
+                  h-[72px]
 
-                  xl:h-[110px]
+                  xl:h-[96px]
+
                   xl:items-start
-                  xl:pt-[30px]
+
+                  xl:pt-[22px]
                 `
                 : `
                   h-[82px]
 
                   xl:h-[150px]
+
                   xl:items-start
+
                   xl:pt-[58px]
                 `
             }
@@ -295,20 +327,20 @@ export function Nav() {
               DESKTOP NAVIGATION
           ========================================== */}
 
-         <nav
-  aria-label="Primary"
-  className="
-    hidden
-    items-center
+          <nav
+            aria-label="Primary"
+            className="
+              hidden
+              items-center
 
-    xl:ml-[140px]
-    xl:flex
-    xl:gap-[38px]
+              xl:ml-[170px]
+              xl:flex
+              xl:gap-[38px]
 
-    2xl:ml-[180px]
-    2xl:gap-[48px]
-  "
->
+              2xl:ml-[230px]
+              2xl:gap-[48px]
+            "
+          >
             {navItems.map((item) => {
               const hasMega =
                 "mega" in item &&
@@ -335,7 +367,7 @@ export function Nav() {
                     whitespace-nowrap
 
                     text-[20px]
-                    font-medium
+                    font-normal
 
                     tracking-[-0.012em]
 
@@ -559,7 +591,12 @@ export function Nav() {
                           hover:text-white
                         "
                       >
-                        <X className="h-[18px] w-[18px]" />
+                        <X
+                          className="
+                            h-[18px]
+                            w-[18px]
+                          "
+                        />
                       </button>
                     </div>
                   </motion.form>
@@ -708,7 +745,9 @@ export function Nav() {
                 border-t-0
                 border-white/10
 
-                bg-[#121032]
+                bg-[#121032]/95
+
+                backdrop-blur-xl
 
                 shadow-[0_20px_50px_rgba(0,0,0,0.30)]
 
@@ -831,6 +870,8 @@ export function Nav() {
       <AnimatePresence>
         {mobile && (
           <>
+            {/* BACKDROP */}
+
             <motion.div
               initial={{
                 opacity: 0,
@@ -841,10 +882,13 @@ export function Nav() {
               exit={{
                 opacity: 0,
               }}
-              onClick={closeMobileMenu}
+              onClick={
+                closeMobileMenu
+              }
               className="
                 fixed
                 inset-0
+
                 z-[60]
 
                 bg-black/60
@@ -893,7 +937,9 @@ export function Nav() {
 
                 flex-col
 
-                bg-[#18164b]
+                bg-[#18164b]/95
+
+                backdrop-blur-xl
 
                 text-white
 
@@ -938,7 +984,9 @@ export function Nav() {
                 <button
                   type="button"
                   aria-label="Close menu"
-                  onClick={closeMobileMenu}
+                  onClick={
+                    closeMobileMenu
+                  }
                   className="
                     flex
 
@@ -969,7 +1017,9 @@ export function Nav() {
               ====================================== */}
 
               <form
-                onSubmit={handleSearch}
+                onSubmit={
+                  handleSearch
+                }
                 className="
                   border-b
                   border-white/10
@@ -1047,6 +1097,7 @@ export function Nav() {
                 aria-label="Mobile"
                 className="
                   flex
+
                   flex-1
                   flex-col
 
@@ -1118,7 +1169,9 @@ export function Nav() {
                         <span
                           className="
                             flex
+
                             items-center
+
                             gap-2.5
                           "
                         >

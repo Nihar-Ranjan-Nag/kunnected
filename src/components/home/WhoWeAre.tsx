@@ -237,23 +237,23 @@ export function WhoWeAre() {
           px-4
 
           pb-14
-          pt-10
+          pt-4
 
           sm:px-5
           sm:pb-16
-          sm:pt-12
+          sm:pt-5
 
           md:px-7
           md:pb-18
-          md:pt-14
+          md:pt-6
 
           lg:px-8
           lg:pb-20
-          lg:pt-16
+          lg:pt-7
 
           xl:px-10
           xl:pb-24
-          xl:pt-20
+          xl:pt-8
 
           2xl:px-0
         "

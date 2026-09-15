@@ -334,7 +334,7 @@ export const industries = [
 export const navigation = [
   { label: "About", href: "#who-we-are" },
   { label: "Services", href: "#services", mega: true },
-  { label: "Process", href: "#process" },
+  // { label: "Process", href: "#process" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ] as const;

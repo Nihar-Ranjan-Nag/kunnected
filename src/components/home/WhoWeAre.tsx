@@ -34,7 +34,6 @@ export function WhoWeAre() {
       id="who-we-are"
       className="
         shell
-
         pt-6
         pb-14
 
@@ -59,6 +58,7 @@ export function WhoWeAre() {
           lg:gap-24
         "
       >
+        {/* LEFT SIDE */}
         <div className="lg:pt-2">
           <Reveal>
             <p className="eyebrow text-muted-foreground">
@@ -97,6 +97,7 @@ export function WhoWeAre() {
           </Reveal>
         </div>
 
+        {/* RIGHT SIDE */}
         <div>
           <Reveal>
             <h2
@@ -141,6 +142,7 @@ export function WhoWeAre() {
             </p>
           </Reveal>
 
+          {/* VISION + PROMISE */}
           <div
             className="
               mt-8
@@ -153,18 +155,58 @@ export function WhoWeAre() {
             "
           >
             <Reveal delay={0.08}>
-              <div>
-                <h3 className="text-xl font-bold text-white">Our Vision</h3>
+              <div
+                className="
+                  h-full
+                  rounded-[20px]
+                  border
+                  border-white/10
+                  bg-white/[0.035]
+                  p-6
 
-                <ul className="mt-5 space-y-3">
+                  sm:p-7
+                "
+              >
+                <h3
+                  className="
+                    text-[20px]
+                    font-bold
+                    text-white
+
+                    sm:text-[22px]
+                  "
+                >
+                  Our Vision
+                </h3>
+
+                <ul className="mt-5 space-y-4">
                   {vision.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-3 body-text"
-                    >
-                      <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-active" />
+                      className="
+                        flex
+                        items-start
+                        gap-3
+                        text-[15px]
+                        leading-6
+                        text-white/70
 
-                      {item}
+                        sm:text-[16px]
+                        sm:leading-7
+                      "
+                    >
+                      <span
+                        className="
+                          mt-[9px]
+                          h-1.5
+                          w-1.5
+                          shrink-0
+                          rounded-full
+                          bg-active
+                        "
+                      />
+
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -172,18 +214,58 @@ export function WhoWeAre() {
             </Reveal>
 
             <Reveal delay={0.12}>
-              <div>
-                <h3 className="text-xl font-bold text-white">Our Promise</h3>
+              <div
+                className="
+                  h-full
+                  rounded-[20px]
+                  border
+                  border-white/10
+                  bg-white/[0.035]
+                  p-6
 
-                <ul className="mt-5 space-y-3">
+                  sm:p-7
+                "
+              >
+                <h3
+                  className="
+                    text-[20px]
+                    font-bold
+                    text-white
+
+                    sm:text-[22px]
+                  "
+                >
+                  Our Promise
+                </h3>
+
+                <ul className="mt-5 space-y-4">
                   {promise.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-3 body-text"
-                    >
-                      <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-active" />
+                      className="
+                        flex
+                        items-start
+                        gap-3
+                        text-[15px]
+                        leading-6
+                        text-white/70
 
-                      {item}
+                        sm:text-[16px]
+                        sm:leading-7
+                      "
+                    >
+                      <span
+                        className="
+                          mt-[9px]
+                          h-1.5
+                          w-1.5
+                          shrink-0
+                          rounded-full
+                          bg-active
+                        "
+                      />
+
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -191,6 +273,7 @@ export function WhoWeAre() {
             </Reveal>
           </div>
 
+          {/* FOUNDATIONS */}
           <div
             className="
               mt-10
@@ -255,7 +338,6 @@ export function WhyChooseUs() {
           shell
           relative
           z-10
-
           py-14
 
           sm:py-16
@@ -264,7 +346,9 @@ export function WhyChooseUs() {
         "
       >
         <Reveal>
-          <p className="eyebrow text-slate-500">Our Standards & Commitment</p>
+          <p className="eyebrow text-slate-500">
+            Our Standards & Commitment
+          </p>
 
           <SectionUnderline />
         </Reveal>

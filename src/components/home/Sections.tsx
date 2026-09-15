@@ -38,146 +38,263 @@ export function CaseStudy() {
       className="
         relative
         overflow-hidden
+
         bg-background
 
-        py-14
-        sm:py-18
-        md:py-20
-        lg:py-28
-        xl:py-32
+        py-12
+
+        sm:py-14
+        md:py-16
+        lg:py-20
+        xl:py-24
       "
     >
-      {/* BACKGROUND WATERMARK */}
+      {/* =====================================================
+          BACKGROUND DECORATION
+      ====================================================== */}
+
       <div
         aria-hidden="true"
         className="
-          watermark-bg
           pointer-events-none
-          select-none
 
-          left-4
-          top-8
+          absolute
+          -right-[220px]
+          top-[80px]
 
-          opacity-[0.012]
+          h-[480px]
+          w-[480px]
 
-          sm:left-8
-          sm:top-10
+          rounded-full
 
-          lg:left-10
-          lg:top-12
+          bg-[#3F80CF]/[0.06]
+
+          blur-[125px]
         "
-      >
-        Khalifa University
-      </div>
+      />
+
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+
+          absolute
+          -left-[240px]
+          bottom-[100px]
+
+          h-[460px]
+          w-[460px]
+
+          rounded-full
+
+          bg-[#6659CC]/[0.045]
+
+          blur-[130px]
+        "
+      />
+
+      {/* =====================================================
+          MAIN CONTAINER
+      ====================================================== */}
 
       <div
         className="
-          shell
           relative
           z-10
+
+          mx-auto
+
+          w-full
+          max-w-[1380px]
+
+          px-4
+
+          sm:px-5
+          md:px-7
+          lg:px-8
+          xl:px-10
+          2xl:px-0
         "
       >
         {/* =================================================
-            TOP TWO-COLUMN AREA
+            TOP INTRO
         ================================================== */}
 
         <div
           className="
             grid
-            gap-12
 
-            lg:grid-cols-[1fr_0.92fr]
-            lg:items-start
+            gap-8
+
+            border-b
+            border-white/10
+
+            pb-8
+
+            sm:pb-10
+
+            lg:grid-cols-[1.03fr_0.97fr]
+            lg:items-center
             lg:gap-14
 
-            xl:gap-20
+            xl:gap-16
           "
         >
-          {/* LEFT SIDE */}
-          <div className="min-w-0">
-            <Reveal>
-              <div>
-                <p
-                  className="
-                    text-[11px]
-                    font-bold
-                    uppercase
-                    tracking-[0.22em]
-                    text-muted-foreground
+          {/* =================================================
+              LEFT CONTENT
+          ================================================== */}
 
-                    sm:text-[12px]
+          <div className="min-w-0">
+            {/* LABEL */}
+
+            <Reveal>
+              <div
+                className="
+                  inline-flex
+                  items-center
+
+                  gap-2.5
+
+                  rounded-full
+
+                  border
+                  border-[#63AEFF]/25
+
+                  bg-[#63AEFF]/[0.07]
+
+                  px-4
+                  py-2
+
+                  backdrop-blur-sm
+                "
+              >
+                <span
+                  className="
+                    h-[6px]
+                    w-[6px]
+
+                    shrink-0
+
+                    rounded-full
+
+                    bg-[#63AEFF]
+
+                    shadow-[0_0_10px_rgba(99,174,255,0.85)]
+                  "
+                />
+
+                <span
+                  className="
+                    text-[14px]
+
+                    font-bold
+
+                    tracking-[-0.01em]
+
+                    text-white
+
+                    sm:text-[15px]
+                    lg:text-[16px]
                   "
                 >
-                  Our Projects & Operations
-                </p>
-
-                <SectionUnderline />
+                  Our Projects &amp; Operations
+                </span>
               </div>
             </Reveal>
+
+            {/* MAIN HEADING */}
 
             <Reveal delay={0.08}>
               <h2
                 className="
-                  mt-6
-                  max-w-[780px]
+                  mt-5
 
-                  text-[2.25rem]
-                  font-extrabold
-                  leading-[1]
+                  max-w-[760px]
+
+                  text-[2.1rem]
+
+                  font-bold
+
+                  leading-[1.04]
+
                   tracking-[-0.04em]
+
                   text-white
 
-                  sm:mt-7
-                  sm:text-[2.8rem]
+                  sm:text-[2.6rem]
 
-                  md:text-[3.25rem]
+                  md:text-[3rem]
 
-                  lg:text-[3.6rem]
+                  lg:text-[3.35rem]
 
-                  xl:text-[4rem]
+                  xl:text-[3.65rem]
                 "
               >
-                Discover our thoughtfully managed student accommodation estates
+                Thoughtfully Managed
+
+                <span
+                  className="
+                    block
+
+                    text-[#69AEF7]
+                  "
+                >
+                  Student Accommodation
+                </span>
               </h2>
             </Reveal>
+
+            {/* PROJECT DESCRIPTION */}
 
             <Reveal delay={0.12}>
               <p
                 className="
-                  mt-5
+                  mt-4
+
                   max-w-2xl
 
-                  text-[15px]
+                  text-[14px]
+
                   leading-7
-                  text-muted-foreground
 
-                  sm:mt-6
-                  sm:text-[16px]
+                  text-white/58
 
-                  lg:text-[17px]
+                  sm:text-[15px]
+
+                  lg:text-[16px]
+                  lg:leading-8
                 "
               >
                 {project.body}
               </p>
             </Reveal>
 
-            <Reveal
-              delay={0.16}
-              className="
-                mt-7
-                sm:mt-8
-              "
-            >
-              <div>
+            {/* PROJECT SCOPE */}
+
+            <Reveal delay={0.16}>
+              <div
+                className="
+                  mt-5
+
+                  border-l-[3px]
+                  border-active
+
+                  pl-4
+
+                  sm:mt-6
+                  sm:pl-5
+                "
+              >
                 <p
                   className="
                     text-[11px]
+
                     font-bold
                     uppercase
-                    tracking-[0.2em]
-                    text-active
 
-                    sm:text-[12px]
+                    tracking-[0.17em]
+
+                    text-[#69AEF7]
                   "
                 >
                   {project.subtitle}
@@ -185,15 +302,17 @@ export function CaseStudy() {
 
                 <p
                   className="
-                    mt-3
+                    mt-2
+
                     max-w-2xl
 
-                    text-[15px]
-                    leading-7
-                    text-white/75
+                    text-[14px]
 
-                    sm:mt-4
-                    sm:text-[16px]
+                    leading-7
+
+                    text-white/70
+
+                    sm:text-[15px]
                   "
                 >
                   {project.scope}
@@ -203,186 +322,477 @@ export function CaseStudy() {
           </div>
 
           {/* =================================================
-              RIGHT SIDE / IMAGE GALLERY
+              MAIN PROJECT IMAGE
           ================================================== */}
 
-          <div
-            className="
-              flex
-              min-w-0
-              flex-col
-              gap-4
-
-              sm:gap-5
-
-              lg:sticky
-              lg:top-[126px]
-            "
-          >
-            {/* LARGE IMAGE */}
-            <Reveal>
-              <div
-                className="
-                  group
-
-                  aspect-[16/10]
-                  w-full
-
-                  overflow-hidden
-
-                  rounded-[22px]
-
-                  border
-                  border-white/10
-
-                  bg-[#121217]
-
-                  sm:rounded-[26px]
-                "
-              >
-                <img
-                  src={caseAsset}
-                  alt="Khalifa University student accommodation buildings"
-                  width={1600}
-                  height={1000}
-                  loading="lazy"
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-
-                    transition-transform
-                    duration-700
-
-                    group-hover:scale-[1.035]
-                  "
-                />
-              </div>
-            </Reveal>
-
-            {/* SECONDARY IMAGES */}
+          <Reveal>
             <div
               className="
-                grid
-                grid-cols-1
-                gap-4
+                group
+                relative
 
-                sm:grid-cols-2
-                sm:gap-5
+                h-[300px]
+
+                overflow-hidden
+
+                rounded-[22px]
+
+                border
+                border-white/10
+
+                bg-[#121217]
+
+                shadow-[0_24px_60px_rgba(0,0,0,0.18)]
+
+                sm:h-[360px]
+
+                lg:h-[390px]
+
+                xl:h-[410px]
               "
             >
-              <Reveal delay={0.1}>
-                <div
-                  className="
-                    group
+              <img
+                src={caseAsset}
+                alt="Khalifa University student accommodation buildings"
+                width={1600}
+                height={1000}
+                loading="lazy"
+                className="
+                  h-full
+                  w-full
 
-                    aspect-[16/10]
-                    w-full
+                  object-cover
 
-                    overflow-hidden
+                  transition-transform
+                  duration-700
 
-                    rounded-[20px]
+                  group-hover:scale-[1.035]
+                "
+              />
 
-                    border
-                    border-white/10
+              {/* IMAGE OVERLAY */}
 
-                    bg-[#121217]
+              <div
+                className="
+                  pointer-events-none
 
-                    sm:aspect-[4/3]
-                    sm:rounded-bl-[36px]
-                    sm:rounded-tr-[36px]
-                  "
-                >
-                  <img
-                    src={studentAsset}
-                    alt="Student living space"
-                    width={1408}
-                    height={1008}
-                    loading="lazy"
-                    className="
-                      h-full
-                      w-full
-                      object-cover
+                  absolute
+                  inset-0
 
-                      transition-transform
-                      duration-700
+                  bg-gradient-to-t
 
-                      group-hover:scale-[1.05]
-                    "
-                  />
-                </div>
-              </Reveal>
+                  from-[#11102f]/75
+                  via-transparent
+                  to-transparent
+                "
+              />
 
-              <Reveal delay={0.2}>
-                <div
-                  className="
-                    group
+              {/* IMAGE LABEL */}
 
-                    aspect-[16/10]
-                    w-full
+              <div
+                className="
+                  absolute
 
-                    overflow-hidden
+                  bottom-5
+                  left-5
 
-                    rounded-[20px]
+                  rounded-full
 
-                    border
-                    border-white/10
+                  border
+                  border-white/15
 
-                    bg-[#121217]
+                  bg-[#201A57]/75
 
-                    sm:aspect-[4/3]
-                    sm:rounded-br-[36px]
-                    sm:rounded-tl-[36px]
-                  "
-                >
-                  <img
-                    src={campusAsset}
-                    alt="Campus architecture"
-                    width={1920}
-                    height={1088}
-                    loading="lazy"
-                    className="
-                      h-full
-                      w-full
-                      object-cover
+                  px-4
+                  py-2
 
-                      transition-transform
-                      duration-700
+                  text-[10px]
 
-                      group-hover:scale-[1.05]
-                    "
-                  />
-                </div>
-              </Reveal>
+                  font-bold
+                  uppercase
+
+                  tracking-[0.16em]
+
+                  text-white/80
+
+                  backdrop-blur-lg
+                "
+              >
+                Khalifa University
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* =================================================
-            FULL WIDTH OPERATIONAL CARDS
+            SECONDARY IMAGE GALLERY
         ================================================== */}
 
         <div
           className="
-            mt-12
+            mt-6
 
             grid
             grid-cols-1
+
             gap-4
 
-            sm:mt-14
+            sm:grid-cols-2
+
+            lg:gap-5
+          "
+        >
+          {/* STUDENT LIVING */}
+
+          <Reveal delay={0.1}>
+            <div
+              className="
+                group
+
+                relative
+
+                h-[210px]
+
+                overflow-hidden
+
+                rounded-[20px]
+
+                border
+                border-white/10
+
+                bg-[#121217]
+
+                sm:h-[250px]
+
+                lg:h-[270px]
+              "
+            >
+              <img
+                src={studentAsset}
+                alt="Student living space"
+                width={1408}
+                height={1008}
+                loading="lazy"
+                className="
+                  h-full
+                  w-full
+
+                  object-cover
+
+                  transition-transform
+                  duration-700
+
+                  group-hover:scale-[1.045]
+                "
+              />
+
+              <div
+                className="
+                  pointer-events-none
+
+                  absolute
+                  inset-0
+
+                  bg-gradient-to-t
+
+                  from-[#11102f]/70
+                  via-transparent
+                  to-transparent
+                "
+              />
+
+              <div
+                className="
+                  absolute
+
+                  bottom-4
+                  left-4
+
+                  rounded-full
+
+                  border
+                  border-white/10
+
+                  bg-[#201A57]/60
+
+                  px-3.5
+                  py-2
+
+                  backdrop-blur-md
+                "
+              >
+                <span
+                  className="
+                    text-[10px]
+
+                    font-bold
+                    uppercase
+
+                    tracking-[0.15em]
+
+                    text-white/80
+                  "
+                >
+                  Student Living
+                </span>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* CAMPUS ENVIRONMENT */}
+
+          <Reveal delay={0.16}>
+            <div
+              className="
+                group
+
+                relative
+
+                h-[210px]
+
+                overflow-hidden
+
+                rounded-[20px]
+
+                border
+                border-white/10
+
+                bg-[#121217]
+
+                sm:h-[250px]
+
+                lg:h-[270px]
+              "
+            >
+              <img
+                src={campusAsset}
+                alt="Campus architecture"
+                width={1920}
+                height={1088}
+                loading="lazy"
+                className="
+                  h-full
+                  w-full
+
+                  object-cover
+
+                  transition-transform
+                  duration-700
+
+                  group-hover:scale-[1.045]
+                "
+              />
+
+              <div
+                className="
+                  pointer-events-none
+
+                  absolute
+                  inset-0
+
+                  bg-gradient-to-t
+
+                  from-[#11102f]/70
+                  via-transparent
+                  to-transparent
+                "
+              />
+
+              <div
+                className="
+                  absolute
+
+                  bottom-4
+                  left-4
+
+                  rounded-full
+
+                  border
+                  border-white/10
+
+                  bg-[#201A57]/60
+
+                  px-3.5
+                  py-2
+
+                  backdrop-blur-md
+                "
+              >
+                <span
+                  className="
+                    text-[10px]
+
+                    font-bold
+                    uppercase
+
+                    tracking-[0.15em]
+
+                    text-white/80
+                  "
+                >
+                  Campus Environment
+                </span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* =================================================
+            OPERATIONAL SCOPE INTRO
+        ================================================== */}
+
+        <Reveal>
+          <div
+            className="
+              mt-12
+
+              grid
+
+              gap-5
+
+              border-t
+              border-white/10
+
+              pt-9
+
+              sm:mt-14
+
+              lg:grid-cols-[1fr_0.7fr]
+              lg:items-end
+              lg:gap-12
+
+              xl:mt-16
+            "
+          >
+            {/* LEFT */}
+
+            <div>
+              <div
+                className="
+                  inline-flex
+                  items-center
+
+                  gap-2.5
+
+                  rounded-full
+
+                  border
+                  border-[#63AEFF]/25
+
+                  bg-[#63AEFF]/[0.07]
+
+                  px-4
+                  py-2
+                "
+              >
+                <span
+                  className="
+                    h-[6px]
+                    w-[6px]
+
+                    rounded-full
+
+                    bg-[#63AEFF]
+
+                    shadow-[0_0_10px_rgba(99,174,255,0.8)]
+                  "
+                />
+
+                <span
+                  className="
+                    text-[14px]
+
+                    font-bold
+
+                    text-white
+
+                    sm:text-[15px]
+                  "
+                >
+                  Operational Scope
+                </span>
+              </div>
+
+              <h3
+                className="
+                  mt-5
+
+                  max-w-[700px]
+
+                  text-[1.9rem]
+
+                  font-bold
+
+                  leading-[1.08]
+
+                  tracking-[-0.035em]
+
+                  text-white
+
+                  sm:text-[2.25rem]
+
+                  lg:text-[2.6rem]
+                "
+              >
+                Complete support across
+
+                <span
+                  className="
+                    text-[#69AEF7]
+                  "
+                >
+                  {" "}
+                  every aspect of student living.
+                </span>
+              </h3>
+            </div>
+
+            {/* RIGHT */}
+
+            <p
+              className="
+                max-w-[480px]
+
+                text-[14px]
+
+                leading-7
+
+                text-white/50
+
+                sm:text-[15px]
+
+                lg:justify-self-end
+              "
+            >
+              From technical maintenance to everyday
+              resident support, every operational area
+              works together as one coordinated service.
+            </p>
+          </div>
+        </Reveal>
+
+        {/* =================================================
+            FOUR OPERATIONAL CARDS
+        ================================================== */}
+
+        <div
+          className="
+            mt-8
+
+            grid
+
+            grid-cols-1
+
+            gap-4
+
             sm:grid-cols-2
             sm:gap-5
 
-            lg:mt-16
             lg:grid-cols-4
-            lg:gap-5
-
-            xl:gap-6
           "
         >
           <Reveal
-            delay={0.2}
+            delay={0.08}
             className="h-full"
           >
             <ScopeCard
@@ -393,7 +803,7 @@ export function CaseStudy() {
           </Reveal>
 
           <Reveal
-            delay={0.24}
+            delay={0.12}
             className="h-full"
           >
             <ScopeCard
@@ -404,7 +814,7 @@ export function CaseStudy() {
           </Reveal>
 
           <Reveal
-            delay={0.28}
+            delay={0.16}
             className="h-full"
           >
             <ScopeCard
@@ -415,7 +825,7 @@ export function CaseStudy() {
           </Reveal>
 
           <Reveal
-            delay={0.32}
+            delay={0.2}
             className="h-full"
           >
             <ScopeCard
@@ -449,45 +859,85 @@ function ScopeCard({
     <div
       className="
         group
+
+        relative
+
+        flex
+
         h-full
+        min-h-[250px]
+
+        flex-col
+
+        overflow-hidden
 
         rounded-[20px]
 
         border
         border-white/10
 
-        bg-white/[0.045]
+        bg-white/[0.035]
 
-        p-6
+        p-5
 
-        shadow-[0_14px_42px_rgba(0,0,0,0.12)]
+        shadow-[0_12px_36px_rgba(0,0,0,0.10)]
 
         transition-all
         duration-300
 
         hover:-translate-y-1
-        hover:border-active/30
-        hover:bg-white/[0.06]
-        hover:shadow-[0_20px_55px_rgba(0,0,0,0.18)]
 
-        xl:p-7
+        hover:border-active/30
+
+        hover:bg-white/[0.055]
+
+        hover:shadow-[0_20px_50px_rgba(0,0,0,0.16)]
+
+        sm:p-6
       "
     >
-      {/* NUMBER */}
+      {/* TOP HOVER ACCENT */}
+
+      <span
+        className="
+          absolute
+
+          left-0
+          top-0
+
+          h-[3px]
+          w-0
+
+          bg-active
+
+          transition-all
+          duration-500
+
+          group-hover:w-full
+        "
+      />
+
+      {/* NUMBER ROW */}
+
       <div
         className="
           flex
+
           items-center
           justify-between
+
           gap-3
         "
       >
         <span
           className="
-            text-[12px]
+            text-[11px]
+
             font-bold
             uppercase
+
             tracking-[0.18em]
+
             text-active
           "
         >
@@ -496,43 +946,72 @@ function ScopeCard({
 
         <span
           className="
-            h-2
-            w-2
+            flex
+
+            h-8
+            w-8
+
+            items-center
+            justify-center
 
             rounded-full
 
-            bg-active/50
+            border
+            border-white/10
 
-            transition-transform
-            duration-300
-
-            group-hover:scale-150
+            bg-white/[0.025]
           "
-        />
+        >
+          <span
+            className="
+              h-[6px]
+              w-[6px]
+
+              rounded-full
+
+              bg-active/60
+
+              transition-all
+              duration-300
+
+              group-hover:scale-150
+
+              group-hover:bg-active
+
+              group-hover:shadow-[0_0_10px_rgba(63,128,207,0.7)]
+            "
+          />
+        </span>
       </div>
 
       {/* TITLE */}
+
       <h3
         className="
-          mt-4
+          mt-5
 
-          text-[18px]
+          text-[19px]
+
           font-bold
+
           leading-snug
+
+          tracking-[-0.02em]
+
           text-white
 
-          lg:text-[19px]
-
-          xl:text-[21px]
+          sm:text-[20px]
         "
       >
         {title}
       </h3>
 
       {/* ITEMS */}
+
       <ul
         className="
           mt-4
+
           space-y-2.5
         "
       >
@@ -542,22 +1021,25 @@ function ScopeCard({
             className="
               flex
               items-start
+
               gap-2.5
 
-              text-[13px]
+              text-[12.5px]
+
               leading-5
+
               text-white/58
 
-              xl:text-[14px]
-              xl:leading-6
+              sm:text-[13px]
+              sm:leading-6
             "
           >
             <span
               className="
-                mt-[7px]
+                mt-[8px]
 
-                h-1.5
-                w-1.5
+                h-[5px]
+                w-[5px]
 
                 shrink-0
 
@@ -567,10 +1049,35 @@ function ScopeCard({
               "
             />
 
-            <span>{item}</span>
+            <span>
+              {item}
+            </span>
           </li>
         ))}
       </ul>
+
+      {/* BOTTOM ACCENT */}
+
+      <div
+        className="
+          mt-auto
+          pt-5
+        "
+      >
+        <span
+          className="
+            block
+
+            h-px
+            w-full
+
+            bg-gradient-to-r
+
+            from-active/35
+            to-transparent
+          "
+        />
+      </div>
     </div>
   );
 }
@@ -626,71 +1133,152 @@ export function Testimonials() {
     >
       <div
         className="
-          shell
+          mx-auto
 
-          py-14
+          w-full
+          max-w-[1380px]
 
-          sm:py-18
+          px-4
+          py-12
 
-          md:py-20
+          sm:px-5
+          sm:py-14
 
-          lg:py-28
+          md:px-7
+          md:py-16
 
-          xl:py-32
+          lg:px-8
+          lg:py-20
+
+          xl:px-10
+          xl:py-24
+
+          2xl:px-0
         "
       >
-        {/* HEADER */}
+        {/* =================================================
+            HEADER
+        ================================================== */}
+
         <Reveal>
           <div>
-            <p
+            <div
               className="
-                text-[11px]
-                font-bold
-                uppercase
-                tracking-[0.22em]
-                text-muted-foreground
+                inline-flex
+                items-center
 
-                sm:text-[12px]
+                gap-2.5
+
+                rounded-full
+
+                border
+                border-[#63AEFF]/25
+
+                bg-[#63AEFF]/[0.07]
+
+                px-4
+                py-2
               "
             >
-              What the University Teams Say
-            </p>
+              <span
+                className="
+                  h-[6px]
+                  w-[6px]
 
-            <SectionUnderline />
+                  rounded-full
+
+                  bg-[#63AEFF]
+
+                  shadow-[0_0_10px_rgba(99,174,255,0.8)]
+                "
+              />
+
+              <span
+                className="
+                  text-[14px]
+
+                  font-bold
+
+                  text-white
+
+                  sm:text-[15px]
+                "
+              >
+                University Feedback
+              </span>
+            </div>
+
+            <h2
+              className="
+                mt-5
+
+                max-w-[850px]
+
+                text-[2rem]
+
+                font-bold
+
+                leading-[1.08]
+
+                tracking-[-0.035em]
+
+                text-white
+
+                sm:text-[2.4rem]
+
+                md:text-[2.7rem]
+
+                lg:text-[3rem]
+              "
+            >
+              What the University
+              <span className="text-[#69AEF7]">
+                {" "}
+                Teams Say
+              </span>
+            </h2>
           </div>
         </Reveal>
+
+        {/* SUPPORT TEXT */}
 
         <Reveal delay={0.08}>
           <p
             className="
-              mt-6
+              mt-5
+
               max-w-3xl
 
-              text-[18px]
-              leading-8
-              text-white/75
+              text-[14px]
 
-              sm:mt-7
-              sm:text-[21px]
+              leading-7
 
-              lg:text-[24px]
-              lg:leading-9
+              text-white/55
+
+              sm:text-[15px]
+
+              lg:text-[16px]
+              lg:leading-8
             "
           >
-            Feedback from the housing administrators, estates directors, and
-            student accommodation teams who experience our operations daily
+            Feedback from the housing administrators,
+            estates directors, and student accommodation
+            teams who experience our operations daily
             across campuses.
           </p>
         </Reveal>
 
-        {/* TESTIMONIAL CARD */}
+        {/* =================================================
+            TESTIMONIAL CARD
+        ================================================== */}
+
         <div
           className="
-            mt-10
+            mt-8
 
-            sm:mt-12
+            sm:mt-10
 
-            lg:mt-14
+            lg:mt-12
           "
         >
           <div
@@ -708,12 +1296,10 @@ export function Testimonials() {
 
               p-6
 
-              sm:rounded-[26px]
+              sm:rounded-[24px]
               sm:p-8
 
-              md:p-10
-
-              lg:p-12
+              lg:p-10
             "
           >
             <AnimatePresence mode="wait">
@@ -737,17 +1323,18 @@ export function Testimonials() {
                 }}
               >
                 {/* STARS */}
+
                 <div
                   className="
                     mb-5
 
                     flex
+
                     items-center
+
                     gap-1.5
 
                     text-[#3F80CF]
-
-                    sm:mb-6
                   "
                 >
                   {Array.from({
@@ -758,6 +1345,7 @@ export function Testimonials() {
                       className="
                         h-4
                         w-4
+
                         fill-current
 
                         sm:h-[18px]
@@ -768,42 +1356,63 @@ export function Testimonials() {
                 </div>
 
                 {/* QUOTE */}
+
                 <p
                   className="
-                    max-w-[36ch]
+                    max-w-[38ch]
 
-                    text-[1.85rem]
+                    text-[1.65rem]
+
                     font-bold
-                    leading-[1.15]
+
+                    leading-[1.18]
+
                     tracking-[-0.03em]
+
                     text-white
 
-                    sm:text-[2.35rem]
+                    sm:text-[2rem]
 
-                    lg:text-[3rem]
+                    md:text-[2.25rem]
+
+                    lg:text-[2.5rem]
                   "
                 >
                   &ldquo;{quotes[i].quote}&rdquo;
                 </p>
 
                 {/* AUTHOR */}
+
                 <footer
                   className="
                     mt-7
 
                     text-[14px]
+
                     leading-6
+
                     text-muted-foreground
 
-                    sm:mt-8
                     sm:text-[15px]
                   "
                 >
-                  <span className="font-semibold text-white/85">
+                  <span
+                    className="
+                      font-semibold
+
+                      text-white/85
+                    "
+                  >
                     {quotes[i].name}
                   </span>
 
-                  <span className="mx-2 text-white/25">
+                  <span
+                    className="
+                      mx-2
+
+                      text-white/25
+                    "
+                  >
                     ·
                   </span>
 
@@ -814,24 +1423,29 @@ export function Testimonials() {
               </motion.blockquote>
             </AnimatePresence>
 
-            {/* CONTROLS */}
+            {/* =================================================
+                CONTROLS
+            ================================================== */}
+
             <div
               className="
                 mt-8
 
                 flex
                 flex-wrap
+
                 items-center
+
                 gap-3
 
                 border-t
                 border-hairline
 
                 pt-6
-
-                sm:pt-7
               "
             >
+              {/* PREVIOUS */}
+
               <button
                 type="button"
                 onClick={() => go(-1)}
@@ -856,12 +1470,21 @@ export function Testimonials() {
                   duration-300
 
                   hover:border-active
+
                   hover:bg-active/10
+
                   hover:text-active
                 "
               >
-                <ArrowLeft className="h-4 w-4" />
+                <ArrowLeft
+                  className="
+                    h-4
+                    w-4
+                  "
+                />
               </button>
+
+              {/* NEXT */}
 
               <button
                 type="button"
@@ -887,20 +1510,32 @@ export function Testimonials() {
                   duration-300
 
                   hover:border-active
+
                   hover:bg-active/10
+
                   hover:text-active
                 "
               >
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight
+                  className="
+                    h-4
+                    w-4
+                  "
+                />
               </button>
+
+              {/* COUNT */}
 
               <span
                 className="
                   ml-1
 
                   text-[11px]
+
                   font-semibold
+
                   tracking-[0.14em]
+
                   text-muted-foreground
 
                   sm:ml-3
@@ -929,6 +1564,7 @@ export function CtaBand() {
       id="contact"
       className="
         relative
+
         overflow-hidden
 
         border-t
@@ -939,6 +1575,10 @@ export function CtaBand() {
         text-white
       "
     >
+      {/* =====================================================
+          BACKGROUND ARC
+      ====================================================== */}
+
       <ArcPattern
         className="
           absolute
@@ -952,76 +1592,140 @@ export function CtaBand() {
         opacity={0.06}
       />
 
+      {/* =====================================================
+          CONTAINER
+      ====================================================== */}
+
       <div
         className="
-          shell
           relative
           z-10
 
-          py-14
+          mx-auto
 
-          sm:py-18
+          w-full
+          max-w-[1380px]
 
-          md:py-20
+          px-4
+          py-12
 
-          lg:py-28
+          sm:px-5
+          sm:py-14
 
-          xl:py-32
+          md:px-7
+          md:py-16
+
+          lg:px-8
+          lg:py-20
+
+          xl:px-10
+          xl:py-24
+
+          2xl:px-0
         "
       >
-        {/* HEADING */}
-        <Reveal>
-          <p
-            className="
-              text-[11px]
-              font-bold
-              uppercase
-              tracking-[0.2em]
-              text-[#3F80CF]
+        {/* =================================================
+            CONTACT HEADER
+        ================================================== */}
 
-              sm:text-[12px]
+        <Reveal>
+          <div
+            className="
+              inline-flex
+              items-center
+
+              gap-2.5
+
+              rounded-full
+
+              border
+              border-[#63AEFF]/25
+
+              bg-[#63AEFF]/[0.07]
+
+              px-4
+              py-2
             "
           >
-            {company.purpose}
-          </p>
+            <span
+              className="
+                h-[6px]
+                w-[6px]
+
+                rounded-full
+
+                bg-[#63AEFF]
+
+                shadow-[0_0_10px_rgba(99,174,255,0.8)]
+              "
+            />
+
+            <span
+              className="
+                text-[14px]
+
+                font-bold
+
+                text-white
+
+                sm:text-[15px]
+              "
+            >
+              Contact Kunnected FM
+            </span>
+          </div>
         </Reveal>
 
         <Reveal delay={0.08}>
           <h2
             className="
               mt-5
-              max-w-[12ch]
 
-              text-[2.75rem]
-              font-extrabold
-              leading-[0.98]
-              tracking-[-0.045em]
+              max-w-[750px]
+
+              text-[2.1rem]
+
+              font-bold
+
+              leading-[1.03]
+
+              tracking-[-0.04em]
+
               text-white
 
-              sm:mt-6
-              sm:text-[3.5rem]
+              sm:text-[2.6rem]
 
-              md:text-[4.25rem]
+              md:text-[3rem]
 
-              lg:text-[5rem]
+              lg:text-[3.35rem]
             "
           >
-            Get in Touch
+            Get in
+            <span
+              className="
+                text-[#69AEF7]
+              "
+            >
+              {" "}
+              Touch
+            </span>
           </h2>
         </Reveal>
 
         <Reveal delay={0.12}>
           <p
             className="
-              mt-5
+              mt-4
+
               max-w-2xl
 
-              text-[16px]
+              text-[15px]
+
               leading-7
+
               text-muted-foreground
 
-              sm:mt-6
-              sm:text-[18px]
+              sm:text-[16px]
               sm:leading-8
             "
           >
@@ -1029,13 +1733,18 @@ export function CtaBand() {
           </p>
         </Reveal>
 
-        {/* CONTACT GRID */}
+        {/* =================================================
+            CONTACT GRID
+        ================================================== */}
+
         <div
           className="
-            mt-9
+            mt-8
 
             grid
+
             grid-cols-1
+
             gap-5
 
             border-t
@@ -1043,17 +1752,18 @@ export function CtaBand() {
 
             pt-8
 
-            sm:mt-12
+            sm:mt-10
             sm:gap-6
-            sm:pt-10
 
             md:grid-cols-2
 
-            lg:mt-14
             lg:gap-8
           "
         >
-          {/* CONTACT CARD */}
+          {/* =================================================
+              CONTACT INFORMATION CARD
+          ================================================== */}
+
           <Reveal
             delay={0.14}
             className="h-full"
@@ -1077,6 +1787,7 @@ export function CtaBand() {
                 duration-300
 
                 hover:border-active/70
+
                 hover:shadow-[0_0_45px_rgba(63,128,207,0.18)]
 
                 sm:p-7
@@ -1084,16 +1795,22 @@ export function CtaBand() {
                 lg:p-8
               "
             >
+              {/* CARD TITLE */}
+
               <h3
                 className="
                   flex
                   items-center
+
                   gap-2
 
                   text-[15px]
+
                   font-bold
                   uppercase
+
                   tracking-[0.12em]
+
                   text-white
 
                   sm:text-[17px]
@@ -1116,12 +1833,15 @@ export function CtaBand() {
               </h3>
 
               {/* ADDRESS */}
+
               <div
                 className="
                   mt-6
 
                   flex
+
                   items-start
+
                   gap-3
 
                   sm:gap-4
@@ -1148,14 +1868,21 @@ export function CtaBand() {
                     text-active
                   "
                 >
-                  <MapPin className="h-5 w-5" />
+                  <MapPin
+                    className="
+                      h-5
+                      w-5
+                    "
+                  />
                 </div>
 
                 <div className="min-w-0">
                   <h4
                     className="
                       text-[14px]
+
                       font-semibold
+
                       text-white
 
                       sm:text-[15px]
@@ -1169,7 +1896,9 @@ export function CtaBand() {
                       mt-1
 
                       text-[13px]
+
                       leading-6
+
                       text-muted-foreground
 
                       sm:text-[14px]
@@ -1185,6 +1914,7 @@ export function CtaBand() {
               </div>
 
               {/* WEBSITE */}
+
               <div
                 className="
                   mt-7
@@ -1205,7 +1935,9 @@ export function CtaBand() {
                     -mx-2
 
                     flex
+
                     items-center
+
                     gap-3
 
                     rounded-xl
@@ -1240,19 +1972,28 @@ export function CtaBand() {
                       transition-colors
 
                       group-hover:bg-active/15
+
                       group-hover:text-active
                     "
                   >
-                    <Globe className="h-4 w-4" />
+                    <Globe
+                      className="
+                        h-4
+                        w-4
+                      "
+                    />
                   </div>
 
                   <div className="min-w-0">
                     <p
                       className="
                         text-[10px]
+
                         font-semibold
                         uppercase
+
                         tracking-[0.15em]
+
                         text-muted-foreground
                       "
                     >
@@ -1266,7 +2007,9 @@ export function CtaBand() {
                         break-all
 
                         text-[13px]
+
                         font-medium
+
                         text-white
 
                         transition-colors
@@ -1284,7 +2027,10 @@ export function CtaBand() {
             </div>
           </Reveal>
 
-          {/* OFFICE / SUPPORT CARD */}
+          {/* =================================================
+              OFFICE / SUPPORT CARD
+          ================================================== */}
+
           <Reveal
             delay={0.18}
             className="h-full"
@@ -1292,7 +2038,9 @@ export function CtaBand() {
             <div
               className="
                 flex
+
                 h-full
+
                 flex-col
 
                 rounded-[20px]
@@ -1318,9 +2066,12 @@ export function CtaBand() {
                 <h3
                   className="
                     text-[15px]
+
                     font-bold
                     uppercase
+
                     tracking-[0.12em]
+
                     text-white
 
                     sm:text-[17px]
@@ -1334,16 +2085,21 @@ export function CtaBand() {
                     mt-4
 
                     text-[14px]
+
                     leading-7
+
                     text-muted-foreground
 
                     sm:text-[15px]
                   "
                 >
-                  Our administrative and management teams are available during
-                  standard working hours for support, meetings, and planned
+                  Our administrative and management teams
+                  are available during standard working
+                  hours for support, meetings, and planned
                   maintenance coordination.
                 </p>
+
+                {/* OFFICE HOURS */}
 
                 <div
                   className="
@@ -1358,9 +2114,12 @@ export function CtaBand() {
                   <h4
                     className="
                       text-[10px]
+
                       font-semibold
                       uppercase
+
                       tracking-[0.15em]
+
                       text-white/50
 
                       sm:text-[11px]
@@ -1374,7 +2133,9 @@ export function CtaBand() {
                       mt-2
 
                       text-[14px]
+
                       leading-6
+
                       text-white/80
                     "
                   >
@@ -1383,9 +2144,12 @@ export function CtaBand() {
                 </div>
               </div>
 
+              {/* 24/7 SUPPORT */}
+
               <div
                 className="
                   mt-auto
+
                   pt-8
                 "
               >
@@ -1400,8 +2164,11 @@ export function CtaBand() {
                   <span
                     className="
                       inline-flex
+
                       max-w-full
+
                       items-center
+
                       gap-2
 
                       rounded-full
@@ -1412,7 +2179,9 @@ export function CtaBand() {
                       py-1.5
 
                       text-[11px]
+
                       font-semibold
+
                       text-active
 
                       sm:text-xs
@@ -1439,14 +2208,17 @@ export function CtaBand() {
                       mt-3
 
                       text-[12px]
+
                       leading-6
+
                       text-muted-foreground
 
                       sm:text-[13px]
                     "
                   >
-                    A staffed helpdesk and emergency response team remains
-                    active 24/7/365 to handle any immediate residential or
+                    A staffed helpdesk and emergency
+                    response team remains active 24/7/365
+                    to handle any immediate residential or
                     accommodation infrastructure issues.
                   </p>
                 </div>

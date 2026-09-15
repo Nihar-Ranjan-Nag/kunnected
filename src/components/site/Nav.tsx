@@ -1,4 +1,5 @@
 import {
+  type FormEvent,
   useEffect,
   useRef,
   useState,
@@ -10,13 +11,15 @@ import {
 } from "motion/react";
 
 import {
+  ArrowUpRight,
+  ChevronDown,
+  Menu,
   Search,
   X,
-  Menu,
-  ArrowUpRight,
 } from "lucide-react";
 
 import { Brandmark } from "@/components/brand/Brandmark";
+
 import {
   navigation,
   services,
@@ -26,11 +29,61 @@ export function Nav() {
   const [mega, setMega] = useState(false);
   const [mobile, setMobile] = useState(false);
 
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchOpen, setSearchOpen] =
+    useState(false);
+
+  const [searchQuery, setSearchQuery] =
+    useState("");
+
+  const [scrolled, setScrolled] =
+    useState(false);
 
   const searchInputRef =
     useRef<HTMLInputElement>(null);
+
+  /* =========================================
+     ADD HOME NAV ITEM
+  ========================================== */
+
+  const navItems = navigation.some(
+    (item) =>
+      item.label.toLowerCase() === "home",
+  )
+    ? navigation
+    : [
+        {
+          label: "Home",
+          href: "#top",
+        },
+        ...navigation,
+      ];
+
+  /* =========================================
+     NAVBAR SCROLL
+  ========================================== */
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 35);
+    };
+
+    handleScroll();
+
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      {
+        passive: true,
+      },
+    );
+
+    return () => {
+      window.removeEventListener(
+        "scroll",
+        handleScroll,
+      );
+    };
+  }, []);
 
   /* =========================================
      MOBILE BODY LOCK
@@ -50,7 +103,7 @@ export function Nav() {
   }, [mobile]);
 
   /* =========================================
-     AUTO FOCUS SEARCH
+     SEARCH AUTO FOCUS
   ========================================== */
 
   useEffect(() => {
@@ -77,11 +130,11 @@ export function Nav() {
   };
 
   /* =========================================
-     SIMPLE NAV SEARCH
+     SEARCH
   ========================================== */
 
   const handleSearch = (
-    event: React.FormEvent<HTMLFormElement>,
+    event: FormEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
 
@@ -93,10 +146,11 @@ export function Nav() {
       return;
     }
 
-    const navMatch = navigation.find((item) =>
-      item.label
-        .toLowerCase()
-        .includes(query),
+    const navMatch = navItems.find(
+      (item) =>
+        item.label
+          .toLowerCase()
+          .includes(query),
     );
 
     if (navMatch) {
@@ -125,13 +179,13 @@ export function Nav() {
     );
 
     if (serviceMatch) {
-      const servicesSection =
+      const section =
         document.querySelector(
           "#services",
         );
 
-      if (servicesSection) {
-        servicesSection.scrollIntoView({
+      if (section) {
+        section.scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
@@ -143,43 +197,87 @@ export function Nav() {
 
   return (
     <>
+      {/* =========================================
+          HEADER
+      ========================================== */}
+
       <header
-        className="
+        className={`
           fixed
           inset-x-0
           top-0
           z-50
 
           border-b
-          border-white/10
 
-          bg-[#18164b]
+          transition-[background-color,border-color,box-shadow]
+          duration-300
+          ease-out
 
-          shadow-[0_10px_36px_rgba(0,0,0,0.18)]
-        "
-        onMouseLeave={() => setMega(false)}
+          ${
+            scrolled
+              ? `
+                border-white/10
+                bg-[#18164b]
+                shadow-[0_10px_36px_rgba(0,0,0,0.18)]
+              `
+              : `
+                border-transparent
+                bg-transparent
+                shadow-none
+              `
+          }
+        `}
+        onMouseLeave={() => {
+          setMega(false);
+        }}
       >
         {/* =========================================
-            NAVBAR
+            NAVBAR INNER
         ========================================== */}
 
         <div
-          className="
+          className={`
             mx-auto
             flex
-            h-[102px]
             w-full
-            max-w-[1440px]
+            max-w-[1380px]
+
             items-center
 
-            px-5
-            sm:px-6
-            md:px-8
-            lg:px-10
-            xl:px-14
-          "
+            px-4
+            sm:px-5
+            md:px-7
+            lg:px-8
+            xl:px-10
+            2xl:px-0
+
+            transition-[height,padding]
+            duration-300
+            ease-out
+
+            ${
+              scrolled
+                ? `
+                  h-[74px]
+
+                  xl:h-[110px]
+                  xl:items-start
+                  xl:pt-[30px]
+                `
+                : `
+                  h-[82px]
+
+                  xl:h-[150px]
+                  xl:items-start
+                  xl:pt-[58px]
+                `
+            }
+          `}
         >
-          {/* LOGO */}
+          {/* =====================================
+              LOGO
+          ====================================== */}
 
           <a
             href="#top"
@@ -190,40 +288,28 @@ export function Nav() {
               items-center
             "
           >
-            <Brandmark
-              tone="invert"
-              className="
-                h-[58px]
-                w-auto
-
-                sm:h-[64px]
-
-                lg:h-[68px]
-
-                xl:h-[70px]
-              "
-            />
+            <Brandmark tone="invert" />
           </a>
 
           {/* =========================================
               DESKTOP NAVIGATION
           ========================================== */}
 
-          <nav
-            aria-label="Primary"
-            className="
-              ml-[70px]
-              hidden
-              items-center
-              gap-9
+         <nav
+  aria-label="Primary"
+  className="
+    hidden
+    items-center
 
-              lg:flex
+    xl:ml-[140px]
+    xl:flex
+    xl:gap-[38px]
 
-              xl:ml-[100px]
-              xl:gap-12
-            "
-          >
-            {navigation.map((item) => {
+    2xl:ml-[180px]
+    2xl:gap-[48px]
+  "
+>
+            {navItems.map((item) => {
               const hasMega =
                 "mega" in item &&
                 Boolean(item.mega);
@@ -242,14 +328,16 @@ export function Nav() {
                     relative
 
                     flex
-                    h-[102px]
+                    h-[56px]
+
                     items-center
 
                     whitespace-nowrap
 
-                    text-[19px]
-                    font-extrabold
-                    tracking-[-0.015em]
+                    text-[20px]
+                    font-medium
+
+                    tracking-[-0.012em]
 
                     text-white/95
 
@@ -258,10 +346,41 @@ export function Nav() {
 
                     hover:text-white
 
-                    xl:text-[21px]
+                    2xl:text-[22px]
                   "
                 >
-                  {item.label}
+                  <span
+                    className="
+                      flex
+                      items-center
+                      gap-[8px]
+                    "
+                  >
+                    {item.label}
+
+                    {hasMega && (
+                      <ChevronDown
+                        className={`
+                          h-[20px]
+                          w-[20px]
+
+                          shrink-0
+
+                          stroke-[2]
+
+                          transition-transform
+                          duration-300
+                          ease-out
+
+                          ${
+                            mega
+                              ? "rotate-180"
+                              : "rotate-0"
+                          }
+                        `}
+                      />
+                    )}
+                  </span>
 
                   {hasMega && mega && (
                     <motion.span
@@ -270,7 +389,7 @@ export function Nav() {
                         absolute
 
                         inset-x-0
-                        bottom-[17px]
+                        bottom-0
 
                         h-[3px]
 
@@ -286,27 +405,30 @@ export function Nav() {
           </nav>
 
           {/* =========================================
-              RIGHT SIDE
+              RIGHT AREA
           ========================================== */}
 
           <div
             className="
               ml-auto
+
               flex
               items-center
-              gap-2
+              gap-1
+
+              xl:h-[56px]
             "
           >
-            {/* =========================================
+            {/* =====================================
                 DESKTOP SEARCH
-            ========================================== */}
+            ====================================== */}
 
             <div
               className="
                 hidden
                 items-center
 
-                sm:flex
+                xl:flex
               "
             >
               <AnimatePresence
@@ -321,7 +443,7 @@ export function Nav() {
                       marginRight: 0,
                     }}
                     animate={{
-                      width: 250,
+                      width: 230,
                       opacity: 1,
                       marginRight: 8,
                     }}
@@ -339,7 +461,9 @@ export function Nav() {
                         1,
                       ],
                     }}
-                    onSubmit={handleSearch}
+                    onSubmit={
+                      handleSearch
+                    }
                     className="
                       overflow-hidden
                     "
@@ -347,7 +471,8 @@ export function Nav() {
                     <div
                       className="
                         flex
-                        h-11
+                        h-[46px]
+
                         items-center
 
                         rounded-full
@@ -370,9 +495,12 @@ export function Nav() {
                       <Search
                         className="
                           mr-2.5
-                          h-4
-                          w-4
+
+                          h-[18px]
+                          w-[18px]
+
                           shrink-0
+
                           text-white/45
                         "
                       />
@@ -395,7 +523,7 @@ export function Nav() {
                           border-0
                           bg-transparent
 
-                          text-[14px]
+                          text-[15px]
                           text-white
 
                           outline-none
@@ -412,8 +540,9 @@ export function Nav() {
                           ml-2
 
                           flex
-                          h-7
-                          w-7
+
+                          h-8
+                          w-8
 
                           shrink-0
 
@@ -430,7 +559,7 @@ export function Nav() {
                           hover:text-white
                         "
                       >
-                        <X className="h-4 w-4" />
+                        <X className="h-[18px] w-[18px]" />
                       </button>
                     </div>
                   </motion.form>
@@ -455,8 +584,8 @@ export function Nav() {
                   className="
                     inline-flex
 
-                    h-12
-                    w-12
+                    h-[50px]
+                    w-[50px]
 
                     items-center
                     justify-center
@@ -466,23 +595,26 @@ export function Nav() {
                     text-white
 
                     transition-colors
+                    duration-300
 
                     hover:bg-white/10
                   "
                 >
                   <Search
                     className="
-                      h-[23px]
-                      w-[23px]
+                      h-[26px]
+                      w-[26px]
+
+                      stroke-[1.8]
                     "
                   />
                 </motion.button>
               )}
             </div>
 
-            {/* =========================================
-                MOBILE MENU BUTTON
-            ========================================== */}
+            {/* =====================================
+                MOBILE / TABLET MENU
+            ====================================== */}
 
             <button
               type="button"
@@ -493,8 +625,8 @@ export function Nav() {
               className="
                 inline-flex
 
-                h-12
-                w-12
+                h-11
+                w-11
 
                 items-center
                 justify-center
@@ -504,16 +636,23 @@ export function Nav() {
                 text-white
 
                 transition-colors
+                duration-300
 
                 hover:bg-white/10
 
-                lg:hidden
+                sm:h-12
+                sm:w-12
+
+                xl:hidden
               "
             >
               <Menu
                 className="
-                  h-[26px]
-                  w-[26px]
+                  h-[27px]
+                  w-[27px]
+
+                  sm:h-[29px]
+                  sm:w-[29px]
                 "
               />
             </button>
@@ -521,7 +660,7 @@ export function Nav() {
         </div>
 
         {/* =========================================
-            SERVICES MEGA MENU
+            SERVICES DROPDOWN
         ========================================== */}
 
         <AnimatePresence>
@@ -540,7 +679,7 @@ export function Nav() {
                 y: -8,
               }}
               transition={{
-                duration: 0.28,
+                duration: 0.24,
                 ease: [
                   0.16,
                   1,
@@ -549,204 +688,136 @@ export function Nav() {
                 ],
               }}
               className="
+                absolute
+
+                left-1/2
+                top-full
+
                 hidden
 
-                border-t
+                w-[calc(100%-80px)]
+                max-w-[1040px]
+
+                -translate-x-1/2
+
+                overflow-hidden
+
+                rounded-b-[18px]
+
+                border
+                border-t-0
                 border-white/10
 
                 bg-[#121032]
 
-                shadow-2xl
+                shadow-[0_20px_50px_rgba(0,0,0,0.30)]
 
-                lg:block
+                xl:block
               "
             >
               <div
                 className="
-                  mx-auto
+                  px-8
+                  py-5
 
-                  grid
-                  max-w-[1440px]
-
-                  grid-cols-[1.55fr_0.75fr]
-
-                  gap-12
-
-                  px-10
-                  py-10
-
-                  xl:px-14
+                  2xl:px-9
+                  2xl:py-6
                 "
               >
-                {/* SERVICES */}
-
-                <div>
-                  <p
-                    className="
-                      text-[13px]
-                      font-extrabold
-                      uppercase
-                      tracking-[0.2em]
-                      text-white/50
-                    "
-                  >
-                    Service lines
-                  </p>
-
-                  <ul
-                    className="
-                      mt-6
-
-                      grid
-                      grid-cols-3
-
-                      gap-x-11
-                    "
-                  >
-                    {services.map(
-                      (service) => (
-                        <li
-                          key={
-                            service.slug
-                          }
-                        >
-                          <a
-                            href="#services"
-                            className="
-                              group
-
-                              flex
-                              items-center
-                              justify-between
-
-                              gap-3
-
-                              border-b
-                              border-white/10
-
-                              py-4
-
-                              text-[16px]
-                              font-semibold
-                              text-white/82
-
-                              transition-colors
-
-                              hover:text-white
-                            "
-                          >
-                            {
-                              service.title
-                            }
-
-                            <ArrowUpRight
-                              className="
-                                h-4
-                                w-4
-
-                                opacity-0
-
-                                transition-all
-
-                                group-hover:-translate-y-0.5
-                                group-hover:translate-x-0.5
-                                group-hover:opacity-100
-                              "
-                            />
-                          </a>
-                        </li>
-                      ),
-                    )}
-                  </ul>
-                </div>
-
-                {/* OPERATIONS CARD */}
-
-                <div
+                <p
                   className="
-                    rounded-[28px]
+                    text-[12px]
 
-                    border
-                    border-white/10
+                    font-bold
+                    uppercase
 
-                    bg-white/[0.05]
+                    tracking-[0.22em]
 
-                    p-7
-
-                    text-white
-
-                    shadow-[0_20px_50px_rgba(0,0,0,0.18)]
+                    text-white/45
                   "
                 >
-                  <p
-                    className="
-                      text-[12px]
-                      font-extrabold
-                      uppercase
-                      tracking-[0.2em]
-                      text-white/55
-                    "
-                  >
-                    Always on
-                  </p>
+                  Service Lines
+                </p>
 
-                  <p
-                    className="
-                      mt-4
+                <ul
+                  className="
+                    mt-3
 
-                      font-display
+                    grid
+                    grid-cols-3
 
-                      text-[28px]
-                      font-extrabold
-                      leading-snug
-                      tracking-[-0.02em]
-                    "
-                  >
-                    A 24/7 operations
-                    desk sits behind
-                    every service line.
-                  </p>
+                    gap-x-9
+                  "
+                >
+                  {services.map(
+                    (service) => (
+                      <li
+                        key={service.slug}
+                        className="
+                          border-b
+                          border-white/10
+                        "
+                      >
+                        <a
+                          href="#services"
+                          onClick={() => {
+                            setMega(false);
+                          }}
+                          className="
+                            group
 
-                  <p
-                    className="
-                      mt-4
+                            flex
+                            min-h-[56px]
 
-                      text-[16px]
-                      leading-relaxed
-                      text-white/68
-                    "
-                  >
-                    One helpdesk, one
-                    escalation path and
-                    one accountable team
-                    across the entire
-                    student accommodation
-                    estate.
-                  </p>
+                            items-center
+                            justify-between
 
-                  <a
-                    href="#contact"
-                    className="
-                      mt-7
+                            gap-3
 
-                      inline-flex
-                      items-center
-                      gap-2
+                            py-2.5
 
-                      text-[16px]
-                      font-bold
-                      text-white
+                            text-[15px]
 
-                      transition-colors
+                            font-semibold
 
-                      hover:text-[#65b0ff]
-                    "
-                  >
-                    Contact our team
+                            leading-[1.45]
 
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </div>
+                            text-white/80
+
+                            transition-colors
+                            duration-200
+
+                            hover:text-white
+
+                            2xl:text-[16px]
+                          "
+                        >
+                          <span>
+                            {service.title}
+                          </span>
+
+                          <ArrowUpRight
+                            className="
+                              h-[19px]
+                              w-[19px]
+
+                              shrink-0
+
+                              opacity-0
+
+                              transition-all
+                              duration-200
+
+                              group-hover:-translate-y-0.5
+                              group-hover:translate-x-0.5
+                              group-hover:opacity-100
+                            "
+                          />
+                        </a>
+                      </li>
+                    ),
+                  )}
+                </ul>
               </div>
             </motion.div>
           )}
@@ -754,7 +825,7 @@ export function Nav() {
       </header>
 
       {/* =========================================
-          MOBILE OVERLAY
+          MOBILE / TABLET OVERLAY
       ========================================== */}
 
       <AnimatePresence>
@@ -770,9 +841,7 @@ export function Nav() {
               exit={{
                 opacity: 0,
               }}
-              onClick={
-                closeMobileMenu
-              }
+              onClick={closeMobileMenu}
               className="
                 fixed
                 inset-0
@@ -782,12 +851,12 @@ export function Nav() {
 
                 backdrop-blur-[2px]
 
-                lg:hidden
+                xl:hidden
               "
             />
 
             {/* =====================================
-                MOBILE DRAWER
+                DRAWER
             ====================================== */}
 
             <motion.aside
@@ -811,14 +880,16 @@ export function Nav() {
               }}
               className="
                 fixed
+
                 inset-y-0
                 left-0
+
                 z-[70]
 
                 flex
 
-                w-[88%]
-                max-w-[410px]
+                w-[86%]
+                max-w-[420px]
 
                 flex-col
 
@@ -828,15 +899,19 @@ export function Nav() {
 
                 shadow-[20px_0_60px_rgba(0,0,0,0.4)]
 
-                lg:hidden
+                xl:hidden
               "
             >
-              {/* MOBILE DRAWER HEADER */}
+              {/* =====================================
+                  DRAWER HEADER
+              ====================================== */}
 
               <div
                 className="
                   flex
-                  h-[96px]
+
+                  h-[86px]
+
                   items-center
                   justify-between
 
@@ -844,27 +919,31 @@ export function Nav() {
                   border-white/10
 
                   px-5
+
+                  sm:h-[94px]
+                  sm:px-6
                 "
               >
                 <Brandmark
                   tone="invert"
                   className="
-                    h-[60px]
-                    max-w-[270px]
+                    h-[46px]
+                    max-w-[220px]
+
+                    sm:h-[52px]
+                    sm:max-w-[250px]
                   "
                 />
 
                 <button
                   type="button"
                   aria-label="Close menu"
-                  onClick={
-                    closeMobileMenu
-                  }
+                  onClick={closeMobileMenu}
                   className="
                     flex
 
-                    h-12
-                    w-12
+                    h-11
+                    w-11
 
                     items-center
                     justify-center
@@ -876,7 +955,12 @@ export function Nav() {
                     hover:bg-white/10
                   "
                 >
-                  <X className="h-6 w-6" />
+                  <X
+                    className="
+                      h-[25px]
+                      w-[25px]
+                    "
+                  />
                 </button>
               </div>
 
@@ -891,13 +975,18 @@ export function Nav() {
                   border-white/10
 
                   px-5
-                  py-5
+                  py-4
+
+                  sm:px-6
+                  sm:py-5
                 "
               >
                 <div
                   className="
                     flex
+
                     h-12
+
                     items-center
 
                     rounded-full
@@ -913,9 +1002,12 @@ export function Nav() {
                   <Search
                     className="
                       mr-3
-                      h-5
-                      w-5
+
+                      h-[21px]
+                      w-[21px]
+
                       shrink-0
+
                       text-white/45
                     "
                   />
@@ -936,7 +1028,7 @@ export function Nav() {
 
                       bg-transparent
 
-                      text-[15px]
+                      text-[16px]
                       text-white
 
                       outline-none
@@ -947,80 +1039,122 @@ export function Nav() {
                 </div>
               </form>
 
-              {/* MOBILE NAVIGATION */}
+              {/* =====================================
+                  MOBILE NAVIGATION
+              ====================================== */}
 
               <nav
                 aria-label="Mobile"
                 className="
                   flex
+                  flex-1
                   flex-col
 
                   overflow-y-auto
 
-                  px-6
-                  py-4
+                  px-5
+                  py-3
+
+                  sm:px-6
+                  sm:py-4
                 "
               >
-                {navigation.map(
-                  (item, index) => (
-                    <motion.a
-                      key={
-                        item.label
-                      }
-                      href={
-                        item.href
-                      }
-                      onClick={
-                        closeMobileMenu
-                      }
-                      initial={{
-                        opacity: 0,
-                        x: -15,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        x: 0,
-                      }}
-                      transition={{
-                        delay:
-                          index *
-                          0.05,
-                      }}
-                      className="
-                        flex
+                {navItems.map(
+                  (
+                    item,
+                    index,
+                  ) => {
+                    const hasMega =
+                      "mega" in item &&
+                      Boolean(item.mega);
 
-                        min-h-[68px]
-
-                        items-center
-                        justify-between
-
-                        border-b
-                        border-white/10
-
-                        font-display
-
-                        text-[23px]
-                        font-extrabold
-                        tracking-[-0.02em]
-
-                        text-white/92
-
-                        transition-colors
-
-                        hover:text-[#65b0ff]
-                      "
-                    >
-                      {item.label}
-
-                      <ArrowUpRight
+                    return (
+                      <motion.a
+                        key={item.label}
+                        href={item.href}
+                        onClick={
+                          closeMobileMenu
+                        }
+                        initial={{
+                          opacity: 0,
+                          x: -15,
+                        }}
+                        animate={{
+                          opacity: 1,
+                          x: 0,
+                        }}
+                        transition={{
+                          delay:
+                            index * 0.05,
+                        }}
                         className="
-                          h-5
-                          w-5
-                          text-white/40
+                          flex
+
+                          min-h-[64px]
+
+                          items-center
+                          justify-between
+
+                          border-b
+                          border-white/10
+
+                          font-display
+
+                          text-[22px]
+                          font-bold
+
+                          tracking-[-0.02em]
+
+                          text-white/92
+
+                          transition-colors
+
+                          hover:text-[#65b0ff]
+
+                          sm:min-h-[70px]
+                          sm:text-[24px]
                         "
-                      />
-                    </motion.a>
-                  ),
+                      >
+                        <span
+                          className="
+                            flex
+                            items-center
+                            gap-2.5
+                          "
+                        >
+                          {item.label}
+
+                          {hasMega && (
+                            <ChevronDown
+                              className="
+                                h-[22px]
+                                w-[22px]
+
+                                shrink-0
+
+                                stroke-[2]
+
+                                text-white/60
+                              "
+                            />
+                          )}
+                        </span>
+
+                        {!hasMega && (
+                          <ArrowUpRight
+                            className="
+                              h-[22px]
+                              w-[22px]
+
+                              shrink-0
+
+                              text-white/40
+                            "
+                          />
+                        )}
+                      </motion.a>
+                    );
+                  },
                 )}
               </nav>
             </motion.aside>

@@ -6,7 +6,10 @@ import {
   useReducedMotion,
 } from "motion/react";
 
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  Check,
+} from "lucide-react";
 
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -27,6 +30,10 @@ import assetManagementAsset from "@/assets/asset-management.png";
 import operationsManagementAsset from "@/assets/operations-management.png";
 import emergencyMaintenanceAsset from "@/assets/emergency-maintenance.png";
 
+/* =========================================================
+   SERVICE IMAGES
+========================================================= */
+
 const serviceImages = {
   "control-room": controlRoomAsset,
   "student-living": studentAsset,
@@ -35,11 +42,19 @@ const serviceImages = {
   engineer: engineerAsset,
   "case-study": caseStudyAsset,
   "fire-safety": fireSafetyAsset,
-  "preventive-maintenance": preventiveMaintenanceAsset,
-  "asset-management": assetManagementAsset,
-  "operations-management": operationsManagementAsset,
-  "emergency-maintenance": emergencyMaintenanceAsset,
+  "preventive-maintenance":
+    preventiveMaintenanceAsset,
+  "asset-management":
+    assetManagementAsset,
+  "operations-management":
+    operationsManagementAsset,
+  "emergency-maintenance":
+    emergencyMaintenanceAsset,
 } as const;
+
+/* =========================================================
+   FILTER CATEGORIES
+========================================================= */
 
 const categories = [
   {
@@ -60,12 +75,19 @@ const categories = [
   },
 ] as const;
 
+/* =========================================================
+   SERVICE CATEGORY MAP
+========================================================= */
+
 const serviceCategories: Record<
   string,
   "hard" | "soft" | "mgmt"
 > = {
   "management-services": "mgmt",
-  "health-safety-management": "mgmt",
+
+  "health-safety-management":
+    "mgmt",
+
   "helpdesk-service": "mgmt",
 
   "building-installations-asset-maintenance":
@@ -81,9 +103,14 @@ const serviceCategories: Record<
     "mgmt",
 
   "cleaning-services": "soft",
-  "waste-management-services": "soft",
+
+  "waste-management-services":
+    "soft",
+
   "pest-control-services": "soft",
-  "laundry-equipment-service": "soft",
+
+  "laundry-equipment-service":
+    "soft",
 
   "security-equipment-maintenance":
     "hard",
@@ -94,228 +121,637 @@ const serviceCategories: Record<
   "additional-services": "soft",
 };
 
+const categoryNames = {
+  hard: "Hard Services",
+  soft: "Soft Services",
+  mgmt: "Operations & Management",
+};
+
+/* =========================================================
+   SECTION LABEL
+========================================================= */
+
+function SectionLabel({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className="
+        inline-flex
+        items-center
+
+        gap-2.5
+
+        rounded-full
+
+        border
+        border-[#63AEFF]/25
+
+        bg-[#63AEFF]/[0.07]
+
+        px-4
+        py-2
+
+        backdrop-blur-sm
+
+        sm:px-4
+        sm:py-2.5
+      "
+    >
+      <span
+        className="
+          h-[6px]
+          w-[6px]
+
+          shrink-0
+
+          rounded-full
+
+          bg-[#63AEFF]
+
+          shadow-[0_0_10px_rgba(99,174,255,0.85)]
+        "
+      />
+
+      <span
+        className="
+          text-[14px]
+
+          font-bold
+
+          tracking-[-0.01em]
+
+          text-white
+
+          sm:text-[15px]
+
+          lg:text-[16px]
+        "
+      >
+        {children}
+      </span>
+    </div>
+  );
+}
+
 /* =========================================================
    SERVICES
 ========================================================= */
 
 export function Services() {
-  const reduced = useReducedMotion();
+  const reduced =
+    useReducedMotion();
 
-  const [activeTab, setActiveTab] =
-    useState<string>("all");
+  const [
+    activeTab,
+    setActiveTab,
+  ] = useState<string>("all");
 
-  const filteredServices = services.filter(
-    (service) => {
+  const filteredServices =
+    services.filter((service) => {
       if (activeTab === "all") {
         return true;
       }
 
       return (
-        serviceCategories[service.slug] ===
-        activeTab
+        serviceCategories[
+          service.slug
+        ] === activeTab
       );
-    },
-  );
+    });
 
   return (
     <section
       id="services"
       className="
-        scroll-mt-[102px]
+        relative
+
+        scroll-mt-[110px]
+
+        overflow-hidden
 
         border-t
         border-white/10
 
         bg-background
 
-        py-14
+        py-12
 
-        sm:py-18
+        sm:py-14
 
-        md:py-20
+        md:py-16
 
-        lg:py-28
+        lg:py-20
 
-        xl:py-32
+        xl:py-24
       "
     >
-      <div className="shell">
-        {/* SECTION LABEL */}
-        <Reveal>
-          <div>
-            <p
-              className="
-                text-[11px]
-                font-bold
-                uppercase
-                tracking-[0.22em]
-                text-muted-foreground
+      {/* =========================================
+          BACKGROUND DECORATION
+      ========================================== */}
 
-                sm:text-[12px]
+      <div
+        className="
+          pointer-events-none
+
+          absolute
+
+          -right-[220px]
+          top-[60px]
+
+          h-[460px]
+          w-[460px]
+
+          rounded-full
+
+          bg-[#3F80CF]/[0.06]
+
+          blur-[120px]
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+
+          absolute
+
+          -left-[250px]
+          top-[650px]
+
+          h-[500px]
+          w-[500px]
+
+          rounded-full
+
+          bg-[#6257C5]/[0.045]
+
+          blur-[130px]
+        "
+      />
+
+      {/* =========================================
+          MAIN CONTAINER
+      ========================================== */}
+
+      <div
+        className="
+          relative
+          z-10
+
+          mx-auto
+
+          w-full
+          max-w-[1380px]
+
+          px-4
+
+          sm:px-5
+
+          md:px-7
+
+          lg:px-8
+
+          xl:px-10
+
+          2xl:px-0
+        "
+      >
+        {/* =========================================
+            COMPACT INTRO
+        ========================================== */}
+
+        <div
+          className="
+            grid
+
+            gap-8
+
+            border-b
+            border-white/10
+
+            pb-8
+
+            sm:pb-10
+
+            lg:grid-cols-[1.05fr_0.95fr]
+            lg:items-center
+            lg:gap-14
+
+            xl:gap-20
+          "
+        >
+          {/* =====================================
+              LEFT INTRO
+          ====================================== */}
+
+          <div>
+            <Reveal>
+              <SectionLabel>
+                Our Services
+              </SectionLabel>
+            </Reveal>
+
+            {/* MAIN HEADING */}
+
+            <Reveal delay={0.06}>
+              <h2
+                className="
+                  mt-5
+
+                  max-w-[760px]
+
+                  text-[2.1rem]
+
+                  font-bold
+
+                  leading-[1.03]
+
+                  tracking-[-0.04em]
+
+                  text-white
+
+                  sm:text-[2.6rem]
+
+                  md:text-[3rem]
+
+                  lg:text-[3.35rem]
+
+                  xl:text-[3.65rem]
+                "
+              >
+                Complete Integrated
+
+                <span
+                  className="
+                    block
+
+                    text-[#69AEF7]
+                  "
+                >
+                  Facilities Management
+                </span>
+              </h2>
+            </Reveal>
+
+            {/* SUPPORTING TITLE */}
+
+            <Reveal delay={0.1}>
+              <p
+                className="
+                  mt-4
+
+                  max-w-[700px]
+
+                  text-[15px]
+
+                  font-medium
+
+                  leading-7
+
+                  text-white/72
+
+                  sm:text-[16px]
+
+                  md:text-[17px]
+
+                  lg:text-[18px]
+                "
+              >
+                for Khalifa University
+                Student Accommodation
+              </p>
+            </Reveal>
+          </div>
+
+          {/* =====================================
+              RIGHT DESCRIPTION
+          ====================================== */}
+
+          <Reveal delay={0.12}>
+            <div
+              className="
+                border-t
+                border-white/10
+
+                pt-6
+
+                lg:border-l
+                lg:border-t-0
+
+                lg:pl-10
+                lg:pt-0
+
+                xl:pl-12
               "
             >
-              Our Services
-            </p>
+              <p
+                className="
+                  max-w-xl
 
-            <span
-              className="
-                mt-3
-                block
-                h-[2px]
-                w-14
+                  text-[14px]
 
-                rounded-full
+                  leading-7
 
-                bg-active
-              "
-            />
-          </div>
-        </Reveal>
+                  text-white/60
 
-        {/* INTRO */}
+                  sm:text-[15px]
+
+                  lg:text-[16px]
+                  lg:leading-8
+                "
+              >
+                We deliver complete
+                facilities management
+                solutions for Khalifa
+                University student
+                accommodation, combining
+                reliability, functionality
+                and quality service to
+                create safe and practical
+                student living
+                environments.
+              </p>
+
+              {/* BENEFITS */}
+
+              <div
+                className="
+                  mt-5
+
+                  flex
+                  flex-wrap
+
+                  gap-x-5
+                  gap-y-3
+                "
+              >
+                {[
+                  "Reliable",
+                  "Safe",
+                  "Student-focused",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="
+                      flex
+
+                      items-center
+
+                      gap-2
+
+                      text-[13px]
+
+                      font-semibold
+
+                      text-white/70
+
+                      sm:text-[14px]
+                    "
+                  >
+                    <span
+                      className="
+                        flex
+
+                        h-5
+                        w-5
+
+                        shrink-0
+
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        bg-[#3F80CF]/15
+
+                        text-[#69AEF7]
+                      "
+                    >
+                      <Check
+                        className="
+                          h-3
+                          w-3
+
+                          stroke-[2.5]
+                        "
+                      />
+                    </span>
+
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* =========================================
+            FILTER SECTION
+        ========================================== */}
+
         <div
           className="
             mt-7
 
-            grid
-            gap-6
+            flex
+            flex-col
 
-            lg:grid-cols-[1.15fr_0.85fr]
-            lg:items-end
-            lg:gap-14
+            gap-5
+
+            sm:mt-8
+
+            lg:flex-row
+            lg:items-center
+            lg:justify-between
           "
         >
-          <Reveal delay={0.06}>
-            <h2
-              className="
-                max-w-[18ch]
+          {/* FILTER TITLE */}
 
-                text-[2.35rem]
-                font-extrabold
-                leading-[1]
-                tracking-[-0.04em]
-                text-white
+          <Reveal>
+            <div>
+              <p
+                className="
+                  text-[11px]
 
-                sm:text-[3rem]
+                  font-bold
+                  uppercase
 
-                md:text-[3.5rem]
+                  tracking-[0.18em]
 
-                lg:text-[4rem]
-              "
-            >
-              Complete integrated facilities management for Khalifa University Student Accommodation
-            </h2>
+                  text-white/40
+                "
+              >
+                Explore by category
+              </p>
+
+              <p
+                className="
+                  mt-1
+
+                  text-[13px]
+
+                  text-white/50
+
+                  sm:text-[14px]
+                "
+              >
+                Choose a category to
+                quickly find the right
+                service.
+              </p>
+            </div>
           </Reveal>
 
-          <Reveal delay={0.1}>
+          {/* FILTER BUTTONS */}
+
+          <div
+            className="
+              -mx-1
+
+              flex
+
+              gap-2
+
+              overflow-x-auto
+
+              px-1
+              pb-2
+
+              [scrollbar-width:none]
+
+              [&::-webkit-scrollbar]:hidden
+
+              sm:mx-0
+              sm:flex-wrap
+              sm:px-0
+
+              lg:justify-end
+            "
+          >
+            {categories.map(
+              (category) => {
+                const isActive =
+                  activeTab ===
+                  category.id;
+
+                return (
+                  <button
+                    key={
+                      category.id
+                    }
+                    type="button"
+                    onClick={() =>
+                      setActiveTab(
+                        category.id,
+                      )
+                    }
+                    className={`
+                      shrink-0
+
+                      rounded-full
+
+                      border
+
+                      px-4
+                      py-2.5
+
+                      text-[12px]
+
+                      font-semibold
+
+                      transition-all
+                      duration-300
+
+                      sm:px-5
+                      sm:text-[13px]
+
+                      ${
+                        isActive
+                          ? `
+                            border-active
+
+                            bg-active
+
+                            text-white
+
+                            shadow-[0_8px_24px_rgba(63,128,207,0.20)]
+                          `
+                          : `
+                            border-white/10
+
+                            bg-white/[0.03]
+
+                            text-white/60
+
+                            hover:border-white/20
+
+                            hover:bg-white/[0.06]
+
+                            hover:text-white
+                          `
+                      }
+                    `}
+                  >
+                    {
+                      category.label
+                    }
+                  </button>
+                );
+              },
+            )}
+          </div>
+        </div>
+
+        {/* =========================================
+            SERVICE COUNT
+        ========================================== */}
+
+        <Reveal>
+          <div
+            className="
+              mt-5
+
+              flex
+              items-center
+
+              gap-3
+            "
+          >
+            <span
+              className="
+                h-px
+                w-8
+
+                bg-active
+              "
+            />
+
             <p
               className="
-                max-w-xl
+                text-[11px]
 
-                text-[15px]
-                leading-7
-                text-white/60
+                font-semibold
+                uppercase
 
-                sm:text-[16px]
-                sm:leading-8
+                tracking-[0.14em]
+
+                text-white/40
               "
             >
-              We deliver complete facilities management solutions for Khalifa University student accommodation. Our team combines reliability, functionality, and quality craftsmanship to create environments that are safe, practical, and tailored to student living.
+              {
+                filteredServices.length
+              }{" "}
+              services available
             </p>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
 
-        {/* =================================================
-            FILTER TABS
-        ================================================== */}
-
-        <div
-          className="
-            -mx-1
-
-            mt-8
-
-            flex
-            gap-2
-
-            overflow-x-auto
-
-            px-1
-            pb-3
-
-            [scrollbar-width:none]
-
-            [&::-webkit-scrollbar]:hidden
-
-            sm:mx-0
-            sm:mt-10
-            sm:flex-wrap
-            sm:overflow-visible
-            sm:px-0
-          "
-        >
-          {categories.map((cat) => {
-            const isActive =
-              activeTab === cat.id;
-
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() =>
-                  setActiveTab(cat.id)
-                }
-                className={`
-                  relative
-                  shrink-0
-
-                  rounded-full
-
-                  border
-
-                  px-4
-                  py-2.5
-
-                  text-[12px]
-                  font-semibold
-                  tracking-[0.02em]
-
-                  transition-all
-                  duration-300
-
-                  sm:px-5
-                  sm:py-3
-                  sm:text-[13px]
-
-                  ${
-                    isActive
-                      ? `
-                        border-active
-                        bg-active
-                        text-white
-                        shadow-[0_8px_24px_rgba(63,128,207,0.18)]
-                      `
-                      : `
-                        border-white/10
-                        bg-white/[0.025]
-                        text-white/60
-
-                        hover:border-white/20
-                        hover:bg-white/[0.05]
-                        hover:text-white
-                      `
-                  }
-                `}
-              >
-                {cat.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* =================================================
+        {/* =========================================
             SERVICES GRID
-        ================================================== */}
+        ========================================== */}
 
         <motion.ul
           layout
@@ -323,10 +759,12 @@ export function Services() {
             mt-7
 
             grid
+
             grid-cols-1
+
             gap-5
 
-            sm:mt-10
+            sm:mt-9
             sm:grid-cols-2
 
             lg:grid-cols-3
@@ -334,115 +772,66 @@ export function Services() {
             xl:gap-6
           "
         >
-          <AnimatePresence mode="popLayout">
-            {filteredServices.map((service) => (
-              <motion.li
-                layout
-                key={service.slug}
-                initial={
-                  reduced
-                    ? false
-                    : {
-                        opacity: 0,
-                        scale: 0.96,
-                        y: 12,
-                      }
-                }
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  scale: 0.96,
-                  y: 10,
-                }}
-                transition={{
-                  duration: 0.4,
-                  ease: [
-                    0.16,
-                    1,
-                    0.3,
-                    1,
-                  ],
-                }}
-                className="h-full"
-              >
-                <motion.a
-                  href="#contact"
-                  whileHover={
-                    reduced
-                      ? undefined
-                      : {
-                          y: -5,
-                        }
-                  }
-                  transition={{
-                    duration: 0.3,
-                    ease: [
-                      0.16,
-                      1,
-                      0.3,
-                      1,
-                    ],
-                  }}
-                  className="
-                    group
+          <AnimatePresence
+            mode="popLayout"
+          >
+            {filteredServices.map(
+              (service) => {
+                const category =
+                  serviceCategories[
+                    service.slug
+                  ];
 
-                    block
-                    h-full
-
-                    overflow-hidden
-
-                    rounded-[20px]
-
-                    border
-                    border-white/10
-
-                    bg-white/[0.035]
-
-                    shadow-[0_12px_35px_rgba(0,0,0,0.10)]
-
-                    transition-all
-                    duration-300
-
-                    hover:border-active/25
-                    hover:bg-white/[0.05]
-                    hover:shadow-[0_20px_50px_rgba(0,0,0,0.16)]
-                  "
-                >
-                  {/* IMAGE */}
-                  <div
+                return (
+                  <motion.li
+                    layout
+                    key={
+                      service.slug
+                    }
+                    initial={
+                      reduced
+                        ? false
+                        : {
+                            opacity: 0,
+                            scale:
+                              0.97,
+                            y: 14,
+                          }
+                    }
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      y: 0,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0.97,
+                      y: 10,
+                    }}
+                    transition={{
+                      duration: 0.4,
+                      ease: [
+                        0.16,
+                        1,
+                        0.3,
+                        1,
+                      ],
+                    }}
                     className="
-                      relative
-
-                      aspect-[16/10]
-
-                      overflow-hidden
-
-                      bg-[#16161c]
+                      h-full
                     "
                   >
-                    <motion.img
-                      src={
-                        serviceImages[
-                          service.imageKey
-                        ]
-                      }
-                      alt={service.title}
-                      width={800}
-                      height={600}
-                      loading="lazy"
+                    <motion.a
+                      href="#contact"
                       whileHover={
                         reduced
                           ? undefined
                           : {
-                              scale: 1.05,
+                              y: -6,
                             }
                       }
                       transition={{
-                        duration: 0.6,
+                        duration: 0.3,
                         ease: [
                           0.16,
                           1,
@@ -451,126 +840,349 @@ export function Services() {
                         ],
                       }}
                       className="
+                        group
+
+                        flex
                         h-full
-                        w-full
+                        flex-col
 
-                        object-cover
+                        overflow-hidden
 
-                        opacity-80
+                        rounded-[22px]
 
-                        transition-opacity
+                        border
+                        border-white/10
+
+                        bg-white/[0.035]
+
+                        shadow-[0_12px_35px_rgba(0,0,0,0.10)]
+
+                        transition-all
                         duration-300
 
-                        group-hover:opacity-100
-                      "
-                    />
+                        hover:border-[#4B94E8]/30
 
-                    <div
-                      className="
-                        absolute
-                        inset-0
+                        hover:bg-white/[0.055]
 
-                        bg-gradient-to-t
-
-                        from-[#111118]/90
-                        via-[#111118]/10
-                        to-transparent
-                      "
-                    />
-
-                    <div
-                      className="
-                        absolute
-                        inset-x-0
-                        bottom-0
-
-                        h-px
-
-                        bg-gradient-to-r
-
-                        from-transparent
-                        via-active/40
-                        to-transparent
-                      "
-                    />
-                  </div>
-
-                  {/* CONTENT */}
-                  <div
-                    className="
-                      p-5
-
-                      sm:p-6
-
-                      lg:p-6
-                    "
-                  >
-                    <div
-                      className="
-                        flex
-                        items-start
-                        justify-between
-                        gap-4
+                        hover:shadow-[0_24px_60px_rgba(0,0,0,0.18)]
                       "
                     >
-                      <h3
+                      {/* =============================
+                          IMAGE
+                      ============================== */}
+
+                      <div
                         className="
-                          max-w-[90%]
+                          relative
 
-                          text-[19px]
-                          font-bold
-                          leading-snug
-                          text-white
+                          aspect-[16/10]
 
-                          transition-colors
+                          overflow-hidden
 
-                          group-hover:text-active
-
-                          sm:text-[20px]
+                          bg-[#16161c]
                         "
                       >
-                        {service.title}
-                      </h3>
+                        <motion.img
+                          src={
+                            serviceImages[
+                              service
+                                .imageKey
+                            ]
+                          }
+                          alt={
+                            service.title
+                          }
+                          width={800}
+                          height={600}
+                          loading="lazy"
+                          whileHover={
+                            reduced
+                              ? undefined
+                              : {
+                                  scale:
+                                    1.055,
+                                }
+                          }
+                          transition={{
+                            duration: 0.7,
+                            ease: [
+                              0.16,
+                              1,
+                              0.3,
+                              1,
+                            ],
+                          }}
+                          className="
+                            h-full
+                            w-full
 
-                      <ArrowUpRight
+                            object-cover
+
+                            opacity-85
+
+                            transition-opacity
+                            duration-300
+
+                            group-hover:opacity-100
+                          "
+                        />
+
+                        {/* IMAGE OVERLAY */}
+
+                        <div
+                          className="
+                            absolute
+                            inset-0
+
+                            bg-gradient-to-t
+
+                            from-[#10101a]/95
+                            via-[#10101a]/15
+                            to-transparent
+                          "
+                        />
+
+                        {/* CATEGORY LABEL */}
+
+                        {category && (
+                          <span
+                            className="
+                              absolute
+
+                              left-4
+                              top-4
+
+                              rounded-full
+
+                              border
+                              border-white/15
+
+                              bg-[#16143e]/75
+
+                              px-3
+                              py-1.5
+
+                              text-[10px]
+
+                              font-bold
+                              uppercase
+
+                              tracking-[0.12em]
+
+                              text-white/80
+
+                              backdrop-blur-md
+
+                              sm:left-5
+                              sm:top-5
+                            "
+                          >
+                            {
+                              categoryNames[
+                                category
+                              ]
+                            }
+                          </span>
+                        )}
+
+                        {/* IMAGE ACCENT */}
+
+                        <div
+                          className="
+                            absolute
+
+                            inset-x-0
+                            bottom-0
+
+                            h-[2px]
+
+                            bg-gradient-to-r
+
+                            from-transparent
+                            via-active/60
+                            to-transparent
+
+                            opacity-60
+                          "
+                        />
+                      </div>
+
+                      {/* =============================
+                          CARD CONTENT
+                      ============================== */}
+
+                      <div
                         className="
-                          mt-1
+                          flex
 
-                          h-5
-                          w-5
+                          flex-1
+                          flex-col
 
-                          shrink-0
+                          p-5
 
-                          text-white/35
-
-                          transition-all
-                          duration-300
-
-                          group-hover:-translate-y-1
-                          group-hover:translate-x-1
-                          group-hover:text-active
+                          sm:p-6
                         "
-                      />
-                    </div>
+                      >
+                        {/* TITLE ROW */}
 
-                    <p
-                      className="
-                        mt-3
+                        <div
+                          className="
+                            flex
 
-                        text-[14px]
-                        leading-6
-                        text-white/55
+                            items-start
+                            justify-between
 
-                        sm:text-[15px]
-                        sm:leading-7
-                      "
-                    >
-                      {service.summary}
-                    </p>
-                  </div>
-                </motion.a>
-              </motion.li>
-            ))}
+                            gap-4
+                          "
+                        >
+                          <h3
+                            className="
+                              max-w-[90%]
+
+                              text-[20px]
+
+                              font-bold
+
+                              leading-[1.25]
+
+                              tracking-[-0.02em]
+
+                              text-white
+
+                              transition-colors
+
+                              group-hover:text-[#74B8FF]
+
+                              sm:text-[21px]
+
+                              xl:text-[22px]
+                            "
+                          >
+                            {
+                              service.title
+                            }
+                          </h3>
+
+                          <span
+                            className="
+                              flex
+
+                              h-9
+                              w-9
+
+                              shrink-0
+
+                              items-center
+                              justify-center
+
+                              rounded-full
+
+                              border
+                              border-white/10
+
+                              bg-white/[0.03]
+
+                              transition-all
+                              duration-300
+
+                              group-hover:border-active/30
+
+                              group-hover:bg-active/10
+                            "
+                          >
+                            <ArrowUpRight
+                              className="
+                                h-[18px]
+                                w-[18px]
+
+                                text-white/40
+
+                                transition-all
+                                duration-300
+
+                                group-hover:-translate-y-0.5
+
+                                group-hover:translate-x-0.5
+
+                                group-hover:text-active
+                              "
+                            />
+                          </span>
+                        </div>
+
+                        {/* SUMMARY */}
+
+                        <p
+                          className="
+                            mt-4
+
+                            text-[14px]
+
+                            leading-7
+
+                            text-white/55
+
+                            sm:text-[15px]
+                          "
+                        >
+                          {
+                            service.summary
+                          }
+                        </p>
+
+                        {/* VIEW SERVICE */}
+
+                        <div
+                          className="
+                            mt-auto
+
+                            pt-6
+                          "
+                        >
+                          <div
+                            className="
+                              flex
+                              items-center
+
+                              gap-2
+
+                              border-t
+                              border-white/10
+
+                              pt-4
+
+                              text-[11px]
+
+                              font-bold
+                              uppercase
+
+                              tracking-[0.12em]
+
+                              text-white/40
+
+                              transition-colors
+
+                              group-hover:text-active
+
+                              sm:text-[12px]
+                            "
+                          >
+                            View Service
+
+                            <ArrowUpRight
+                              className="
+                                h-3.5
+                                w-3.5
+                              "
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </motion.a>
+                  </motion.li>
+                );
+              },
+            )}
           </AnimatePresence>
         </motion.ul>
       </div>
@@ -579,7 +1191,7 @@ export function Services() {
 }
 
 /* =========================================================
-   INDUSTRIES
+   INDUSTRIES / ACCOMMODATION OPERATIONS
 ========================================================= */
 
 export function Industries() {
@@ -588,6 +1200,7 @@ export function Industries() {
       id="industries"
       className="
         relative
+
         overflow-hidden
 
         border-t
@@ -596,7 +1209,10 @@ export function Industries() {
         bg-[#0b0b10]
       "
     >
-      {/* BACKGROUND IMAGE */}
+      {/* =========================================
+          BACKGROUND IMAGE
+      ========================================== */}
+
       <img
         src={engineerAsset}
         alt=""
@@ -615,11 +1231,14 @@ export function Industries() {
 
           object-cover
 
-          opacity-[0.07]
+          opacity-[0.08]
         "
       />
 
-      {/* SOFT OVERLAY */}
+      {/* =========================================
+          OVERLAY
+      ========================================== */}
+
       <div
         aria-hidden="true"
         className="
@@ -628,212 +1247,468 @@ export function Industries() {
 
           bg-gradient-to-b
 
-          from-[#0b0b10]/80
-          via-[#0b0b10]/90
+          from-[#0b0b10]/82
+          via-[#0b0b10]/92
           to-[#0b0b10]
         "
       />
 
+      {/* =========================================
+          DECORATIVE GLOW
+      ========================================== */}
+
       <div
         className="
-          shell
+          pointer-events-none
+
+          absolute
+
+          -right-[220px]
+          top-[120px]
+
+          h-[500px]
+          w-[500px]
+
+          rounded-full
+
+          bg-[#3F80CF]/[0.07]
+
+          blur-[130px]
+        "
+      />
+
+      {/* =========================================
+          CONTAINER
+      ========================================== */}
+
+      <div
+        className="
           relative
           z-10
 
-          py-14
+          mx-auto
 
-          sm:py-18
+          w-full
+          max-w-[1380px]
 
-          md:py-20
+          px-4
+          py-12
 
-          lg:py-28
+          sm:px-5
+          sm:py-14
 
-          xl:py-32
+          md:px-7
+          md:py-16
+
+          lg:px-8
+          lg:py-20
+
+          xl:px-10
+          xl:py-24
+
+          2xl:px-0
         "
       >
-        {/* SECTION LABEL */}
-        <Reveal>
-          <div>
-            <p
-              className="
-                text-[11px]
-                font-bold
-                uppercase
-                tracking-[0.22em]
-                text-muted-foreground
+        {/* =========================================
+            INDUSTRIES INTRO
+        ========================================== */}
 
-                sm:text-[12px]
-              "
-            >
-              Areas of Accommodation Operations
-            </p>
-
-            <span
-              className="
-                mt-3
-                block
-                h-[2px]
-                w-14
-
-                rounded-full
-
-                bg-active
-              "
-            />
-          </div>
-        </Reveal>
-
-        {/* HEADING */}
-        <Reveal delay={0.08}>
-          <h2
-            className="
-              mt-6
-              max-w-[19ch]
-
-              text-[2.2rem]
-              font-extrabold
-              leading-[1.02]
-              tracking-[-0.035em]
-              text-white
-
-              sm:mt-7
-              sm:text-[2.8rem]
-
-              md:text-[3.2rem]
-
-              lg:text-[3.7rem]
-            "
-          >
-            Dedicated to Khalifa University Student Accommodation and the students who live here
-          </h2>
-        </Reveal>
-
-        {/* INDUSTRY CARDS */}
         <div
           className="
-            mt-9
+            grid
+
+            gap-8
+
+            border-b
+            border-white/10
+
+            pb-8
+
+            sm:pb-10
+
+            lg:grid-cols-[1.08fr_0.92fr]
+            lg:items-center
+            lg:gap-14
+
+            xl:gap-20
+          "
+        >
+          {/* LEFT */}
+
+          <div>
+            <Reveal>
+              <SectionLabel>
+                Accommodation Operations
+              </SectionLabel>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <h2
+                className="
+                  mt-5
+
+                  max-w-[900px]
+
+                  text-[2.1rem]
+
+                  font-bold
+
+                  leading-[1.02]
+
+                  tracking-[-0.04em]
+
+                  text-white
+
+                  sm:text-[2.65rem]
+
+                  md:text-[3rem]
+
+                  lg:text-[3.4rem]
+
+                  xl:text-[3.7rem]
+                "
+              >
+                Dedicated to
+
+                <span
+                  className="
+                    block
+
+                    text-[#69AEF7]
+                  "
+                >
+                  Khalifa University
+                </span>
+
+                <span className="block">
+                  Student Accommodation
+                </span>
+              </h2>
+            </Reveal>
+          </div>
+
+          {/* RIGHT */}
+
+          <Reveal delay={0.12}>
+            <div
+              className="
+                border-t
+                border-white/10
+
+                pt-6
+
+                lg:border-l
+                lg:border-t-0
+
+                lg:pl-10
+                lg:pt-0
+
+                xl:pl-12
+              "
+            >
+              <p
+                className="
+                  max-w-xl
+
+                  text-[16px]
+
+                  font-medium
+
+                  leading-8
+
+                  text-white/72
+
+                  sm:text-[17px]
+
+                  lg:text-[18px]
+                "
+              >
+                Supporting students
+                with safe, reliable and
+                well-managed spaces
+                every day.
+              </p>
+
+              <p
+                className="
+                  mt-4
+
+                  max-w-xl
+
+                  text-[14px]
+
+                  leading-7
+
+                  text-white/50
+
+                  sm:text-[15px]
+                "
+              >
+                Every operational area
+                is designed around
+                comfort, functionality,
+                service continuity and
+                student wellbeing.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* =========================================
+            OPERATION CARDS
+        ========================================== */}
+
+        <div
+          className="
+            mt-8
 
             grid
+
             grid-cols-1
+
             gap-4
 
-            sm:mt-12
+            sm:mt-10
             sm:grid-cols-2
             sm:gap-5
 
             lg:grid-cols-4
           "
         >
-          {industries.map((ind, i) => (
-            <Reveal
-              key={ind.title}
-              delay={0.06 * i}
-              className="h-full"
-            >
-              <div
+          {industries.map(
+            (
+              industry,
+              index,
+            ) => (
+              <Reveal
+                key={
+                  industry.title
+                }
+                delay={
+                  0.06 * index
+                }
                 className="
-                  group
                   h-full
-
-                  rounded-[20px]
-
-                  border
-                  border-white/10
-
-                  bg-white/[0.035]
-
-                  p-6
-
-                  backdrop-blur-sm
-
-                  shadow-[0_12px_32px_rgba(0,0,0,0.10)]
-
-                  transition-all
-                  duration-300
-
-                  hover:-translate-y-1
-                  hover:border-active/25
-                  hover:bg-white/[0.05]
-                  hover:shadow-[0_18px_45px_rgba(0,0,0,0.16)]
-
-                  sm:p-7
-
-                  lg:p-7
-
-                  xl:p-8
                 "
               >
                 <div
                   className="
-                    mb-5
+                    group
+
+                    relative
 
                     flex
-                    items-center
-                    justify-between
+
+                    h-full
+                    min-h-[280px]
+
+                    flex-col
+
+                    overflow-hidden
+
+                    rounded-[22px]
+
+                    border
+                    border-white/10
+
+                    bg-white/[0.035]
+
+                    p-6
+
+                    backdrop-blur-sm
+
+                    shadow-[0_12px_32px_rgba(0,0,0,0.10)]
+
+                    transition-all
+                    duration-300
+
+                    hover:-translate-y-1.5
+
+                    hover:border-active/30
+
+                    hover:bg-white/[0.055]
+
+                    hover:shadow-[0_20px_50px_rgba(0,0,0,0.18)]
+
+                    sm:p-7
+
+                    xl:p-8
                   "
                 >
-                  <span
-                    className="
-                      text-[11px]
-                      font-bold
-                      tracking-[0.18em]
-                      text-active
-                    "
-                  >
-                    {String(i + 1).padStart(
-                      2,
-                      "0",
-                    )}
-                  </span>
+                  {/* TOP LINE */}
 
                   <span
                     className="
-                      h-2
-                      w-2
+                      absolute
 
-                      rounded-full
+                      left-0
+                      top-0
 
-                      bg-active/50
+                      h-[3px]
+                      w-0
 
-                      transition-transform
+                      bg-active
 
-                      group-hover:scale-150
+                      transition-all
+                      duration-500
+
+                      group-hover:w-full
                     "
                   />
+
+                  {/* NUMBER */}
+
+                  <div
+                    className="
+                      flex
+
+                      items-center
+                      justify-between
+                    "
+                  >
+                    <span
+                      className="
+                        text-[12px]
+
+                        font-bold
+
+                        tracking-[0.2em]
+
+                        text-active
+                      "
+                    >
+                      {String(
+                        index + 1,
+                      ).padStart(
+                        2,
+                        "0",
+                      )}
+                    </span>
+
+                    <span
+                      className="
+                        flex
+
+                        h-9
+                        w-9
+
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        border
+                        border-white/10
+
+                        bg-white/[0.025]
+
+                        transition-all
+                        duration-300
+
+                        group-hover:border-active/30
+
+                        group-hover:bg-active/10
+                      "
+                    >
+                      <span
+                        className="
+                          h-[7px]
+                          w-[7px]
+
+                          rounded-full
+
+                          bg-active/60
+
+                          transition-all
+                          duration-300
+
+                          group-hover:scale-150
+
+                          group-hover:bg-active
+
+                          group-hover:shadow-[0_0_12px_rgba(63,128,207,0.7)]
+                        "
+                      />
+                    </span>
+                  </div>
+
+                  {/* TITLE */}
+
+                  <h3
+                    className="
+                      mt-7
+
+                      text-[21px]
+
+                      font-bold
+
+                      leading-[1.2]
+
+                      tracking-[-0.025em]
+
+                      text-white
+
+                      transition-colors
+
+                      group-hover:text-[#72B7FF]
+
+                      sm:text-[22px]
+
+                      xl:text-[23px]
+                    "
+                  >
+                    {
+                      industry.title
+                    }
+                  </h3>
+
+                  {/* BODY */}
+
+                  <p
+                    className="
+                      mt-4
+
+                      text-[14px]
+
+                      leading-7
+
+                      text-white/55
+
+                      sm:text-[15px]
+                    "
+                  >
+                    {
+                      industry.body
+                    }
+                  </p>
+
+                  {/* BOTTOM LINE */}
+
+                  <div
+                    className="
+                      mt-auto
+                      pt-7
+                    "
+                  >
+                    <span
+                      className="
+                        block
+
+                        h-px
+                        w-full
+
+                        bg-gradient-to-r
+
+                        from-active/40
+
+                        to-transparent
+                      "
+                    />
+                  </div>
                 </div>
-
-                <h3
-                  className="
-                    text-[20px]
-                    font-bold
-                    leading-snug
-                    text-white
-
-                    sm:text-[21px]
-
-                    lg:text-[22px]
-                  "
-                >
-                  {ind.title}
-                </h3>
-
-                <p
-                  className="
-                    mt-4
-
-                    text-[14px]
-                    leading-6
-                    text-white/55
-
-                    sm:text-[15px]
-                    sm:leading-7
-                  "
-                >
-                  {ind.body}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            ),
+          )}
         </div>
       </div>
     </section>

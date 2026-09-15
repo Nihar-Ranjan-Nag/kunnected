@@ -21,18 +21,23 @@ export function Brandmark({
         `
           block
 
-          h-[58px]
+          h-[46px]
           w-auto
-          max-w-[300px]
+
+          max-w-[220px]
+
+          shrink-0
 
           object-contain
           object-left
 
-          sm:h-[62px]
+          sm:h-[48px]
 
-          lg:h-[68px]
+          md:h-[50px]
 
-          xl:h-[72px]
+          lg:h-[52px]
+
+          xl:h-[52px]
         `,
         tone === "invert" &&
           "brightness-0 invert",

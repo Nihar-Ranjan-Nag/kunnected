@@ -21,7 +21,7 @@ export function Brandmark({
         `
           block
 
-          h-[46px]
+          h-[40px]
           w-auto
 
           max-w-[220px]
@@ -31,13 +31,13 @@ export function Brandmark({
           object-contain
           object-left
 
-          sm:h-[48px]
+          sm:h-[50px]
 
           md:h-[50px]
 
-          lg:h-[52px]
+          lg:h-[55px]
 
-          xl:h-[52px]
+          xl:h-[55px]
         `,
         tone === "invert" &&
           "brightness-0 invert",

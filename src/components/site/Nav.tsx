@@ -276,9 +276,11 @@ export function Nav() {
 
             lg:px-8
 
-            xl:px-10
+            xl:pl-[80px]
+            xl:pr-10
 
-            2xl:px-0
+            2xl:pl-[90px]
+            2xl:pr-0
 
             transition-[height,padding]
             duration-300
@@ -333,11 +335,11 @@ export function Nav() {
               hidden
               items-center
 
-              xl:ml-[170px]
+              xl:ml-[65px]
               xl:flex
               xl:gap-[38px]
 
-              2xl:ml-[230px]
+              2xl:ml-[70px]
               2xl:gap-[48px]
             "
           >

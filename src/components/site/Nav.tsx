@@ -972,16 +972,17 @@ export function Nav() {
                   sm:px-6
                 "
               >
-                <Brandmark
-                  tone="invert"
-                  className="
-                    h-[46px]
-                    max-w-[220px]
+               <Brandmark
+  tone="invert"
+  className="
+    h-[56px]
+    w-auto
+    max-w-[230px]
 
-                    sm:h-[52px]
-                    sm:max-w-[250px]
-                  "
-                />
+    2xl:h-[60px]
+    2xl:max-w-[245px]
+  "
+/>
 
                 <button
                   type="button"

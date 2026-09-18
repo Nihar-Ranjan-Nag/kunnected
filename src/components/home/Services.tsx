@@ -29,12 +29,32 @@ import preventiveMaintenanceAsset from "@/assets/preventive-maintenance.png";
 import assetManagementAsset from "@/assets/asset-management.png";
 import operationsManagementAsset from "@/assets/operations-management.png";
 import emergencyMaintenanceAsset from "@/assets/emergency-maintenance.png";
+import energyUtilitiesManagementAsset from
+  "@/assets/services/01_energy_utilities_management.png";
+import cleaningServicesAsset from
+  "@/assets/services/02_cleaning_services.png";
+import wasteManagementAsset from
+  "@/assets/services/03_waste_management.png";
+import pestControlAsset from
+  "@/assets/services/04_pest_control.png";
+import laundryEquipmentServiceAsset from
+  "@/assets/services/05_laundry_equipment_service.png";
+import securityEquipmentMaintenanceAsset from
+  "@/assets/services/06_security_equipment_maintenance.png";
+import vendingEquipmentServicesAsset from
+  "@/assets/services/07_vending_equipment_services.png";
+import additionalServicesAsset from
+  "@/assets/services/08_additional_services.png";
+import buildingInstallationsAsset from
+  "@/assets/services/Building Installations & Asset Maintenance.png";
+import groundsMaintenanceAsset from
+  "@/assets/services/Grounds Maintenance & Indoor Plant Services.png";
 
 /* =========================================================
    SERVICE IMAGES
 ========================================================= */
 
-const serviceImages = {
+ const serviceImages = {
   "control-room": controlRoomAsset,
   "student-living": studentAsset,
   hvac: hvacAsset,
@@ -42,14 +62,27 @@ const serviceImages = {
   engineer: engineerAsset,
   "case-study": caseStudyAsset,
   "fire-safety": fireSafetyAsset,
-  "preventive-maintenance":
-    preventiveMaintenanceAsset,
-  "asset-management":
-    assetManagementAsset,
-  "operations-management":
-    operationsManagementAsset,
-  "emergency-maintenance":
-    emergencyMaintenanceAsset,
+  "preventive-maintenance": preventiveMaintenanceAsset,
+  "asset-management": assetManagementAsset,
+  "operations-management": operationsManagementAsset,
+  "emergency-maintenance": emergencyMaintenanceAsset,
+
+  "energy-utilities-management":
+    energyUtilitiesManagementAsset,
+  "cleaning-services": cleaningServicesAsset,
+  "waste-management-services": wasteManagementAsset,
+  "pest-control-services": pestControlAsset,
+  "laundry-equipment-service":
+    laundryEquipmentServiceAsset,
+  "security-equipment-maintenance":
+    securityEquipmentMaintenanceAsset,
+  "vending-equipment-services":
+    vendingEquipmentServicesAsset,
+  "additional-services": additionalServicesAsset,
+  "building-installations-asset-maintenance":
+    buildingInstallationsAsset,
+  "grounds-maintenance-indoor-plants":
+    groundsMaintenanceAsset,
 } as const;
 
 /* =========================================================
@@ -193,6 +226,45 @@ function SectionLabel({
         {children}
       </span>
     </div>
+  );
+}
+
+/* =========================================================
+   PREMIUM CARD LIGHT SWEEP
+========================================================= */
+
+function CardLightSweep() {
+  return (
+    <span
+      aria-hidden="true"
+      className="
+        pointer-events-none
+
+        absolute
+        inset-y-0
+        -left-1/2
+
+        z-10
+        w-1/3
+
+        -translate-x-full
+        -skew-x-12
+
+        bg-gradient-to-r
+        from-transparent
+        via-white/[0.09]
+        to-transparent
+
+        opacity-0
+
+        transition-[transform,opacity]
+        duration-[1200ms]
+        ease-out
+
+        group-hover:translate-x-[520%]
+        group-hover:opacity-100
+      "
+    />
   );
 }
 
@@ -776,7 +848,7 @@ export function Services() {
             mode="popLayout"
           >
             {filteredServices.map(
-              (service) => {
+              (service, index) => {
                 const category =
                   serviceCategories[
                     service.slug
@@ -793,29 +865,37 @@ export function Services() {
                         ? false
                         : {
                             opacity: 0,
-                            scale:
-                              0.97,
-                            y: 14,
+                            x:
+                              index % 2 === 0
+                                ? -28
+                                : 28,
+                            y: 24,
+                            scale: 0.985,
+                            rotate:
+                              index % 2 === 0
+                                ? -0.8
+                                : 0.8,
                           }
                     }
                     animate={{
                       opacity: 1,
+                      x: 0,
                       scale: 1,
                       y: 0,
+                      rotate: 0,
                     }}
                     exit={{
                       opacity: 0,
-                      scale: 0.97,
-                      y: 10,
+                      x: 12,
+                      scale: 0.985,
+                      y: 12,
                     }}
                     transition={{
-                      duration: 0.4,
-                      ease: [
-                        0.16,
-                        1,
-                        0.3,
-                        1,
-                      ],
+                      delay: reduced
+                        ? 0
+                        : index * 0.06,
+                      duration: 0.85,
+                      ease: [0.22, 1, 0.36, 1],
                     }}
                     className="
                       h-full
@@ -827,17 +907,24 @@ export function Services() {
                         reduced
                           ? undefined
                           : {
-                              y: -6,
+                              y: -8,
+                              scale: 1.008,
+                              transition: {
+                                duration: 0.65,
+                                ease: [0.22, 1, 0.36, 1],
+                              },
+                            }
+                      }
+                      whileTap={
+                        reduced
+                          ? undefined
+                          : {
+                              scale: 0.995,
                             }
                       }
                       transition={{
-                        duration: 0.3,
-                        ease: [
-                          0.16,
-                          1,
-                          0.3,
-                          1,
-                        ],
+                        duration: 0.65,
+                        ease: [0.22, 1, 0.36, 1],
                       }}
                       className="
                         group
@@ -857,16 +944,20 @@ export function Services() {
 
                         shadow-[0_12px_35px_rgba(0,0,0,0.10)]
 
-                        transition-all
-                        duration-300
+                        transform-gpu
+
+                        transition-[border-color,background-color,box-shadow]
+                        duration-700
 
                         hover:border-[#4B94E8]/30
 
                         hover:bg-white/[0.055]
 
                         hover:shadow-[0_24px_60px_rgba(0,0,0,0.18)]
-                      "
-                    >
+                    "
+                  >
+                      <CardLightSweep />
+
                       {/* =============================
                           IMAGE
                       ============================== */}
@@ -900,17 +991,12 @@ export function Services() {
                               ? undefined
                               : {
                                   scale:
-                                    1.055,
+                                    1.065,
                                 }
                           }
                           transition={{
-                            duration: 0.7,
-                            ease: [
-                              0.16,
-                              1,
-                              0.3,
-                              1,
-                            ],
+                            duration: 1.1,
+                            ease: [0.22, 1, 0.36, 1],
                           }}
                           className="
                             h-full
@@ -921,7 +1007,7 @@ export function Services() {
                             opacity-85
 
                             transition-opacity
-                            duration-300
+                            duration-700
 
                             group-hover:opacity-100
                           "
@@ -1050,8 +1136,10 @@ export function Services() {
                               text-white
 
                               transition-colors
+                              duration-700
 
                               group-hover:text-[#74B8FF]
+                              group-hover:translate-x-1
 
                               sm:text-[21px]
 
@@ -1083,7 +1171,7 @@ export function Services() {
                               bg-white/[0.03]
 
                               transition-all
-                              duration-300
+                              duration-600
 
                               group-hover:border-active/30
 
@@ -1098,7 +1186,7 @@ export function Services() {
                                 text-white/40
 
                                 transition-all
-                                duration-300
+                                duration-600
 
                                 group-hover:-translate-y-0.5
 
@@ -1195,6 +1283,8 @@ export function Services() {
 ========================================================= */
 
 export function Industries() {
+  const reduced = useReducedMotion();
+
   return (
     <section
       id="industries"
@@ -1480,12 +1570,58 @@ export function Industries() {
               industry,
               index,
             ) => (
-              <Reveal
+              <motion.div
                 key={
                   industry.title
                 }
-                delay={
-                  0.06 * index
+                initial={
+                  reduced
+                    ? false
+                    : {
+                        opacity: 0,
+                        x:
+                          index % 2 === 0
+                            ? -24
+                            : 24,
+                        y: 28,
+                        rotate:
+                          index % 2 === 0
+                            ? -1
+                            : 1,
+                      }
+                }
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                  y: 0,
+                  rotate: 0,
+                  transition: {
+                    delay: reduced
+                      ? 0
+                      : index * 0.11,
+                    duration: 1.05,
+                    ease: [0.22, 1, 0.36, 1],
+                  },
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.25,
+                }}
+                transition={{
+                  duration: 0.65,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={
+                  reduced
+                    ? undefined
+                    : {
+                        y: -8,
+                        scale: 1.015,
+                        transition: {
+                          duration: 0.65,
+                          ease: [0.22, 1, 0.36, 1],
+                        },
+                      }
                 }
                 className="
                   h-full
@@ -1519,10 +1655,10 @@ export function Industries() {
 
                     shadow-[0_12px_32px_rgba(0,0,0,0.10)]
 
-                    transition-all
-                    duration-300
+                    transform-gpu
 
-                    hover:-translate-y-1.5
+                    transition-[border-color,background-color,box-shadow]
+                    duration-700
 
                     hover:border-active/30
 
@@ -1535,6 +1671,8 @@ export function Industries() {
                     xl:p-8
                   "
                 >
+                  <CardLightSweep />
+
                   {/* TOP LINE */}
 
                   <span
@@ -1550,7 +1688,7 @@ export function Industries() {
                       bg-active
 
                       transition-all
-                      duration-500
+                      duration-700
 
                       group-hover:w-full
                     "
@@ -1603,7 +1741,7 @@ export function Industries() {
                         bg-white/[0.025]
 
                         transition-all
-                        duration-300
+                        duration-700
 
                         group-hover:border-active/30
 
@@ -1620,7 +1758,7 @@ export function Industries() {
                           bg-active/60
 
                           transition-all
-                          duration-300
+                          duration-700
 
                           group-hover:scale-150
 
@@ -1649,8 +1787,10 @@ export function Industries() {
                       text-white
 
                       transition-colors
+                      duration-700
 
                       group-hover:text-[#72B7FF]
+                      group-hover:translate-x-1
 
                       sm:text-[22px]
 
@@ -1706,7 +1846,7 @@ export function Industries() {
                     />
                   </div>
                 </div>
-              </Reveal>
+              </motion.div>
             ),
           )}
         </div>

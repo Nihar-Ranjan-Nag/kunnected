@@ -137,14 +137,14 @@ export const services = [
     title: "Building Installations and Asset Maintenance and Repair Services",
     summary:
       "Planned and reactive maintenance and repair of building installations, systems, equipment, and assets.",
-    imageKey: "engineer" as const,
+    imageKey: "building-installations-asset-maintenance" as const,
   },
   {
     slug: "grounds-maintenance-indoor-plants",
     title: "Grounds Maintenance and Indoor Plant Services",
     summary:
       "Maintenance of external grounds and indoor planting to keep accommodation spaces presentable and well cared for.",
-    imageKey: "student-living" as const,
+    imageKey: "grounds-maintenance-indoor-plants" as const,
   },
   {
     slug: "programmed-replacement-lifecycle",
@@ -158,56 +158,56 @@ export const services = [
     title: "Energy and Utilities Management Services",
     summary:
       "Monitoring and management of energy and utility use to support efficient, reliable accommodation operations.",
-    imageKey: "asset-management" as const,
+    imageKey: "energy-utilities-management" as const,
   },
-  {
-    slug: "cleaning-services",
-    title: "Cleaning Services",
-    summary:
-      "Planned cleaning services supporting hygiene, presentation, and day-to-day resident comfort.",
-    imageKey: "student-living" as const,
-  },
+ {
+  slug: "cleaning-services",
+  title: "Cleaning Services",
+  summary:
+    "Professional cleaning services that maintain hygienic, safe and comfortable student accommodation environments.",
+  imageKey: "cleaning-services" as const,
+},
   {
     slug: "waste-management-services",
     title: "Waste Management Services",
     summary:
       "Managed collection, handling, and disposal processes that support clean and compliant accommodation facilities.",
-    imageKey: "case-study" as const,
+    imageKey: "waste-management-services" as const,
   },
   {
     slug: "pest-control-services",
     title: "Pest Control Services",
     summary:
       "Scheduled pest-control treatments and responsive support to maintain hygienic residential environments.",
-    imageKey: "emergency-maintenance" as const,
+    imageKey: "pest-control-services" as const,
   },
   {
     slug: "laundry-equipment-service",
     title: "Laundry Equipment Service",
     summary:
       "Operational support and maintenance for laundry equipment serving student accommodation residents.",
-    imageKey: "electrical" as const,
+    imageKey: "laundry-equipment-service" as const,
   },
   {
     slug: "security-equipment-maintenance",
     title: "Security Equipment Maintenance Services",
     summary:
       "Maintenance support for security equipment and associated systems across accommodation facilities.",
-    imageKey: "fire-safety" as const,
+    imageKey: "security-equipment-maintenance" as const,
   },
   {
     slug: "vending-equipment-services",
     title: "Vending Equipment Services",
     summary:
       "Support and maintenance for vending equipment provided within student accommodation areas.",
-    imageKey: "electrical" as const,
+    imageKey: "vending-equipment-services" as const,
   },
   {
     slug: "additional-services",
     title: "Additional Services",
     summary:
       "Additional operational support delivered in line with the accommodation requirements and agreed service scope.",
-    imageKey: "case-study" as const,
+    imageKey: "additional-services" as const,
   },
 ] as const;
 

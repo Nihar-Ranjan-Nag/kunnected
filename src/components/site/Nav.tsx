@@ -13,6 +13,7 @@ import {
 import {
   ArrowUpRight,
   ChevronDown,
+  Linkedin,
   Menu,
   Search,
   X,
@@ -293,7 +294,7 @@ export function Nav() {
 
                   xl:h-[96px]
 
-                  xl:items-start
+                  xl:items-center
 
                   xl:pt-[22px]
                 `
@@ -313,17 +314,28 @@ export function Nav() {
               LOGO
           ====================================== */}
 
-          <a
-            href="#top"
-            aria-label="KUnnected FM home"
-            className="
-              flex
-              shrink-0
-              items-center
-            "
-          >
-            <Brandmark tone="invert" />
-          </a>
+      <a
+  className="
+    flex
+    h-[60px]
+    shrink-0
+    items-center
+    sm:h-[56px]
+    xl:h-[74px]
+    xl:-translate-y-3
+  "
+>
+  <Brandmark
+    tone="invert"
+    className="
+      h-[60px]
+      w-auto
+      object-contain
+      sm:h-[56px]
+      xl:h-[74px]
+    "
+  />
+</a>
 
           {/* =========================================
               DESKTOP NAVIGATION
@@ -650,6 +662,115 @@ export function Nav() {
                 </motion.button>
               )}
             </div>
+
+            {/* Replace # with your LinkedIn profile/company URL */}
+            <a
+              href="#"
+              aria-label="Visit our LinkedIn page"
+              className="
+                group
+                relative
+
+                inline-flex
+
+                h-11
+                w-11
+
+                shrink-0
+
+                overflow-hidden
+
+                items-center
+                justify-center
+
+                rounded-full
+
+                text-white
+
+                transition-[width,padding,background-color,color]
+                duration-500
+                ease-out
+
+                hover:bg-[#0A66C2]
+                hover:text-white
+
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[#65b0ff]
+                focus-visible:ring-offset-2
+                focus-visible:ring-offset-[#18164b]
+
+                sm:h-12
+                sm:w-12
+                sm:hover:w-[116px]
+                sm:hover:px-4
+                sm:focus-visible:w-[116px]
+                sm:focus-visible:px-4
+
+                xl:h-[50px]
+                xl:w-[50px]
+              "
+            >
+              <span
+                className="
+                  whitespace-nowrap
+
+                  text-[16px]
+                  font-semibold
+                  leading-none
+                  text-white
+
+                  max-w-0
+
+                  translate-x-2
+
+                  overflow-hidden
+
+                  opacity-0
+
+                  transition-[max-width,margin,opacity,transform]
+                  duration-500
+                  ease-out
+
+                  sm:group-hover:mr-1.5
+                  sm:group-hover:max-w-[52px]
+                  sm:group-hover:translate-x-0
+                  sm:group-hover:opacity-100
+
+                  sm:group-focus-visible:mr-1.5
+                  sm:group-focus-visible:max-w-[52px]
+                  sm:group-focus-visible:translate-x-0
+                  sm:group-focus-visible:opacity-100
+                "
+              >
+                Linked
+              </span>
+
+              <Linkedin
+                aria-hidden="true"
+                className="
+                  h-[20px]
+                  w-[20px]
+
+                  shrink-0
+
+                  stroke-[1.8]
+
+                  transition-transform
+                  duration-500
+                  ease-out
+
+                  sm:group-hover:translate-x-0.5
+                  sm:group-focus-visible:translate-x-0.5
+
+                  sm:h-[21px]
+                  sm:w-[21px]
+
+                  xl:h-[22px]
+                  xl:w-[22px]
+                "
+              />
+            </a>
 
             {/* =====================================
                 MOBILE / TABLET MENU

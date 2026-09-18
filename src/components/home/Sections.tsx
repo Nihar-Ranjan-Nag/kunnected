@@ -3,6 +3,7 @@ import { useState } from "react";
 import {
   AnimatePresence,
   motion,
+  useReducedMotion,
 } from "motion/react";
 
 import {
@@ -26,11 +27,48 @@ import caseAsset from "@/assets/case-study.jpg";
 import studentAsset from "@/assets/student-living.jpg";
 import campusAsset from "@/assets/hero-campus.jpg";
 
+function ProjectLightSweep() {
+  return (
+    <span
+      aria-hidden="true"
+      className="
+        pointer-events-none
+
+        absolute
+        inset-y-0
+        -left-1/2
+
+        z-10
+        w-1/3
+
+        -translate-x-full
+        -skew-x-12
+
+        bg-gradient-to-r
+        from-transparent
+        via-white/[0.10]
+        to-transparent
+
+        opacity-0
+
+        transition-[transform,opacity]
+        duration-[1400ms]
+        ease-out
+
+        group-hover:translate-x-[520%]
+        group-hover:opacity-100
+      "
+    />
+  );
+}
+
 /* =========================================================
    CASE STUDY
 ========================================================= */
 
 export function CaseStudy() {
+  const reduced = useReducedMotion();
+
   return (
     <section
       id="projects"
@@ -339,7 +377,40 @@ export function CaseStudy() {
             ================================================== */}
 
             <Reveal>
-              <div
+              <motion.div
+                initial={
+                  reduced
+                    ? false
+                    : {
+                        opacity: 0.7,
+                        y: 18,
+                        scale: 0.985,
+                      }
+                }
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.25,
+                }}
+                transition={{
+                  duration: 1.15,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={
+                  reduced
+                    ? undefined
+                    : {
+                        y: -5,
+                        transition: {
+                          duration: 0.7,
+                          ease: [0.22, 1, 0.36, 1],
+                        },
+                      }
+                }
                 className="
                   group
                   relative
@@ -365,7 +436,9 @@ export function CaseStudy() {
                   xl:h-[330px]
                 "
               >
-                <img
+                <ProjectLightSweep />
+
+                <motion.img
                   src={caseAsset}
                   alt="Khalifa University student accommodation buildings"
                   width={1600}
@@ -378,7 +451,7 @@ export function CaseStudy() {
                     object-cover
 
                     transition-transform
-                    duration-700
+                    duration-[1000ms]
 
                     group-hover:scale-[1.035]
                   "
@@ -433,7 +506,7 @@ export function CaseStudy() {
                 >
                   Khalifa University
                 </div>
-              </div>
+              </motion.div>
             </Reveal>
 
             {/* =================================================
@@ -459,7 +532,42 @@ export function CaseStudy() {
                 delay={0.1}
                 className="h-full"
               >
-                <div
+                <motion.div
+                  initial={
+                    reduced
+                      ? false
+                      : {
+                          opacity: 0.65,
+                          x: -24,
+                          y: 16,
+                          scale: 0.98,
+                        }
+                  }
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.25,
+                  }}
+                  transition={{
+                    duration: 1.05,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  whileHover={
+                    reduced
+                      ? undefined
+                      : {
+                          y: -4,
+                          transition: {
+                            duration: 0.7,
+                            ease: [0.22, 1, 0.36, 1],
+                          },
+                        }
+                  }
                   className="
                     group
                     relative
@@ -484,7 +592,9 @@ export function CaseStudy() {
                     xl:h-[200px]
                   "
                 >
-                  <img
+                  <ProjectLightSweep />
+
+                  <motion.img
                     src={studentAsset}
                     alt="Student living space"
                     width={1408}
@@ -497,7 +607,7 @@ export function CaseStudy() {
                       object-cover
 
                       transition-transform
-                      duration-700
+                      duration-[1000ms]
 
                       group-hover:scale-[1.05]
                     "
@@ -558,7 +668,7 @@ export function CaseStudy() {
                       Student Living
                     </span>
                   </div>
-                </div>
+                </motion.div>
               </Reveal>
 
               {/* =============================================
@@ -569,7 +679,42 @@ export function CaseStudy() {
                 delay={0.16}
                 className="h-full"
               >
-                <div
+                <motion.div
+                  initial={
+                    reduced
+                      ? false
+                      : {
+                          opacity: 0.65,
+                          x: 24,
+                          y: 16,
+                          scale: 0.98,
+                        }
+                  }
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.25,
+                  }}
+                  transition={{
+                    duration: 1.15,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  whileHover={
+                    reduced
+                      ? undefined
+                      : {
+                          y: -4,
+                          transition: {
+                            duration: 0.7,
+                            ease: [0.22, 1, 0.36, 1],
+                          },
+                        }
+                  }
                   className="
                     group
                     relative
@@ -592,9 +737,11 @@ export function CaseStudy() {
                     lg:h-[185px]
 
                     xl:h-[200px]
-                  "
-                >
-                  <img
+                "
+              >
+                  <ProjectLightSweep />
+
+                  <motion.img
                     src={campusAsset}
                     alt="Campus architecture"
                     width={1920}
@@ -607,7 +754,7 @@ export function CaseStudy() {
                       object-cover
 
                       transition-transform
-                      duration-700
+                      duration-[1000ms]
 
                       group-hover:scale-[1.05]
                     "
@@ -668,7 +815,7 @@ export function CaseStudy() {
                       Campus Environment
                     </span>
                   </div>
-                </div>
+                </motion.div>
               </Reveal>
             </div>
           </div>
@@ -818,6 +965,7 @@ export function CaseStudy() {
             className="h-full"
           >
             <ScopeCard
+              delay={0.08}
               number="01"
               title="Hard Services"
               items={projectScope.hardServices}
@@ -829,6 +977,7 @@ export function CaseStudy() {
             className="h-full"
           >
             <ScopeCard
+              delay={0.14}
               number="02"
               title="Soft Services"
               items={projectScope.softServices}
@@ -840,6 +989,7 @@ export function CaseStudy() {
             className="h-full"
           >
             <ScopeCard
+              delay={0.2}
               number="03"
               title="Value-Added"
               items={projectScope.valueAdded}
@@ -851,6 +1001,7 @@ export function CaseStudy() {
             className="h-full"
           >
             <ScopeCard
+              delay={0.26}
               number="04"
               title="Student Welfare"
               items={projectScope.studentWelfare}
@@ -870,15 +1021,54 @@ type ScopeCardProps = {
   number: string;
   title: string;
   items: string[];
+  delay?: number;
 };
 
 function ScopeCard({
   number,
   title,
   items,
+  delay = 0,
 }: ScopeCardProps) {
+  const reduced = useReducedMotion();
+
   return (
-    <div
+    <motion.div
+      initial={
+        reduced
+          ? false
+          : {
+              opacity: 0,
+              y: 24,
+              scale: 0.985,
+            }
+      }
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.25,
+      }}
+      transition={{
+        delay: reduced ? 0 : delay,
+        duration: 1,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      whileHover={
+        reduced
+          ? undefined
+          : {
+              y: -7,
+              scale: 1.015,
+              transition: {
+                duration: 0.65,
+                ease: [0.22, 1, 0.36, 1],
+              },
+            }
+      }
       className="
         group
         relative
@@ -903,10 +1093,11 @@ function ScopeCard({
 
         shadow-[0_12px_36px_rgba(0,0,0,0.10)]
 
-        transition-all
-        duration-300
+        transform-gpu
 
-        hover:-translate-y-1
+        transition-[border-color,background-color,box-shadow]
+        duration-700
+
         hover:border-active/30
         hover:bg-white/[0.055]
         hover:shadow-[0_20px_50px_rgba(0,0,0,0.16)]
@@ -914,6 +1105,8 @@ function ScopeCard({
         sm:p-6
       "
     >
+      <ProjectLightSweep />
+
       <span
         className="
           absolute
@@ -927,7 +1120,7 @@ function ScopeCard({
           bg-active
 
           transition-all
-          duration-500
+          duration-700
 
           group-hover:w-full
         "
@@ -985,7 +1178,7 @@ function ScopeCard({
               bg-active/60
 
               transition-all
-              duration-300
+              duration-700
 
               group-hover:scale-150
               group-hover:bg-active
@@ -1079,7 +1272,7 @@ function ScopeCard({
           "
         />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -1311,13 +1504,8 @@ export function Testimonials() {
                   y: -14,
                 }}
                 transition={{
-                  duration: 0.5,
-                  ease: [
-                    0.16,
-                    1,
-                    0.3,
-                    1,
-                  ],
+                  duration: 0.85,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
               >
                 <div
@@ -1449,7 +1637,7 @@ export function Testimonials() {
                   text-white
 
                   transition-all
-                  duration-300
+                  duration-600
 
                   hover:border-active
                   hover:bg-active/10
@@ -1480,7 +1668,7 @@ export function Testimonials() {
                   text-white
 
                   transition-all
-                  duration-300
+                  duration-600
 
                   hover:border-active
                   hover:bg-active/10

@@ -31,13 +31,13 @@ export function Brandmark({
           object-contain
           object-left
 
-          sm:h-[50px]
+          sm:h-[70px]
 
-          md:h-[50px]
+          md:h-[70px]
 
-          lg:h-[55px]
+          lg:h-[85px]
 
-          xl:h-[55px]
+          xl:h-[85px]
         `,
         tone === "invert" &&
           "brightness-0 invert",

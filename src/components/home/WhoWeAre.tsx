@@ -163,10 +163,58 @@ function SectionLabel({
 }
 
 /* =========================================================
+   PREMIUM CARD LIGHT SWEEP
+========================================================= */
+
+function CardLightSweep({
+  light = false,
+}: {
+  light?: boolean;
+}) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`
+        pointer-events-none
+
+        absolute
+        inset-y-0
+        -left-1/2
+
+        w-1/3
+
+        -translate-x-full
+        -skew-x-12
+
+        bg-gradient-to-r
+        from-transparent
+        ${
+          light
+            ? "via-[#3F80CF]/10"
+            : "via-white/[0.08]"
+        }
+        to-transparent
+
+        opacity-0
+
+        transition-[transform,opacity]
+        duration-[1200ms]
+        ease-out
+
+        group-hover:translate-x-[520%]
+        group-hover:opacity-100
+      `}
+    />
+  );
+}
+
+/* =========================================================
    WHO WE ARE
 ========================================================= */
 
 export function WhoWeAre() {
+  const reduced = useReducedMotion();
+
   return (
     <section
       id="who-we-are"
@@ -423,9 +471,50 @@ export function WhoWeAre() {
       IMAGE
   ================================================== */}
 
-  <Reveal delay={0.08}>
-    <div
+  <motion.div
+    initial={
+      reduced
+        ? false
+        : {
+            opacity: 0,
+            x: -42,
+            scale: 0.975,
+            clipPath:
+              "inset(0 10% 0 0 round 24px)",
+          }
+    }
+    whileInView={{
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      clipPath:
+        "inset(0 0% 0 0 round 24px)",
+    }}
+    viewport={{
+      once: true,
+      amount: 0.25,
+    }}
+    transition={{
+      duration: 1.45,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+    whileHover={
+      reduced
+        ? undefined
+        : {
+            y: -4,
+            transition: {
+              duration: 0.7,
+              ease: [0.22, 1, 0.36, 1],
+            },
+          }
+    }
+    className="h-full"
+  >
+    <motion.div
       className="
+        group
+
         relative
 
         min-h-[280px]
@@ -449,6 +538,10 @@ export function WhoWeAre() {
         xl:h-[460px]
         xl:rounded-[24px]
       "
+      transition={{
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
       <Parallax
         distance={24}
@@ -457,12 +550,37 @@ export function WhoWeAre() {
           w-full
         "
       >
-        <img
+        <motion.img
           src={studentAsset}
           alt="A bright student accommodation lounge with natural light"
           width={1408}
           height={1008}
           loading="lazy"
+          initial={
+            reduced
+              ? false
+              : {
+                  scale: 1.08,
+                }
+          }
+          whileInView={{
+            scale: 1,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
+          whileHover={
+            reduced
+              ? undefined
+              : {
+                  scale: 1.035,
+                }
+          }
+          transition={{
+            duration: 1.8,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           className="
             h-full
             w-full
@@ -487,7 +605,68 @@ export function WhoWeAre() {
         "
       />
 
-      <div
+      {!reduced && (
+        <motion.span
+          aria-hidden="true"
+          initial={{
+            x: "-150%",
+            opacity: 0,
+          }}
+          whileInView={{
+            x: "340%",
+            opacity: [0, 0.28, 0],
+          }}
+          viewport={{
+            once: true,
+            amount: 0.3,
+          }}
+          transition={{
+            delay: 0.65,
+            duration: 1.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="
+            pointer-events-none
+
+            absolute
+            inset-y-0
+            left-0
+
+            w-1/3
+
+            -skew-x-12
+
+            bg-gradient-to-r
+            from-transparent
+            via-white/30
+            to-transparent
+
+            blur-sm
+          "
+        />
+      )}
+
+      <motion.div
+        initial={
+          reduced
+            ? false
+            : {
+                opacity: 0,
+                y: 14,
+              }
+        }
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          delay: 0.9,
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className="
           absolute
 
@@ -521,9 +700,9 @@ export function WhoWeAre() {
         "
       >
         Student-Centred Facilities
-      </div>
-    </div>
-  </Reveal>
+      </motion.div>
+    </motion.div>
+  </motion.div>
 
   {/* =================================================
       RIGHT STORY
@@ -600,8 +779,50 @@ export function WhoWeAre() {
           VISION
       ============================================== */}
 
-      <Reveal delay={0.1}>
-        <div
+      <motion.div
+        initial={
+          reduced
+            ? false
+            : {
+                opacity: 0,
+                y: 28,
+                rotate: -1,
+              }
+        }
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          rotate: 0,
+          transition: {
+            delay: 0.25,
+            duration: 1.1,
+            ease: [0.22, 1, 0.36, 1],
+          },
+        }}
+        viewport={{
+          once: true,
+          amount: 0.3,
+        }}
+        transition={{
+          duration: 0.65,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        whileHover={
+          reduced
+            ? undefined
+            : {
+                y: -6,
+                rotate: -0.25,
+                transition: {
+                  delay: 0,
+                  duration: 0.65,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              }
+        }
+        className="h-full"
+      >
+        <motion.div
           className="
             group
 
@@ -622,16 +843,18 @@ export function WhoWeAre() {
 
             backdrop-blur-sm
 
-            transition-all
-            duration-300
+            transition-[border-color,background-color,box-shadow]
+            duration-700
 
-            hover:-translate-y-1
             hover:border-[#4E94E5]/35
             hover:bg-white/[0.06]
+            hover:shadow-[0_22px_55px_rgba(7,5,35,0.28)]
 
             sm:p-5
           "
         >
+          <CardLightSweep />
+
           <span
             className="
               absolute
@@ -746,15 +969,57 @@ export function WhoWeAre() {
               </li>
             ))}
           </ul>
-        </div>
-      </Reveal>
+        </motion.div>
+      </motion.div>
 
       {/* =============================================
           PROMISE
       ============================================== */}
 
-      <Reveal delay={0.14}>
-        <div
+      <motion.div
+        initial={
+          reduced
+            ? false
+            : {
+                opacity: 0,
+                x: 32,
+                rotate: 1,
+              }
+        }
+        whileInView={{
+          opacity: 1,
+          x: 0,
+          rotate: 0,
+          transition: {
+            delay: 0.42,
+            duration: 1.15,
+            ease: [0.22, 1, 0.36, 1],
+          },
+        }}
+        viewport={{
+          once: true,
+          amount: 0.3,
+        }}
+        transition={{
+          duration: 0.65,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        whileHover={
+          reduced
+            ? undefined
+            : {
+                y: -6,
+                rotate: 0.25,
+                transition: {
+                  delay: 0,
+                  duration: 0.65,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              }
+        }
+        className="h-full"
+      >
+        <motion.div
           className="
             group
 
@@ -775,16 +1040,18 @@ export function WhoWeAre() {
 
             backdrop-blur-sm
 
-            transition-all
-            duration-300
+            transition-[border-color,background-color,box-shadow]
+            duration-700
 
-            hover:-translate-y-1
             hover:border-[#4E94E5]/35
             hover:bg-white/[0.06]
+            hover:shadow-[0_22px_55px_rgba(7,5,35,0.28)]
 
             sm:p-5
           "
         >
+          <CardLightSweep />
+
           <span
             className="
               absolute
@@ -899,8 +1166,8 @@ export function WhoWeAre() {
               </li>
             ))}
           </ul>
-        </div>
-      </Reveal>
+        </motion.div>
+      </motion.div>
     </div>
   </div>
 </div>
@@ -1025,12 +1292,57 @@ export function WhoWeAre() {
                 foundation,
                 index,
               ) => (
-                <Reveal
+                <motion.div
                   key={
                     foundation.n
                   }
-                  delay={
-                    0.06 * index
+                  initial={
+                    reduced
+                      ? false
+                      : {
+                          opacity: 0,
+                          x:
+                            index % 2 === 0
+                              ? -20
+                              : 20,
+                          y: 26,
+                          rotate:
+                            index % 2 === 0
+                              ? -1
+                              : 1,
+                        }
+                  }
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    rotate: 0,
+                    transition: {
+                      delay: 0.12 * index,
+                      duration: 1.1,
+                      ease: [0.22, 1, 0.36, 1],
+                    },
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.25,
+                  }}
+                  transition={{
+                    duration: 0.65,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  whileHover={
+                    reduced
+                      ? undefined
+                      : {
+                          y: -7,
+                          scale: 1.015,
+                          transition: {
+                            delay: 0,
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                          },
+                        }
                   }
                   className="
                     h-full
@@ -1060,10 +1372,8 @@ export function WhoWeAre() {
 
                       p-5
 
-                      transition-all
-                      duration-300
-
-                      hover:-translate-y-1
+                      transition-[border-color,background-color,box-shadow]
+                      duration-700
 
                       hover:border-[#4E94E5]/35
 
@@ -1074,6 +1384,8 @@ export function WhoWeAre() {
                       sm:p-6
                     "
                   >
+                    <CardLightSweep />
+
                     {/* TOP LINE */}
 
                     <span
@@ -1089,7 +1401,7 @@ export function WhoWeAre() {
                         bg-active
 
                         transition-all
-                        duration-500
+                        duration-700
 
                         group-hover:w-full
                       "
@@ -1139,6 +1451,14 @@ export function WhoWeAre() {
                           font-semibold
 
                           text-white/35
+
+                          transition-all
+                          duration-700
+
+                          group-hover:rotate-[360deg]
+                          group-hover:border-[#63AEFF]/35
+                          group-hover:bg-[#63AEFF]/10
+                          group-hover:text-white/80
                         "
                       >
                         {String(
@@ -1165,6 +1485,11 @@ export function WhoWeAre() {
                         tracking-[-0.02em]
 
                         text-white
+
+                        transition-transform
+                        duration-700
+
+                        group-hover:translate-x-1
 
                         xl:text-[20px]
                       "
@@ -1209,7 +1534,7 @@ export function WhoWeAre() {
                       />
                     </div>
                   </div>
-                </Reveal>
+                </motion.div>
               ),
             )}
           </div>
@@ -1224,6 +1549,8 @@ export function WhoWeAre() {
 ========================================================= */
 
 export function WhyChooseUs() {
+  const reduced = useReducedMotion();
+
   return (
     <section
       className="
@@ -1427,12 +1754,57 @@ export function WhyChooseUs() {
               strength,
               index,
             ) => (
-              <Reveal
+              <motion.div
                 key={
                   strength.title
                 }
-                delay={
-                  0.08 * index
+                initial={
+                  reduced
+                    ? false
+                    : {
+                        opacity: 0,
+                        x:
+                          index % 2 === 0
+                            ? -22
+                            : 22,
+                        y: 30,
+                        rotate:
+                          index % 2 === 0
+                            ? -1.2
+                            : 1.2,
+                      }
+                }
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                  y: 0,
+                  rotate: 0,
+                  transition: {
+                    delay: 0.13 * index,
+                    duration: 1.15,
+                    ease: [0.22, 1, 0.36, 1],
+                  },
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.2,
+                }}
+                transition={{
+                  duration: 0.7,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={
+                  reduced
+                    ? undefined
+                    : {
+                        y: -8,
+                        scale: 1.018,
+                        transition: {
+                          delay: 0,
+                          duration: 0.7,
+                          ease: [0.22, 1, 0.36, 1],
+                        },
+                      }
                 }
                 className="
                   h-full
@@ -1461,18 +1833,51 @@ export function WhyChooseUs() {
 
                     backdrop-blur-md
 
-                    transition-all
-                    duration-300
+                    transform-gpu
 
-                    hover:-translate-y-1
+                    transition-[border-color,box-shadow,background-color]
+                    duration-700
 
                     hover:border-[#3F80CF]/25
 
-                    hover:shadow-[0_18px_40px_rgba(32,26,87,0.10)]
+                    hover:bg-white/90
+
+                    hover:shadow-[0_26px_60px_rgba(32,26,87,0.14)]
 
                     sm:p-6
                   "
                 >
+                  <CardLightSweep light />
+
+                  <span
+                    className="
+                      pointer-events-none
+
+                      absolute
+                      -right-12
+                      -top-12
+
+                      h-32
+                      w-32
+
+                      scale-50
+
+                      rounded-full
+
+                      bg-[#3F80CF]/10
+
+                      opacity-0
+
+                      blur-2xl
+
+                      transition-all
+                      duration-700
+
+                      group-hover:scale-100
+                      group-hover:opacity-100
+                    "
+                  />
+
                   <span
                     className="
                       absolute
@@ -1486,7 +1891,7 @@ export function WhyChooseUs() {
                       bg-active
 
                       transition-all
-                      duration-500
+                      duration-800
 
                       group-hover:w-full
                     "
@@ -1503,6 +1908,11 @@ export function WhyChooseUs() {
                       tracking-[0.18em]
 
                       text-active
+
+                      transition-all
+                      duration-800
+
+                      group-hover:tracking-[0.24em]
                     "
                   >
                     {String(
@@ -1527,6 +1937,11 @@ export function WhyChooseUs() {
 
                       text-[#201A57]
 
+                      transition-transform
+                      duration-700
+
+                      group-hover:translate-x-1
+
                       sm:text-[19px]
                     "
                   >
@@ -1550,7 +1965,7 @@ export function WhyChooseUs() {
                     {strength.body}
                   </p>
                 </div>
-              </Reveal>
+              </motion.div>
             ),
           )}
         </div>

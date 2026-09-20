@@ -665,7 +665,7 @@ export function Nav() {
 
             {/* Replace # with your LinkedIn profile/company URL */}
             <a
-              href="#"
+              href="https://www.linkedin.com/company/kunnected-living-facilities-management-services-llc/"
               aria-label="Visit our LinkedIn page"
               className="
                 group

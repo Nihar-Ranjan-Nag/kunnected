@@ -441,7 +441,7 @@ export function Footer() {
               {/* LINKEDIN */}
 
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/company/kunnected-living-facilities-management-services-llc/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Kunnected FM on LinkedIn"

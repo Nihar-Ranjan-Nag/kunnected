@@ -107,9 +107,9 @@ export function CampusExperience() {
 }
 
 const stats = [
-  { value: 24, suffix: "/7", label: "Helpdesk and emergency cover" },
+  { value: 24, suffix: "/7", label: "Operations" },
   { value: 30, suffix: " min", label: "Emergency response target" },
-  { value: 11, suffix: "", label: "Integrated service lines" },
+  { value: 14, suffix: "", label: "Integrated service lines" },
   { value: 99.5, suffix: "%", decimals: 1, label: "Critical asset availability target" },
 ];
 

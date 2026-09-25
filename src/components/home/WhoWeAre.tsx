@@ -337,7 +337,7 @@ export function WhoWeAre() {
 
             <div>
               <SectionLabel>
-                About Kunnected FM
+                About KUnnected FM
               </SectionLabel>
 
               <h2
@@ -446,731 +446,682 @@ export function WhoWeAre() {
             IMAGE + STORY
         ====================================================== */}
 
-         {/* =====================================================
-    IMAGE + STORY
-====================================================== */}
+        <div
+          className="
+            mt-7
 
-<div
-  className="
-    mt-7
+            grid
 
-    grid
-    gap-7
+            gap-7
 
-    sm:mt-8
-    sm:gap-8
+            sm:mt-8
+            sm:gap-8
 
-    lg:grid-cols-[0.88fr_1.12fr]
-    lg:items-start
-    lg:gap-10
+            lg:grid-cols-[0.88fr_1.12fr]
+            lg:items-start
+            lg:gap-10
 
-    xl:gap-12
-  "
->
-  {/* =================================================
-      IMAGE
-  ================================================== */}
+            xl:gap-12
+          "
+        >
+          {/* =================================================
+              IMAGE
+          ================================================== */}
 
-  <motion.div
-    initial={
-      reduced
-        ? false
-        : {
-            opacity: 0,
-            x: -42,
-            scale: 0.975,
-            clipPath:
-              "inset(0 10% 0 0 round 24px)",
-          }
-    }
-    whileInView={{
-      opacity: 1,
-      x: 0,
-      scale: 1,
-      clipPath:
-        "inset(0 0% 0 0 round 24px)",
-    }}
-    viewport={{
-      once: true,
-      amount: 0.25,
-    }}
-    transition={{
-      duration: 1.45,
-      ease: [0.22, 1, 0.36, 1],
-    }}
-    whileHover={
-      reduced
-        ? undefined
-        : {
-            y: -4,
-            transition: {
-              duration: 0.7,
+          <motion.div
+            initial={
+              reduced
+                ? false
+                : {
+                    opacity: 0,
+                    x: -42,
+                    scale: 0.975,
+                    clipPath:
+                      "inset(0 10% 0 0 round 24px)",
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              x: 0,
+              scale: 1,
+              clipPath:
+                "inset(0 0% 0 0 round 24px)",
+            }}
+            viewport={{
+              once: true,
+              amount: 0.25,
+            }}
+            transition={{
+              duration: 1.45,
               ease: [0.22, 1, 0.36, 1],
-            },
-          }
-    }
-    className="h-full"
-  >
-    <motion.div
-      className="
-        group
+            }}
+            whileHover={
+              reduced
+                ? undefined
+                : {
+                    y: -4,
+                    transition: {
+                      duration: 0.7,
+                      ease: [0.22, 1, 0.36, 1],
+                    },
+                  }
+            }
+            className="h-full"
+          >
+            <motion.div
+              className="
+                group
 
-        relative
+                relative
 
-        min-h-[280px]
+                min-h-[280px]
 
-        overflow-hidden
+                overflow-hidden
 
-        rounded-[22px]
+                rounded-[22px]
 
-        border
-        border-white/10
+                border
+                border-white/10
 
-        bg-white/[0.03]
+                bg-white/[0.03]
 
-        shadow-[0_24px_65px_rgba(0,0,0,0.20)]
+                shadow-[0_24px_65px_rgba(0,0,0,0.20)]
 
-        sm:min-h-[340px]
+                sm:min-h-[340px]
 
-        lg:h-[450px]
-        lg:min-h-0
+                lg:h-[450px]
+                lg:min-h-0
 
-        xl:h-[460px]
-        xl:rounded-[24px]
-      "
-      transition={{
-        duration: 0.7,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-    >
-      <Parallax
-        distance={24}
-        className="
-          h-full
-          w-full
-        "
-      >
-        <motion.img
-          src={studentAsset}
-          alt="A bright student accommodation lounge with natural light"
-          width={1408}
-          height={1008}
-          loading="lazy"
-          initial={
-            reduced
-              ? false
-              : {
-                  scale: 1.08,
+                xl:h-[460px]
+                xl:rounded-[24px]
+              "
+              transition={{
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <Parallax
+                distance={24}
+                className="
+                  h-full
+                  w-full
+                "
+              >
+                <motion.img
+                  src={studentAsset}
+                  alt="A bright student accommodation lounge with natural light"
+                  width={1408}
+                  height={1008}
+                  loading="lazy"
+                  initial={
+                    reduced
+                      ? false
+                      : {
+                          scale: 1.08,
+                        }
+                  }
+                  whileInView={{
+                    scale: 1,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.25,
+                  }}
+                  whileHover={
+                    reduced
+                      ? undefined
+                      : {
+                          scale: 1.035,
+                        }
+                  }
+                  transition={{
+                    duration: 1.8,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="
+                    h-full
+                    w-full
+
+                    object-cover
+                  "
+                />
+              </Parallax>
+
+              <div
+                className="
+                  pointer-events-none
+
+                  absolute
+                  inset-0
+
+                  bg-gradient-to-t
+
+                  from-[#15113f]/60
+                  via-transparent
+                  to-transparent
+                "
+              />
+
+              {!reduced && (
+                <motion.span
+                  aria-hidden="true"
+                  initial={{
+                    x: "-150%",
+                    opacity: 0,
+                  }}
+                  whileInView={{
+                    x: "340%",
+                    opacity: [0, 0.28, 0],
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.3,
+                  }}
+                  transition={{
+                    delay: 0.65,
+                    duration: 1.9,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="
+                    pointer-events-none
+
+                    absolute
+                    inset-y-0
+                    left-0
+
+                    w-1/3
+
+                    -skew-x-12
+
+                    bg-gradient-to-r
+                    from-transparent
+                    via-white/30
+                    to-transparent
+
+                    blur-sm
+                  "
+                />
+              )}
+
+              <motion.div
+                initial={
+                  reduced
+                    ? false
+                    : {
+                        opacity: 0,
+                        y: 14,
+                      }
                 }
-          }
-          whileInView={{
-            scale: 1,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.25,
-          }}
-          whileHover={
-            reduced
-              ? undefined
-              : {
-                  scale: 1.035,
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  delay: 0.9,
+                  duration: 0.8,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="
+                  absolute
+
+                  bottom-4
+                  left-4
+
+                  rounded-full
+
+                  border
+                  border-white/15
+
+                  bg-[#201A57]/70
+
+                  px-3.5
+                  py-1.5
+
+                  text-[9px]
+
+                  font-semibold
+                  uppercase
+
+                  tracking-[0.15em]
+
+                  text-white/80
+
+                  backdrop-blur-lg
+
+                  sm:bottom-5
+                  sm:left-5
+                  sm:text-[10px]
+                "
+              >
+                Student-Centred Facilities
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* =================================================
+              RIGHT STORY
+          ================================================== */}
+
+          <div
+            className="
+              flex
+              min-w-0
+              flex-col
+            "
+          >
+            <Reveal delay={0.08}>
+              <p
+                className="
+                  max-w-3xl
+
+                  text-[15px]
+                  leading-7
+
+                  text-white/82
+
+                  sm:text-[16px]
+
+                  lg:text-[16px]
+                  lg:leading-8
+                "
+              >
+                {company.purposeBody}
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.12}>
+              <p
+                className="
+                  mt-3
+
+                  max-w-3xl
+
+                  text-[13px]
+                  leading-6
+
+                  text-white/58
+
+                  sm:text-[14px]
+                  sm:leading-7
+
+                  lg:text-[14px]
+                "
+              >
+                {company.purposeExtended}
+              </p>
+            </Reveal>
+
+            {/* =================================================
+                VISION / PROMISE
+            ================================================== */}
+
+            <div
+              className="
+                mt-5
+
+                grid
+
+                gap-4
+
+                sm:mt-6
+                sm:grid-cols-2
+                sm:gap-4
+
+                lg:pt-4
+              "
+            >
+              {/* =============================================
+                  VISION
+              ============================================== */}
+
+              <motion.div
+                initial={
+                  reduced
+                    ? false
+                    : {
+                        opacity: 0,
+                        y: 28,
+                        rotate: -1,
+                      }
                 }
-          }
-          transition={{
-            duration: 1.8,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            h-full
-            w-full
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                  rotate: 0,
+                  transition: {
+                    delay: 0.25,
+                    duration: 1.1,
+                    ease: [0.22, 1, 0.36, 1],
+                  },
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.3,
+                }}
+                transition={{
+                  duration: 0.65,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={
+                  reduced
+                    ? undefined
+                    : {
+                        y: -6,
+                        rotate: -0.25,
+                        transition: {
+                          delay: 0,
+                          duration: 0.65,
+                          ease: [0.22, 1, 0.36, 1],
+                        },
+                      }
+                }
+                className="h-full"
+              >
+                <motion.div
+                  className="
+                    group
 
-            object-cover
-          "
-        />
-      </Parallax>
+                    relative
 
-      <div
-        className="
-          pointer-events-none
+                    h-full
 
-          absolute
-          inset-0
+                    overflow-hidden
 
-          bg-gradient-to-t
+                    rounded-[18px]
 
-          from-[#15113f]/60
-          via-transparent
-          to-transparent
-        "
-      />
+                    border
+                    border-white/10
 
-      {!reduced && (
-        <motion.span
-          aria-hidden="true"
-          initial={{
-            x: "-150%",
-            opacity: 0,
-          }}
-          whileInView={{
-            x: "340%",
-            opacity: [0, 0.28, 0],
-          }}
-          viewport={{
-            once: true,
-            amount: 0.3,
-          }}
-          transition={{
-            delay: 0.65,
-            duration: 1.9,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            pointer-events-none
+                    bg-white/[0.04]
 
-            absolute
-            inset-y-0
-            left-0
+                    p-4
 
-            w-1/3
+                    backdrop-blur-sm
 
-            -skew-x-12
+                    transition-[border-color,background-color,box-shadow]
+                    duration-700
 
-            bg-gradient-to-r
-            from-transparent
-            via-white/30
-            to-transparent
+                    hover:border-[#4E94E5]/35
+                    hover:bg-white/[0.06]
+                    hover:shadow-[0_22px_55px_rgba(7,5,35,0.28)]
 
-            blur-sm
-          "
-        />
-      )}
+                    sm:p-5
+                  "
+                >
+                  <CardLightSweep />
 
-      <motion.div
-        initial={
-          reduced
-            ? false
-            : {
-                opacity: 0,
-                y: 14,
-              }
-        }
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: true,
-        }}
-        transition={{
-          delay: 0.9,
-          duration: 0.8,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        className="
-          absolute
+                  <span
+                    className="
+                      absolute
 
-          bottom-4
-          left-4
+                      left-0
+                      top-0
 
-          rounded-full
+                      h-full
+                      w-[3px]
 
-          border
-          border-white/15
-
-          bg-[#201A57]/70
-
-          px-3.5
-          py-1.5
-
-          text-[9px]
-
-          font-semibold
-          uppercase
-
-          tracking-[0.15em]
-
-          text-white/80
-
-          backdrop-blur-lg
-
-          sm:bottom-5
-          sm:left-5
-          sm:text-[10px]
-        "
-      >
-        Student-Centred Facilities
-      </motion.div>
-    </motion.div>
-  </motion.div>
-
-  {/* =================================================
-      RIGHT STORY
-  ================================================== */}
-
-  <div
+                      bg-active
+                    "
+                  />
+ <div>
+  <p
     className="
-      flex
-      min-w-0
-      flex-col
+      text-[9px]
+      font-bold
+      uppercase
+      tracking-[0.17em]
+      text-[#6FA9EF]
     "
   >
-    <Reveal delay={0.08}>
-      <p
-        className="
-          max-w-3xl
-
-          text-[15px]
-          leading-7
-
-          text-white/82
-
-          sm:text-[16px]
-
-          lg:text-[16px]
-          lg:leading-8
-        "
-      >
-        {company.purposeBody}
-      </p>
-    </Reveal>
-
-    <Reveal delay={0.12}>
-      <p
-        className="
-          mt-3
-
-          max-w-3xl
-
-          text-[13px]
-          leading-6
-
-          text-white/58
-
-          sm:text-[14px]
-          sm:leading-7
-
-          lg:text-[14px]
-        "
-      >
-        {company.purposeExtended}
-      </p>
-    </Reveal>
-
-    {/* =================================================
-        VISION / PROMISE
-    ================================================== */}
-
-    <div
-      className="
-        mt-5
-
-        grid
-        gap-4
-
-        sm:mt-6
-        sm:grid-cols-2
-        sm:gap-4
-
-        lg:pt-4
-      "
-    >
-      {/* =============================================
-          VISION
-      ============================================== */}
-
-      <motion.div
-        initial={
-          reduced
-            ? false
-            : {
-                opacity: 0,
-                y: 28,
-                rotate: -1,
-              }
-        }
-        whileInView={{
-          opacity: 1,
-          y: 0,
-          rotate: 0,
-          transition: {
-            delay: 0.25,
-            duration: 1.1,
-            ease: [0.22, 1, 0.36, 1],
-          },
-        }}
-        viewport={{
-          once: true,
-          amount: 0.3,
-        }}
-        transition={{
-          duration: 0.65,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        whileHover={
-          reduced
-            ? undefined
-            : {
-                y: -6,
-                rotate: -0.25,
-                transition: {
-                  delay: 0,
-                  duration: 0.65,
-                  ease: [0.22, 1, 0.36, 1],
-                },
-              }
-        }
-        className="h-full"
-      >
-        <motion.div
-          className="
-            group
-
-            relative
-
-            h-full
-
-            overflow-hidden
-
-            rounded-[18px]
-
-            border
-            border-white/10
-
-            bg-white/[0.04]
-
-            p-4
-
-            backdrop-blur-sm
-
-            transition-[border-color,background-color,box-shadow]
-            duration-700
-
-            hover:border-[#4E94E5]/35
-            hover:bg-white/[0.06]
-            hover:shadow-[0_22px_55px_rgba(7,5,35,0.28)]
-
-            sm:p-5
-          "
-        >
-          <CardLightSweep />
-
-          <span
-            className="
-              absolute
-
-              left-0
-              top-0
-
-              h-full
-              w-[3px]
-
-              bg-active
-            "
-          />
-
-          <div
-            className="
-              flex
-              items-center
-              justify-between
-            "
-          >
-            <p
-              className="
-                text-[9px]
-
-                font-bold
-                uppercase
-
-                tracking-[0.17em]
-
-                text-[#6FA9EF]
-              "
-            >
-              Vision
-            </p>
-
-            <span
-              className="
-                text-[9px]
-
-                font-semibold
-
-                tracking-[0.14em]
-
-                text-white/25
-              "
-            >
-              01
-            </span>
-          </div>
-
-          <h3
-            className="
-              mt-2
-
-              text-[19px]
-
-              font-bold
-
-              tracking-[-0.025em]
-
-              text-white
-
-              sm:text-[20px]
-            "
-          >
-            Our Vision
-          </h3>
-
-          <ul
-            className="
-              mt-3
-              space-y-2.5
-            "
-          >
-            {vision.map((item) => (
-              <li
-                key={item}
-                className="
-                  flex
-                  items-start
-
-                  gap-2.5
-
-                  text-[12px]
-                  leading-5
-
-                  text-white/68
-
-                  sm:text-[13px]
-                  sm:leading-6
-                "
-              >
-                <span
-                  className="
-                    mt-[8px]
-
-                    h-[4px]
-                    w-[4px]
-
-                    shrink-0
-
-                    rounded-full
-
-                    bg-active
-                  "
-                />
-
-                <span>
-                  {item}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-      </motion.div>
-
-      {/* =============================================
-          PROMISE
-      ============================================== */}
-
-      <motion.div
-        initial={
-          reduced
-            ? false
-            : {
-                opacity: 0,
-                x: 32,
-                rotate: 1,
-              }
-        }
-        whileInView={{
-          opacity: 1,
-          x: 0,
-          rotate: 0,
-          transition: {
-            delay: 0.42,
-            duration: 1.15,
-            ease: [0.22, 1, 0.36, 1],
-          },
-        }}
-        viewport={{
-          once: true,
-          amount: 0.3,
-        }}
-        transition={{
-          duration: 0.65,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        whileHover={
-          reduced
-            ? undefined
-            : {
-                y: -6,
-                rotate: 0.25,
-                transition: {
-                  delay: 0,
-                  duration: 0.65,
-                  ease: [0.22, 1, 0.36, 1],
-                },
-              }
-        }
-        className="h-full"
-      >
-        <motion.div
-          className="
-            group
-
-            relative
-
-            h-full
-
-            overflow-hidden
-
-            rounded-[18px]
-
-            border
-            border-white/10
-
-            bg-white/[0.04]
-
-            p-4
-
-            backdrop-blur-sm
-
-            transition-[border-color,background-color,box-shadow]
-            duration-700
-
-            hover:border-[#4E94E5]/35
-            hover:bg-white/[0.06]
-            hover:shadow-[0_22px_55px_rgba(7,5,35,0.28)]
-
-            sm:p-5
-          "
-        >
-          <CardLightSweep />
-
-          <span
-            className="
-              absolute
-
-              left-0
-              top-0
-
-              h-full
-              w-[3px]
-
-              bg-active
-            "
-          />
-
-          <div
-            className="
-              flex
-              items-center
-              justify-between
-            "
-          >
-            <p
-              className="
-                text-[9px]
-
-                font-bold
-                uppercase
-
-                tracking-[0.17em]
-
-                text-[#6FA9EF]
-              "
-            >
-              Promise
-            </p>
-
-            <span
-              className="
-                text-[9px]
-
-                font-semibold
-
-                tracking-[0.14em]
-
-                text-white/25
-              "
-            >
-              02
-            </span>
-          </div>
-
-          <h3
-            className="
-              mt-2
-
-              text-[19px]
-
-              font-bold
-
-              tracking-[-0.025em]
-
-              text-white
-
-              sm:text-[20px]
-            "
-          >
-            Our Promise
-          </h3>
-
-          <ul
-            className="
-              mt-3
-              space-y-2.5
-            "
-          >
-            {promise.map((item) => (
-              <li
-                key={item}
-                className="
-                  flex
-                  items-start
-
-                  gap-2.5
-
-                  text-[12px]
-                  leading-5
-
-                  text-white/68
-
-                  sm:text-[13px]
-                  sm:leading-6
-                "
-              >
-                <span
-                  className="
-                    mt-[8px]
-
-                    h-[4px]
-                    w-[4px]
-
-                    shrink-0
-
-                    rounded-full
-
-                    bg-active
-                  "
-                />
-
-                <span>
-                  {item}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-      </motion.div>
-    </div>
-  </div>
+    Vision
+  </p>
 </div>
+
+                  <h3
+                    className="
+                      mt-2
+
+                      text-[19px]
+
+                      font-bold
+
+                      tracking-[-0.025em]
+
+                      text-white
+
+                      sm:text-[20px]
+                    "
+                  >
+                    Our Vision
+                  </h3>
+
+                  <ul
+                    className="
+                      mt-3
+                      space-y-2.5
+                    "
+                  >
+                    {vision.map((item) => (
+                      <li
+                        key={item}
+                        className="
+                          flex
+                          items-start
+
+                          gap-2.5
+
+                          text-[12px]
+                          leading-5
+
+                          text-white/68
+
+                          sm:text-[13px]
+                          sm:leading-6
+                        "
+                      >
+                        <span
+                          className="
+                            mt-[8px]
+
+                            h-[4px]
+                            w-[4px]
+
+                            shrink-0
+
+                            rounded-full
+
+                            bg-active
+                          "
+                        />
+
+                        <span>
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </motion.div>
+
+              {/* =============================================
+                  PROMISE
+              ============================================== */}
+
+              <motion.div
+                initial={
+                  reduced
+                    ? false
+                    : {
+                        opacity: 0,
+                        x: 32,
+                        rotate: 1,
+                      }
+                }
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                  rotate: 0,
+                  transition: {
+                    delay: 0.42,
+                    duration: 1.15,
+                    ease: [0.22, 1, 0.36, 1],
+                  },
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.3,
+                }}
+                transition={{
+                  duration: 0.65,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={
+                  reduced
+                    ? undefined
+                    : {
+                        y: -6,
+                        rotate: 0.25,
+                        transition: {
+                          delay: 0,
+                          duration: 0.65,
+                          ease: [0.22, 1, 0.36, 1],
+                        },
+                      }
+                }
+                className="h-full"
+              >
+                <motion.div
+                  className="
+                    group
+
+                    relative
+
+                    h-full
+
+                    overflow-hidden
+
+                    rounded-[18px]
+
+                    border
+                    border-white/10
+
+                    bg-white/[0.04]
+
+                    p-4
+
+                    backdrop-blur-sm
+
+                    transition-[border-color,background-color,box-shadow]
+                    duration-700
+
+                    hover:border-[#4E94E5]/35
+                    hover:bg-white/[0.06]
+                    hover:shadow-[0_22px_55px_rgba(7,5,35,0.28)]
+
+                    sm:p-5
+                  "
+                >
+                  <CardLightSweep />
+
+                  <span
+                    className="
+                      absolute
+
+                      left-0
+                      top-0
+
+                      h-full
+                      w-[3px]
+
+                      bg-active
+                    "
+                  />
+
+                   <div>
+  <p
+    className="
+      text-[9px]
+      font-bold
+      uppercase
+      tracking-[0.17em]
+      text-[#6FA9EF]
+    "
+  >
+    Promise
+  </p>
+</div>
+
+                  <h3
+                    className="
+                      mt-2
+
+                      text-[19px]
+
+                      font-bold
+
+                      tracking-[-0.025em]
+
+                      text-white
+
+                      sm:text-[20px]
+                    "
+                  >
+                    Our Promise
+                  </h3>
+
+                  <ul
+                    className="
+                      mt-3
+                      space-y-2.5
+                    "
+                  >
+                    {promise.map((item) => (
+                      <li
+                        key={item}
+                        className="
+                          flex
+                          items-start
+
+                          gap-2.5
+
+                          text-[12px]
+                          leading-5
+
+                          text-white/68
+
+                          sm:text-[13px]
+                          sm:leading-6
+                        "
+                      >
+                        <span
+                          className="
+                            mt-[8px]
+
+                            h-[4px]
+                            w-[4px]
+
+                            shrink-0
+
+                            rounded-full
+
+                            bg-active
+                          "
+                        />
+
+                        <span>
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
 
         {/* =====================================================
             FOUNDATION
@@ -1293,9 +1244,7 @@ export function WhoWeAre() {
                 index,
               ) => (
                 <motion.div
-                  key={
-                    foundation.n
-                  }
+                  key={foundation.n}
                   initial={
                     reduced
                       ? false
@@ -1407,74 +1356,11 @@ export function WhoWeAre() {
                       "
                     />
 
-                    {/* NUMBER */}
-
-                    <div
-                      className="
-                        flex
-
-                        items-center
-                        justify-between
-                      "
-                    >
-                      <span
-                        className="
-                          text-[11px]
-
-                          font-semibold
-
-                          tracking-[0.18em]
-
-                          text-active
-                        "
-                      >
-                        {foundation.n}
-                      </span>
-
-                      <span
-                        className="
-                          flex
-
-                          h-8
-                          w-8
-
-                          items-center
-                          justify-center
-
-                          rounded-full
-
-                          border
-                          border-white/10
-
-                          text-[10px]
-
-                          font-semibold
-
-                          text-white/35
-
-                          transition-all
-                          duration-700
-
-                          group-hover:rotate-[360deg]
-                          group-hover:border-[#63AEFF]/35
-                          group-hover:bg-[#63AEFF]/10
-                          group-hover:text-white/80
-                        "
-                      >
-                        {String(
-                          index + 1,
-                        ).padStart(
-                          2,
-                          "0",
-                        )}
-                      </span>
-                    </div>
-
-                    {/* TITLE */}
+                    {/* TITLE - NUMBERS REMOVED */}
 
                     <h4
                       className="
-                        mt-6
+                        mt-1
 
                         text-[19px]
 
@@ -1637,10 +1523,12 @@ export function WhyChooseUs() {
                 border
                 border-[#3F80CF]/15
 
-                bg-[#3F80CF]/[0.06]
+                bg-white
 
                 px-4
                 py-2
+
+                shadow-sm
               "
             >
               <span
@@ -1650,61 +1538,60 @@ export function WhyChooseUs() {
 
                   rounded-full
 
-                  bg-active
-
-                  shadow-[0_0_10px_rgba(63,128,207,0.45)]
+                  bg-[#3F80CF]
                 "
               />
 
-              <p
+              <span
                 className="
-                  text-[14px]
+                  text-[13px]
 
                   font-bold
 
                   tracking-[-0.01em]
 
-                  text-[#201A57]
+                  text-[#181B37]
 
-                  sm:text-[15px]
-
-                  lg:text-[16px]
+                  sm:text-[14px]
                 "
               >
-                Why Choose Us
-              </p>
+                Why KUnnected FM
+              </span>
             </div>
 
             <h2
               className="
                 mt-5
 
+                max-w-[900px]
+
                 text-[2rem]
 
                 font-bold
 
-                leading-[1.08]
+                leading-[1.05]
 
-                tracking-[-0.035em]
+                tracking-[-0.04em]
 
-                text-[#201A57]
+                text-[#161932]
 
-                sm:text-[2.4rem]
+                sm:text-[2.5rem]
 
-                md:text-[2.7rem]
+                md:text-[2.8rem]
 
-                lg:text-[3rem]
+                lg:text-[3.15rem]
+
+                xl:text-[3.4rem]
               "
             >
-              Our Standards &amp;
-              Commitment
+              Facilities management built around
+              <span className="text-[#3F80CF]">
+                {" "}
+                people, performance and reliability.
+              </span>
             </h2>
-
-            <SectionUnderline />
           </div>
         </Reveal>
-
-        {/* USP */}
 
         <Reveal delay={0.08}>
           <p
@@ -1713,40 +1600,49 @@ export function WhyChooseUs() {
 
               max-w-3xl
 
-              text-[15px]
+              text-[14px]
 
               leading-7
 
-              text-slate-700
+              text-slate-600
 
-              sm:text-[16px]
-              sm:leading-8
+              sm:text-[15px]
 
-              lg:text-[17px]
+              lg:text-[16px]
+              lg:leading-8
             "
           >
-            {company.usp}
+            We combine technical expertise,
+            operational discipline and a
+            student-focused approach to deliver
+            facilities that perform reliably every
+            day.
           </p>
         </Reveal>
 
         {/* =============================================
-            STRENGTH CARDS
+            STRENGTHS
         ============================================== */}
 
         <div
           className="
-            mt-8
+            mt-9
 
             grid
 
-            gap-5
+            grid-cols-1
+
+            gap-4
 
             sm:mt-10
+
             sm:grid-cols-2
+
+            sm:gap-5
 
             lg:grid-cols-3
 
-            xl:grid-cols-5
+            xl:mt-12
           "
         >
           {keyStrengths.map(
@@ -1755,60 +1651,45 @@ export function WhyChooseUs() {
               index,
             ) => (
               <motion.div
-                key={
-                  strength.title
-                }
+                key={strength.title}
                 initial={
                   reduced
                     ? false
                     : {
                         opacity: 0,
-                        x:
-                          index % 2 === 0
-                            ? -22
-                            : 22,
-                        y: 30,
-                        rotate:
-                          index % 2 === 0
-                            ? -1.2
-                            : 1.2,
+                        y: 24,
+                        scale: 0.985,
                       }
                 }
                 whileInView={{
                   opacity: 1,
-                  x: 0,
                   y: 0,
-                  rotate: 0,
-                  transition: {
-                    delay: 0.13 * index,
-                    duration: 1.15,
-                    ease: [0.22, 1, 0.36, 1],
-                  },
+                  scale: 1,
                 }}
                 viewport={{
                   once: true,
-                  amount: 0.2,
+                  amount: 0.25,
                 }}
                 transition={{
-                  duration: 0.7,
+                  delay:
+                    reduced
+                      ? 0
+                      : index * 0.08,
+                  duration: 0.9,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 whileHover={
                   reduced
                     ? undefined
                     : {
-                        y: -8,
-                        scale: 1.018,
+                        y: -5,
                         transition: {
-                          delay: 0,
-                          duration: 0.7,
+                          duration: 0.5,
                           ease: [0.22, 1, 0.36, 1],
                         },
                       }
                 }
-                className="
-                  h-full
-                "
+                className="h-full"
               >
                 <div
                   className="
@@ -1816,33 +1697,33 @@ export function WhyChooseUs() {
 
                     relative
 
+                    flex
+
                     h-full
+
+                    min-h-[190px]
+
+                    flex-col
 
                     overflow-hidden
 
                     rounded-[20px]
 
                     border
-                    border-slate-200/70
+                    border-slate-200/80
 
-                    bg-white/75
+                    bg-white
 
                     p-5
 
-                    shadow-[0_10px_30px_rgba(32,26,87,0.06)]
+                    shadow-[0_12px_35px_rgba(35,43,74,0.06)]
 
-                    backdrop-blur-md
-
-                    transform-gpu
-
-                    transition-[border-color,box-shadow,background-color]
+                    transition-[border-color,box-shadow,transform]
                     duration-700
 
                     hover:border-[#3F80CF]/25
 
-                    hover:bg-white/90
-
-                    hover:shadow-[0_26px_60px_rgba(32,26,87,0.14)]
+                    hover:shadow-[0_24px_60px_rgba(35,43,74,0.12)]
 
                     sm:p-6
                   "
@@ -1851,47 +1732,17 @@ export function WhyChooseUs() {
 
                   <span
                     className="
-                      pointer-events-none
-
                       absolute
-                      -right-12
-                      -top-12
-
-                      h-32
-                      w-32
-
-                      scale-50
-
-                      rounded-full
-
-                      bg-[#3F80CF]/10
-
-                      opacity-0
-
-                      blur-2xl
-
-                      transition-all
-                      duration-700
-
-                      group-hover:scale-100
-                      group-hover:opacity-100
-                    "
-                  />
-
-                  <span
-                    className="
-                      absolute
-
                       left-0
                       top-0
 
                       h-[3px]
                       w-0
 
-                      bg-active
+                      bg-[#3F80CF]
 
                       transition-all
-                      duration-800
+                      duration-700
 
                       group-hover:w-full
                     "
@@ -1899,25 +1750,16 @@ export function WhyChooseUs() {
 
                   <span
                     className="
-                      font-display
+                      text-[10px]
 
-                      text-[11px]
+                      font-bold
 
-                      font-semibold
+                      tracking-[0.16em]
 
-                      tracking-[0.18em]
-
-                      text-active
-
-                      transition-all
-                      duration-800
-
-                      group-hover:tracking-[0.24em]
+                      text-[#3F80CF]/75
                     "
                   >
-                    {String(
-                      index + 1,
-                    ).padStart(
+                    {String(index + 1).padStart(
                       2,
                       "0",
                     )}
@@ -1931,14 +1773,14 @@ export function WhyChooseUs() {
 
                       font-bold
 
-                      leading-snug
+                      leading-[1.25]
 
                       tracking-[-0.02em]
 
-                      text-[#201A57]
+                      text-[#171A35]
 
                       transition-transform
-                      duration-700
+                      duration-500
 
                       group-hover:translate-x-1
 
@@ -1964,6 +1806,27 @@ export function WhyChooseUs() {
                   >
                     {strength.body}
                   </p>
+
+                  <div
+                    className="
+                      mt-auto
+                      pt-5
+                    "
+                  >
+                    <span
+                      className="
+                        block
+
+                        h-px
+                        w-full
+
+                        bg-gradient-to-r
+
+                        from-[#3F80CF]/25
+                        to-transparent
+                      "
+                    />
+                  </div>
                 </div>
               </motion.div>
             ),

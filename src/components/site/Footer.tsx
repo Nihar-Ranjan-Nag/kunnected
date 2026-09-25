@@ -418,7 +418,7 @@ export function Footer() {
                 sm:leading-7
               "
             >
-              Follow Kunnected FM for
+              Follow KUnnected FM for
               student accommodation
               operations updates and
               industry insights.
@@ -444,7 +444,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/kunnected-living-facilities-management-services-llc/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Kunnected FM on LinkedIn"
+                aria-label="KUnnected FM on LinkedIn"
                 className="
                   inline-flex
 

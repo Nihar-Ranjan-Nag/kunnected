@@ -1,9 +1,9 @@
 export const company = {
-  name: "Kunnected FM",
-  legalName: "Kunnected Living Facilities Management Services LLC",
+  name: "KUnnected FM",
+  legalName: "KUnnected Living Facilities Management Services LLC",
   tagline:
     "To manage student living at Khalifa University with professionalism and heart, ensuring comfort, safety, and peace of mind every day.",
-  purpose: "Exclusively Serving Khalifa University",
+  purpose: "Exclusively Serving",
   purposeBody:
     "We operate with a clear purpose — to ensure every space across student accommodation functions seamlessly, efficiently, and reliably. We don't just maintain facilities; we enable experiences.",
   purposeExtended:
@@ -106,8 +106,8 @@ export const flagshipServices = [
 export const stats = [
   { value: 3260, suffix: "", label: "Student beds across the accommodation estate" },
   { value: 8, suffix: "", label: "Buildings under management" },
-  { value: 24, suffix: "/7", label: "Helpdesk and emergency cover" },
-  { value: 11, suffix: "", label: "Integrated service lines" },
+  { value: 24, suffix: "/7", label: " Operations" },
+  { value: 14, suffix: "", label: "Integrated service lines" },
 ] as const;
 
 export const services = [
@@ -306,9 +306,9 @@ export const faq = [
       "Our 24/7 helpdesk provides staffed emergency response specifically for Khalifa University residences, with defined escalation paths and rapid resolution commitments.",
   },
   {
-    question: "What makes Kunnected FM's student accommodation operations unique?",
+    question: "What makes KUnnected FM's student accommodation operations unique?",
     answer:
-      "Kunnected FM combines proactive facilities engineering, student welfare monitoring, and 24/7 responsiveness to transform student accommodation into comfortable, safe environments where students can thrive.",
+      "KUnnected FM combines proactive facilities engineering, student welfare monitoring, and 24/7 responsiveness to transform student accommodation into comfortable, safe environments where students can thrive.",
   },
 ] as const;
 

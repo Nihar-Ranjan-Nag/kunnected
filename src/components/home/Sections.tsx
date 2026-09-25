@@ -1812,7 +1812,7 @@ export function CtaBand() {
                 sm:text-[15px]
               "
             >
-              Contact Kunnected FM
+              Contact KUnnected FM
             </span>
           </div>
         </Reveal>

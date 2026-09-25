@@ -24,7 +24,7 @@ export const company = {
 };
 
 export const vision = [
-  "Reliable systems that never miss a beat",
+  "Reliable systems that deliver seamless performance",
   "Efficient operations across every building",
   "Connected student accommodation infrastructure",
   "Proactive maintenance before issues arise",
@@ -239,7 +239,7 @@ export const project = {
   subtitle: "3,260 beds · 8 buildings · Main Campus & Sas Al Nakhl",
   body: "Khalifa University Student Accommodation forms a key part of the university's strategic growth plan, aiming to deliver world-class living facilities for students across both the Main Campus and Sas Al Nakhl (SAN) Campus. With a total capacity of 3,260 beds across eight buildings, the development is designed to foster a vibrant residential life while supporting academic and doctoral pursuits.",
   scope:
-    "KUFM's scope includes a full range of services such as management operations, QHSE compliance, helpdesk services, soft services (cleaning, pest control, waste management, laundry, landscaping, and security), and hard services (HVAC, plumbing, elevators, and electrical systems). It also covers energy management and lifecycle maintenance. In addition, KUFM provides value-added services including transportation (shuttle) and concierge services, plus Student Welfare Services including room allocation, student induction, key management, and code of conduct monitoring.",
+    "KUnnected FM's scope includes a full range of services such as management operations, QHSE compliance, helpdesk services, soft services (cleaning, pest control, waste management, laundry and landscaping), and hard services (HVAC, plumbing, elevators, and electrical systems). It also covers energy management and lifecycle maintenance. In addition, KUFM provides value-added services including transportation (shuttle) and concierge services, plus Student Welfare Services including room allocation, student induction, key management, and code of conduct monitoring.",
 } as const;
 
 export const projectScope = {

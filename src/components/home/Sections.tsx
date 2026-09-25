@@ -3455,43 +3455,6 @@ className="
 
 
 
-        <Reveal delay={0.12}>
-
-          <p
-
-className="
-
-              mt-4
-
-
-
-              max-w-2xl
-
-
-
-              text-[15px]
-
-              leading-7
-
-
-
-              text-muted-foreground
-
-
-
-              sm:text-[16px]
-
-              sm:leading-8
-
-            "
-
-          >
-
-            {company.tagline}
-
-          </p>
-
-        </Reveal>
 
 
 
@@ -4130,39 +4093,6 @@ className="
 
 
 
-                <p
-
-className="
-
-                    mt-4
-
-
-
-                    text-[14px]
-
-                    leading-7
-
-
-
-                    text-muted-foreground
-
-
-
-                    sm:text-[15px]
-
-                  "
-
-                >
-
-                  Our administrative and management teams
-
-                  are available during standard working
-
-                  hours for support, meetings, and planned
-
-                  maintenance coordination.
-
-                </p>
 
 
 

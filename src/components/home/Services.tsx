@@ -2392,7 +2392,7 @@ className="
 
 
 
-                            sm:text-[15px]
+                            sm:text-[14px]
 
                           "
 
@@ -3242,9 +3242,8 @@ className="
 
 
 
-                    h-full
-
-                    min-h-[280px]
+                    h-auto
+                    lg:h-full
 
 
 
@@ -3270,7 +3269,7 @@ className="
 
 
 
-                    p-6
+                    p-4
 
 
 
@@ -3304,11 +3303,11 @@ className="
 
 
 
-                    sm:p-7
+                    sm:p-5
 
+                    lg:p-5
 
-
-                    xl:p-8
+                    xl:p-6
 
                   "
 
@@ -3372,7 +3371,7 @@ className="
 
 
 
-                      text-[21px]
+                      text-[18px]
 
 
 
@@ -3404,11 +3403,9 @@ className="
 
 
 
-                      sm:text-[22px]
+                      sm:text-[19px]
 
-
-
-                      xl:text-[23px]
+                      lg:text-[20px]
 
                     "
 
@@ -3432,15 +3429,11 @@ className="
 
 className="
 
-                      mt-4
+                      mt-3
 
+                      text-[13px]
 
-
-                      text-[14px]
-
-
-
-                      leading-7
+                      leading-6
 
 
 
@@ -3472,9 +3465,9 @@ className="
 
 className="
 
-                      mt-auto
-
-                      pt-7
+                      mt-5
+                      lg:mt-auto
+                      lg:pt-5
 
                     "
 

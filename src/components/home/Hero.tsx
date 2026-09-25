@@ -758,19 +758,23 @@ className="
 
             max-w-2xl
 
-            text-[13px]
+            text-[13.5px]
 
             leading-6
 
-            text-white/68
+            text-white/82
 
             sm:mt-5
 
-            sm:text-[14px]
+            sm:text-[15px]
 
             sm:leading-7
 
-            lg:text-base
+            md:text-[16px]
+
+            md:leading-8
+
+            lg:text-[18px]
 
           "
 

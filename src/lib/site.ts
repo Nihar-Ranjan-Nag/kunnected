@@ -245,7 +245,7 @@ export const project = {
 export const projectScope = {
   hardServices: [
     "HVAC Systems & Ventilation Maintenance",
-    "Electrical Fittings & Fixtures Services",
+    "Electrical Infrastructure",
     "Plumbing & Pumps Infrastructure",
     "Elevator & Mechanical Lift Systems",
     "Energy Management & Audits",
@@ -257,14 +257,14 @@ export const projectScope = {
     "Waste Management & Recycling Systems",
     "Laundry Service Operations",
     "Landscaping & Grounds Keeping",
-    "Security & Guarding Services",
+     
   ],
   valueAdded: [
     "Turnaround Residence Cleaning",
     "Linen / Towels",
     "Laundry / Dry Cleaning",
     "Shuttle / Transport Service",
-    "Concierge Services during Summer Lets",
+     
   ],
   studentWelfare: [
     "Room Allocation & Induction Programs",
@@ -326,7 +326,7 @@ export const industries = [
     body: "HVAC, plumbing, lighting, and power infrastructure supporting all residences.",
   },
   {
-    title: "Student Welfare Services",
+    title: "Student Services",
     body: "Helpdesk, room allocations, key management, and 24/7 emergency support.",
   },
 ] as const;

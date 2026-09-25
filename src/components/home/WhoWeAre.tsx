@@ -34,7 +34,7 @@ import {
 
 
 
-import engineerAsset from "@/assets/engineer.jpg";
+import engineerAsset from "@/assets/hero-campus.jpg";
 
 
 
@@ -52,31 +52,31 @@ function SectionUnderline() {
 
 
 
-return (
+  return (
 
     <motion.span
 
-initial={
+      initial={
 
         reduced
 
-? false
+          ? false
 
-: {
+          : {
 
-              scaleX: 0,
+            scaleX: 0,
 
-            }
+          }
 
       }
 
-whileInView={{
+      whileInView={{
 
         scaleX: 1,
 
       }}
 
-viewport={{
+      viewport={{
 
         once: true,
 
@@ -84,7 +84,7 @@ viewport={{
 
       }}
 
-transition={{
+      transition={{
 
         duration: 0.75,
 
@@ -92,7 +92,7 @@ transition={{
 
       }}
 
-className="
+      className="
 
         mt-4
 
@@ -140,7 +140,7 @@ className="
 
 function SectionLabel({
 
-children,
+  children,
 
 }: {
 
@@ -148,11 +148,11 @@ children,
 
 }) {
 
-return (
+  return (
 
     <div
 
-className="
+      className="
 
         inline-flex
 
@@ -198,7 +198,7 @@ className="
 
       <span
 
-className="
+        className="
 
           relative
 
@@ -228,7 +228,7 @@ className="
 
         <span
 
-className="
+          className="
 
             absolute
 
@@ -254,7 +254,7 @@ className="
 
         <span
 
-className="
+          className="
 
             relative
 
@@ -286,7 +286,7 @@ className="
 
       <span
 
-className="
+        className="
 
           text-[14px]
 
@@ -336,7 +336,7 @@ className="
 
 function CardLightSweep({
 
-light = false,
+  light = false,
 
 }: {
 
@@ -344,13 +344,13 @@ light = false,
 
 }) {
 
-return (
+  return (
 
     <span
 
-aria-hidden="true"
+      aria-hidden="true"
 
-className={`
+      className={`
 
         pointer-events-none
 
@@ -378,13 +378,11 @@ className={`
 
         from-transparent
 
-        ${
+        ${light
 
-          light
+          ? "via-[#3F80CF]/10"
 
-? "via-[#3F80CF]/10"
-
-: "via-white/[0.08]"
+          : "via-white/[0.08]"
 
         }
 
@@ -432,13 +430,13 @@ export function WhoWeAre() {
 
 
 
-return (
+  return (
 
     <section
 
-id="who-we-are"
+      id="who-we-are"
 
-className="
+      className="
 
         relative
 
@@ -460,7 +458,7 @@ className="
 
       <div
 
-className="
+        className="
 
           pointer-events-none
 
@@ -500,7 +498,7 @@ className="
 
       <div
 
-className="
+        className="
 
           pointer-events-none
 
@@ -548,7 +546,7 @@ className="
 
       <div
 
-className="
+        className="
 
           relative
 
@@ -626,7 +624,7 @@ className="
 
           <div
 
-className="
+            className="
 
               grid
 
@@ -684,7 +682,7 @@ className="
 
               <h2
 
-className="
+                className="
 
                   mt-5
 
@@ -750,7 +748,7 @@ className="
 
             <div
 
-className="
+              className="
 
                 border-t
 
@@ -782,7 +780,7 @@ className="
 
               <p
 
-className="
+                className="
 
                   max-w-[760px]
 
@@ -836,7 +834,7 @@ className="
 
               <p
 
-className="
+                className="
 
                   mt-4
 
@@ -896,7 +894,7 @@ className="
 
 
 
-         {/* =====================================================
+        {/* =====================================================
 
     IMAGE + STORY
 
@@ -904,9 +902,9 @@ className="
 
 
 
-<div
+        <div
 
-className="
+          className="
 
     mt-7
 
@@ -936,9 +934,9 @@ className="
 
   "
 
->
+        >
 
-  {/* =================================================
+          {/* =================================================
 
       IMAGE
 
@@ -946,89 +944,89 @@ className="
 
 
 
-  <motion.div
+          <motion.div
 
-initial={
+            initial={
 
-      reduced
+              reduced
 
-? false
+                ? false
 
-: {
+                : {
 
-            opacity: 0,
+                  opacity: 0,
 
-            x: -42,
+                  x: -42,
 
-            scale: 0.975,
+                  scale: 0.975,
 
-            clipPath:
+                  clipPath:
 
-              "inset(0 10% 0 0 round 24px)",
+                    "inset(0 10% 0 0 round 24px)",
 
-          }
+                }
 
-    }
+            }
 
-whileInView={{
+            whileInView={{
 
-      opacity: 1,
+              opacity: 1,
 
-      x: 0,
+              x: 0,
 
-      scale: 1,
+              scale: 1,
 
-      clipPath:
+              clipPath:
 
-        "inset(0 0% 0 0 round 24px)",
+                "inset(0 0% 0 0 round 24px)",
 
-    }}
+            }}
 
-viewport={{
+            viewport={{
 
-      once: true,
+              once: true,
 
-      amount: 0.25,
+              amount: 0.25,
 
-    }}
+            }}
 
-transition={{
+            transition={{
 
-      duration: 1.45,
-
-      ease: [0.22, 1, 0.36, 1],
-
-    }}
-
-whileHover={
-
-      reduced
-
-? undefined
-
-: {
-
-            y: -4,
-
-            transition: {
-
-              duration: 0.7,
+              duration: 1.45,
 
               ease: [0.22, 1, 0.36, 1],
 
-            },
+            }}
 
-          }
+            whileHover={
 
-    }
+              reduced
 
-className="h-full"
+                ? undefined
 
-  >
+                : {
 
-    <motion.div
+                  y: -4,
 
-className="
+                  transition: {
+
+                    duration: 0.7,
+
+                    ease: [0.22, 1, 0.36, 1],
+
+                  },
+
+                }
+
+            }
+
+            className="h-full"
+
+          >
+
+            <motion.div
+
+              className="
 
         group
 
@@ -1071,21 +1069,21 @@ className="
 
       "
 
-transition={{
+              transition={{
 
-        duration: 0.7,
+                duration: 0.7,
 
-        ease: [0.22, 1, 0.36, 1],
+                ease: [0.22, 1, 0.36, 1],
 
-      }}
+              }}
 
-    >
+            >
 
-      <Parallax
+              <Parallax
 
-distance={24}
+                distance={24}
 
-className="
+                className="
 
           h-full
 
@@ -1093,71 +1091,71 @@ className="
 
         "
 
-      >
+              >
 
-        <motion.img
+                <motion.img
 
-src={engineerAsset}
+                  src={engineerAsset}
 
-alt="Facilities management engineer at work"
+                  alt="Facilities management engineer at work"
 
-width={1408}
+                  width={1408}
 
-height={1008}
+                  height={1008}
 
-loading="lazy"
+                  loading="lazy"
 
-initial={
+                  initial={
 
-            reduced
+                    reduced
 
-? false
+                      ? false
 
-: {
+                      : {
 
-                  scale: 1.08,
+                        scale: 1.08,
 
-                }
+                      }
 
-          }
+                  }
 
-whileInView={{
+                  whileInView={{
 
-            scale: 1,
+                    scale: 1,
 
-          }}
+                  }}
 
-viewport={{
+                  viewport={{
 
-            once: true,
+                    once: true,
 
-            amount: 0.25,
+                    amount: 0.25,
 
-          }}
+                  }}
 
-whileHover={
+                  whileHover={
 
-            reduced
+                    reduced
 
-? undefined
+                      ? undefined
 
-: {
+                      : {
 
-                  scale: 1.035,
+                        scale: 1.035,
 
-                }
+                      }
 
-          }
+                  }
 
-transition={{
+                  transition={{
 
-            duration: 1.8,
+                    duration: 1.8,
 
-            ease: [0.22, 1, 0.36, 1],
+                    ease: [0.22, 1, 0.36, 1],
 
-          }}
+                  }}
 
-className="
+                  className="
 
             h-full
 
@@ -1169,15 +1167,15 @@ className="
 
           "
 
-        />
+                />
 
-      </Parallax>
+              </Parallax>
 
 
 
-      <div
+              <div
 
-className="
+                className="
 
           pointer-events-none
 
@@ -1201,51 +1199,51 @@ className="
 
         "
 
-      />
+              />
 
 
 
-      {!reduced && (
+              {!reduced && (
 
-        <motion.span
+                <motion.span
 
-aria-hidden="true"
+                  aria-hidden="true"
 
-initial={{
+                  initial={{
 
-            x: "-150%",
+                    x: "-150%",
 
-            opacity: 0,
+                    opacity: 0,
 
-          }}
+                  }}
 
-whileInView={{
+                  whileInView={{
 
-            x: "340%",
+                    x: "340%",
 
-            opacity: [0, 0.28, 0],
+                    opacity: [0, 0.28, 0],
 
-          }}
+                  }}
 
-viewport={{
+                  viewport={{
 
-            once: true,
+                    once: true,
 
-            amount: 0.3,
+                    amount: 0.3,
 
-          }}
+                  }}
 
-transition={{
+                  transition={{
 
-            delay: 0.65,
+                    delay: 0.65,
 
-            duration: 1.9,
+                    duration: 1.9,
 
-            ease: [0.22, 1, 0.36, 1],
+                    ease: [0.22, 1, 0.36, 1],
 
-          }}
+                  }}
 
-className="
+                  className="
 
             pointer-events-none
 
@@ -1281,55 +1279,55 @@ className="
 
           "
 
-        />
+                />
 
-      )}
+              )}
 
 
 
-      <motion.div
+              <motion.div
 
-initial={
+                initial={
 
-          reduced
+                  reduced
 
-? false
+                    ? false
 
-: {
+                    : {
 
-                opacity: 0,
+                      opacity: 0,
 
-                y: 14,
+                      y: 14,
 
-              }
+                    }
 
-        }
+                }
 
-whileInView={{
+                whileInView={{
 
-          opacity: 1,
+                  opacity: 1,
 
-          y: 0,
+                  y: 0,
 
-        }}
+                }}
 
-viewport={{
+                viewport={{
 
-          once: true,
+                  once: true,
 
-        }}
+                }}
 
-transition={{
+                transition={{
 
-          delay: 0.9,
+                  delay: 0.9,
 
-          duration: 0.8,
+                  duration: 0.8,
 
-          ease: [0.22, 1, 0.36, 1],
+                  ease: [0.22, 1, 0.36, 1],
 
-        }}
+                }}
 
-className="
+                className="
 
           absolute
 
@@ -1391,19 +1389,19 @@ className="
 
         "
 
-      >
+              >
 
-        Student-Centred Facilities
+                Student-Centred Facilities
 
-      </motion.div>
+              </motion.div>
 
-    </motion.div>
+            </motion.div>
 
-  </motion.div>
+          </motion.div>
 
 
 
-  {/* =================================================
+          {/* =================================================
 
       RIGHT STORY
 
@@ -1411,9 +1409,9 @@ className="
 
 
 
-  <div
+          <div
 
-className="
+            className="
 
       flex
 
@@ -1423,13 +1421,13 @@ className="
 
     "
 
-  >
+          >
 
-    <Reveal delay={0.08}>
+            <Reveal delay={0.08}>
 
-      <p
+              <p
 
-className="
+                className="
 
           max-w-3xl
 
@@ -1455,21 +1453,21 @@ className="
 
         "
 
-      >
+              >
 
-        {company.purposeBody}
+                {company.purposeBody}
 
-      </p>
+              </p>
 
-    </Reveal>
+            </Reveal>
 
 
 
-    <Reveal delay={0.12}>
+            <Reveal delay={0.12}>
 
-      <p
+              <p
 
-className="
+                className="
 
           mt-3
 
@@ -1499,17 +1497,17 @@ className="
 
         "
 
-      >
+              >
 
-        {company.purposeExtended}
+                {company.purposeExtended}
 
-      </p>
+              </p>
 
-    </Reveal>
+            </Reveal>
 
 
 
-    {/* =================================================
+            {/* =================================================
 
         VISION / PROMISE
 
@@ -1517,9 +1515,9 @@ className="
 
 
 
-    <div
+            <div
 
-className="
+              className="
 
         mt-5
 
@@ -1543,9 +1541,9 @@ className="
 
       "
 
-    >
+            >
 
-      {/* =============================================
+              {/* =============================================
 
           VISION
 
@@ -1553,95 +1551,95 @@ className="
 
 
 
-      <motion.div
+              <motion.div
 
-initial={
+                initial={
 
-          reduced
+                  reduced
 
-? false
+                    ? false
 
-: {
+                    : {
 
-                opacity: 0,
+                      opacity: 0,
 
-                y: 28,
+                      y: 28,
 
-                rotate: -1,
+                      rotate: -1,
 
-              }
+                    }
 
-        }
+                }
 
-whileInView={{
+                whileInView={{
 
-          opacity: 1,
+                  opacity: 1,
 
-          y: 0,
+                  y: 0,
 
-          rotate: 0,
+                  rotate: 0,
 
-          transition: {
+                  transition: {
 
-            delay: 0.25,
+                    delay: 0.25,
 
-            duration: 1.1,
+                    duration: 1.1,
 
-            ease: [0.22, 1, 0.36, 1],
+                    ease: [0.22, 1, 0.36, 1],
 
-          },
+                  },
 
-        }}
+                }}
 
-viewport={{
+                viewport={{
 
-          once: true,
+                  once: true,
 
-          amount: 0.3,
+                  amount: 0.3,
 
-        }}
+                }}
 
-transition={{
-
-          duration: 0.65,
-
-          ease: [0.22, 1, 0.36, 1],
-
-        }}
-
-whileHover={
-
-          reduced
-
-? undefined
-
-: {
-
-                y: -6,
-
-                rotate: -0.25,
-
-                transition: {
-
-                  delay: 0,
+                transition={{
 
                   duration: 0.65,
 
                   ease: [0.22, 1, 0.36, 1],
 
-                },
+                }}
 
-              }
+                whileHover={
 
-        }
+                  reduced
 
-className="h-full"
+                    ? undefined
 
-      >
+                    : {
 
-        <motion.div
+                      y: -6,
 
-className="
+                      rotate: -0.25,
+
+                      transition: {
+
+                        delay: 0,
+
+                        duration: 0.65,
+
+                        ease: [0.22, 1, 0.36, 1],
+
+                      },
+
+                    }
+
+                }
+
+                className="h-full"
+
+              >
+
+                <motion.div
+
+                  className="
 
             group
 
@@ -1699,15 +1697,15 @@ className="
 
           "
 
-        >
+                >
 
-          <CardLightSweep />
+                  <CardLightSweep />
 
 
 
-          <span
+                  <span
 
-className="
+                    className="
 
               absolute
 
@@ -1729,13 +1727,13 @@ className="
 
             "
 
-          />
+                  />
 
 
 
-          <div
+                  <div
 
-className="
+                    className="
 
               flex
 
@@ -1745,11 +1743,11 @@ className="
 
             "
 
-          >
+                  >
 
-            <p
+                    <p
 
-className="
+                      className="
 
                 text-[9px]
 
@@ -1769,21 +1767,21 @@ className="
 
               "
 
-            >
+                    >
 
-              Vision
+                      Vision
 
-            </p>
-
-
-
-          </div>
+                    </p>
 
 
 
-          <h3
+                  </div>
 
-className="
+
+
+                  <h3
+
+                    className="
 
               mt-2
 
@@ -1809,17 +1807,17 @@ className="
 
             "
 
-          >
+                  >
 
-            Our Vision
+                    Our Vision
 
-          </h3>
+                  </h3>
 
 
 
-          <ul
+                  <ul
 
-className="
+                    className="
 
               mt-3
 
@@ -1827,15 +1825,15 @@ className="
 
             "
 
-          >
+                  >
 
-            {vision.map((item) => (
+                    {vision.map((item) => (
 
-              <li
+                      <li
 
-key={item}
+                        key={item}
 
-className="
+                        className="
 
                   flex
 
@@ -1863,11 +1861,11 @@ className="
 
                 "
 
-              >
+                      >
 
-                <span
+                        <span
 
-className="
+                          className="
 
                     mt-[8px]
 
@@ -1891,29 +1889,29 @@ className="
 
                   "
 
-                />
+                        />
 
 
 
-                <span>
+                        <span>
 
-                  {item}
+                          {item}
 
-                </span>
+                        </span>
 
-              </li>
+                      </li>
 
-            ))}
+                    ))}
 
-          </ul>
+                  </ul>
 
-        </motion.div>
+                </motion.div>
 
-      </motion.div>
+              </motion.div>
 
 
 
-      {/* =============================================
+              {/* =============================================
 
           PROMISE
 
@@ -1921,95 +1919,95 @@ className="
 
 
 
-      <motion.div
+              <motion.div
 
-initial={
+                initial={
 
-          reduced
+                  reduced
 
-? false
+                    ? false
 
-: {
+                    : {
 
-                opacity: 0,
+                      opacity: 0,
 
-                x: 32,
+                      x: 32,
 
-                rotate: 1,
+                      rotate: 1,
 
-              }
+                    }
 
-        }
+                }
 
-whileInView={{
+                whileInView={{
 
-          opacity: 1,
+                  opacity: 1,
 
-          x: 0,
+                  x: 0,
 
-          rotate: 0,
+                  rotate: 0,
 
-          transition: {
+                  transition: {
 
-            delay: 0.42,
+                    delay: 0.42,
 
-            duration: 1.15,
+                    duration: 1.15,
 
-            ease: [0.22, 1, 0.36, 1],
+                    ease: [0.22, 1, 0.36, 1],
 
-          },
+                  },
 
-        }}
+                }}
 
-viewport={{
+                viewport={{
 
-          once: true,
+                  once: true,
 
-          amount: 0.3,
+                  amount: 0.3,
 
-        }}
+                }}
 
-transition={{
-
-          duration: 0.65,
-
-          ease: [0.22, 1, 0.36, 1],
-
-        }}
-
-whileHover={
-
-          reduced
-
-? undefined
-
-: {
-
-                y: -6,
-
-                rotate: 0.25,
-
-                transition: {
-
-                  delay: 0,
+                transition={{
 
                   duration: 0.65,
 
                   ease: [0.22, 1, 0.36, 1],
 
-                },
+                }}
 
-              }
+                whileHover={
 
-        }
+                  reduced
 
-className="h-full"
+                    ? undefined
 
-      >
+                    : {
 
-        <motion.div
+                      y: -6,
 
-className="
+                      rotate: 0.25,
+
+                      transition: {
+
+                        delay: 0,
+
+                        duration: 0.65,
+
+                        ease: [0.22, 1, 0.36, 1],
+
+                      },
+
+                    }
+
+                }
+
+                className="h-full"
+
+              >
+
+                <motion.div
+
+                  className="
 
             group
 
@@ -2067,15 +2065,15 @@ className="
 
           "
 
-        >
+                >
 
-          <CardLightSweep />
+                  <CardLightSweep />
 
 
 
-          <span
+                  <span
 
-className="
+                    className="
 
               absolute
 
@@ -2097,13 +2095,13 @@ className="
 
             "
 
-          />
+                  />
 
 
 
-          <div
+                  <div
 
-className="
+                    className="
 
               flex
 
@@ -2113,11 +2111,11 @@ className="
 
             "
 
-          >
+                  >
 
-            <p
+                    <p
 
-className="
+                      className="
 
                 text-[9px]
 
@@ -2137,21 +2135,21 @@ className="
 
               "
 
-            >
+                    >
 
-              Promise
+                      Promise
 
-            </p>
-
-
-
-          </div>
+                    </p>
 
 
 
-          <h3
+                  </div>
 
-className="
+
+
+                  <h3
+
+                    className="
 
               mt-2
 
@@ -2177,17 +2175,17 @@ className="
 
             "
 
-          >
+                  >
 
-            Our Promise
+                    Our Promise
 
-          </h3>
+                  </h3>
 
 
 
-          <ul
+                  <ul
 
-className="
+                    className="
 
               mt-3
 
@@ -2195,15 +2193,15 @@ className="
 
             "
 
-          >
+                  >
 
-            {promise.map((item) => (
+                    {promise.map((item) => (
 
-              <li
+                      <li
 
-key={item}
+                        key={item}
 
-className="
+                        className="
 
                   flex
 
@@ -2231,11 +2229,11 @@ className="
 
                 "
 
-              >
+                      >
 
-                <span
+                        <span
 
-className="
+                          className="
 
                     mt-[8px]
 
@@ -2259,31 +2257,31 @@ className="
 
                   "
 
-                />
+                        />
 
 
 
-                <span>
+                        <span>
 
-                  {item}
+                          {item}
 
-                </span>
+                        </span>
 
-              </li>
+                      </li>
 
-            ))}
+                    ))}
 
-          </ul>
+                  </ul>
 
-        </motion.div>
+                </motion.div>
 
-      </motion.div>
+              </motion.div>
 
-    </div>
+            </div>
 
-  </div>
+          </div>
 
-</div>
+        </div>
 
 
 
@@ -2297,7 +2295,7 @@ className="
 
         <div
 
-className="
+          className="
 
             mt-12
 
@@ -2339,7 +2337,7 @@ className="
 
             <div
 
-className="
+              className="
 
                 grid
 
@@ -2371,7 +2369,7 @@ className="
 
                 <h3
 
-className="
+                  className="
 
                     mt-5
 
@@ -2431,7 +2429,7 @@ className="
 
               <p
 
-className="
+                className="
 
                   max-w-[500px]
 
@@ -2487,7 +2485,7 @@ className="
 
           <div
 
-className="
+            className="
 
               mt-8
 
@@ -2529,45 +2527,45 @@ className="
 
                 <motion.div
 
-key={
+                  key={
 
                     foundation.n
 
                   }
 
-initial={
+                  initial={
 
                     reduced
 
-? false
+                      ? false
 
-: {
+                      : {
 
-                          opacity: 0,
+                        opacity: 0,
 
-                          x:
+                        x:
 
-                            index % 2 === 0
+                          index % 2 === 0
 
-? -20
+                            ? -20
 
-: 20,
+                            : 20,
 
-                          y: 26,
+                        y: 26,
 
-                          rotate:
+                        rotate:
 
-                            index % 2 === 0
+                          index % 2 === 0
 
-? -1
+                            ? -1
 
-: 1,
+                            : 1,
 
-                        }
+                      }
 
                   }
 
-whileInView={{
+                  whileInView={{
 
                     opacity: 1,
 
@@ -2589,7 +2587,7 @@ whileInView={{
 
                   }}
 
-viewport={{
+                  viewport={{
 
                     once: true,
 
@@ -2597,7 +2595,7 @@ viewport={{
 
                   }}
 
-transition={{
+                  transition={{
 
                     duration: 0.65,
 
@@ -2605,33 +2603,33 @@ transition={{
 
                   }}
 
-whileHover={
+                  whileHover={
 
                     reduced
 
-? undefined
+                      ? undefined
 
-: {
+                      : {
 
-                          y: -7,
+                        y: -7,
 
-                          scale: 1.015,
+                        scale: 1.015,
 
-                          transition: {
+                        transition: {
 
-                            delay: 0,
+                          delay: 0,
 
-                            duration: 0.65,
+                          duration: 0.65,
 
-                            ease: [0.22, 1, 0.36, 1],
+                          ease: [0.22, 1, 0.36, 1],
 
-                          },
+                        },
 
-                        }
+                      }
 
                   }
 
-className="
+                  className="
 
                     h-full
 
@@ -2641,7 +2639,7 @@ className="
 
                   <div
 
-className="
+                    className="
 
                       group
 
@@ -2723,7 +2721,7 @@ className="
 
                     <span
 
-className="
+                      className="
 
                         absolute
 
@@ -2765,7 +2763,7 @@ className="
 
                     <h4
 
-className="
+                      className="
 
                         mt-1
 
@@ -2821,7 +2819,7 @@ className="
 
                     <p
 
-className="
+                      className="
 
                         mt-3
 
@@ -2855,7 +2853,7 @@ className="
 
                     <div
 
-className="
+                      className="
 
                         mt-5
 
@@ -2865,7 +2863,7 @@ className="
 
                       <span
 
-className="
+                        className="
 
                           block
 
@@ -2921,11 +2919,11 @@ export function WhyChooseUs() {
 
 
 
-return (
+  return (
 
     <section
 
-className="
+      className="
 
         relative
 
@@ -2949,7 +2947,7 @@ className="
 
       <div
 
-className="
+        className="
 
           blur-circle-1
 
@@ -2971,7 +2969,7 @@ className="
 
       <div
 
-className="
+        className="
 
           blur-circle-2
 
@@ -2993,7 +2991,7 @@ className="
 
       <div
 
-className="
+        className="
 
           relative
 
@@ -3059,7 +3057,7 @@ className="
 
           <div
 
-className="
+            className="
 
               max-w-4xl
 
@@ -3069,7 +3067,7 @@ className="
 
             <div
 
-className="
+              className="
 
                 inline-flex
 
@@ -3107,7 +3105,7 @@ className="
 
               <span
 
-className="
+                className="
 
                   h-[6px]
 
@@ -3133,7 +3131,7 @@ className="
 
               <p
 
-className="
+                className="
 
                   text-[14px]
 
@@ -3171,7 +3169,7 @@ className="
 
             <h2
 
-className="
+              className="
 
                 mt-5
 
@@ -3235,7 +3233,7 @@ className="
 
           <p
 
-className="
+            className="
 
               mt-5
 
@@ -3287,7 +3285,7 @@ className="
 
         <div
 
-className="
+          className="
 
             mt-8
 
@@ -3329,45 +3327,45 @@ className="
 
               <motion.div
 
-key={
+                key={
 
                   strength.title
 
                 }
 
-initial={
+                initial={
 
                   reduced
 
-? false
+                    ? false
 
-: {
+                    : {
 
-                        opacity: 0,
+                      opacity: 0,
 
-                        x:
+                      x:
 
-                          index % 2 === 0
+                        index % 2 === 0
 
-? -22
+                          ? -22
 
-: 22,
+                          : 22,
 
-                        y: 30,
+                      y: 30,
 
-                        rotate:
+                      rotate:
 
-                          index % 2 === 0
+                        index % 2 === 0
 
-? -1.2
+                          ? -1.2
 
-: 1.2,
+                          : 1.2,
 
-                      }
+                    }
 
                 }
 
-whileInView={{
+                whileInView={{
 
                   opacity: 1,
 
@@ -3389,7 +3387,7 @@ whileInView={{
 
                 }}
 
-viewport={{
+                viewport={{
 
                   once: true,
 
@@ -3397,7 +3395,7 @@ viewport={{
 
                 }}
 
-transition={{
+                transition={{
 
                   duration: 0.7,
 
@@ -3405,33 +3403,33 @@ transition={{
 
                 }}
 
-whileHover={
+                whileHover={
 
                   reduced
 
-? undefined
+                    ? undefined
 
-: {
+                    : {
 
-                        y: -8,
+                      y: -8,
 
-                        scale: 1.018,
+                      scale: 1.018,
 
-                        transition: {
+                      transition: {
 
-                          delay: 0,
+                        delay: 0,
 
-                          duration: 0.7,
+                        duration: 0.7,
 
-                          ease: [0.22, 1, 0.36, 1],
+                        ease: [0.22, 1, 0.36, 1],
 
-                        },
+                      },
 
-                      }
+                    }
 
                 }
 
-className="
+                className="
 
                   h-full
 
@@ -3441,7 +3439,7 @@ className="
 
                 <div
 
-className="
+                  className="
 
                     group
 
@@ -3519,7 +3517,7 @@ className="
 
                   <span
 
-className="
+                    className="
 
                       pointer-events-none
 
@@ -3577,7 +3575,7 @@ className="
 
                   <span
 
-className="
+                    className="
 
                       absolute
 
@@ -3615,7 +3613,7 @@ className="
 
                   <span
 
-className="
+                    className="
 
                       font-display
 
@@ -3667,7 +3665,7 @@ className="
 
                   <h3
 
-className="
+                    className="
 
                       mt-4
 
@@ -3717,7 +3715,7 @@ className="
 
                   <p
 
-className="
+                    className="
 
                       mt-3
 

@@ -1,3764 +1,1429 @@
+import type { ReactNode } from "react";
+
 import {
-
   motion,
-
   useReducedMotion,
-
 } from "motion/react";
 
-
-
 import {
-
   Parallax,
-
   Reveal,
-
 } from "@/components/motion/Reveal";
 
-
-
 import {
-
   company,
-
   foundations,
-
   keyStrengths,
-
   promise,
-
   vision,
-
 } from "@/lib/site";
-
-
 
 import engineerAsset from "@/assets/hero-campus.jpg";
 
-
-
 /* =========================================================
-
-   SECTION UNDERLINE
-
+   SHARED MOTION
 ========================================================= */
 
+const easePremium = [
+  0.22,
+  1,
+  0.36,
+  1,
+] as const;
 
+/* =========================================================
+   SECTION UNDERLINE
+========================================================= */
 
 function SectionUnderline() {
-
   const reduced = useReducedMotion();
 
-
-
   return (
-
     <motion.span
-
       initial={
-
         reduced
-
           ? false
-
           : {
-
-            scaleX: 0,
-
-          }
-
+              scaleX: 0,
+            }
       }
-
       whileInView={{
-
         scaleX: 1,
-
       }}
-
       viewport={{
-
         once: true,
-
         margin: "-10%",
-
       }}
-
       transition={{
-
         duration: 0.75,
-
         ease: [0.16, 1, 0.3, 1],
-
       }}
-
       className="
-
         mt-4
-
         block
-
-
-
         h-[3px]
-
-        w-[72px]
-
-
-
+        w-[64px]
         origin-left
-
-
-
         rounded-full
-
-
-
-        bg-active
-
-
-
-        sm:w-[84px]
-
+        bg-[#3F80CF]
+        sm:w-[72px]
+        lg:w-[80px]
       "
-
     />
-
   );
-
 }
 
-
-
 /* =========================================================
-
    SECTION LABEL
-
 ========================================================= */
 
-
-
 function SectionLabel({
-
   children,
-
+  light = false,
 }: {
-
-  children: React.ReactNode;
-
+  children: ReactNode;
+  light?: boolean;
 }) {
-
   return (
-
     <div
-
-      className="
-
+      className={`
         inline-flex
-
         items-center
-
-
-
         gap-2.5
 
-
-
         rounded-full
-
-
 
         border
 
-        border-[#63AEFF]/25
-
-
-
-        bg-[#63AEFF]/[0.07]
-
-
-
-        px-4
-
+        px-3.5
         py-2
 
-
-
-        backdrop-blur-sm
-
-
-
         sm:px-4
-
         sm:py-2.5
 
-      "
-
+        ${
+          light
+            ? `
+                border-[#3F80CF]/20
+                bg-[#3F80CF]/[0.06]
+              `
+            : `
+                border-white/15
+                bg-white/[0.04]
+              `
+        }
+      `}
     >
-
       <span
-
         className="
-
-          relative
-
-
-
-          flex
-
-
-
-          h-[10px]
-
-          w-[10px]
-
-
+          h-[6px]
+          w-[6px]
 
           shrink-0
 
+          rounded-full
 
-
-          items-center
-
-          justify-center
-
+          bg-[#3F80CF]
         "
-
-      >
-
-        <span
-
-          className="
-
-            absolute
-
-            inset-0
-
-
-
-            rounded-full
-
-
-
-            bg-[#63AEFF]/30
-
-
-
-            blur-[4px]
-
-          "
-
-        />
-
-
-
-        <span
-
-          className="
-
-            relative
-
-
-
-            h-[6px]
-
-            w-[6px]
-
-
-
-            rounded-full
-
-
-
-            bg-[#63AEFF]
-
-
-
-            shadow-[0_0_12px_rgba(99,174,255,0.9)]
-
-          "
-
-        />
-
-      </span>
-
-
+      />
 
       <span
+        className={`
+          font-sans
 
-        className="
+          text-[12px]
+          font-medium
 
-          text-[14px]
+          tracking-[0.02em]
 
+          sm:text-[13px]
+          lg:text-[14px]
 
-
-          font-bold
-
-
-
-          tracking-[-0.01em]
-
-
-
-          text-white
-
-
-
-          sm:text-[15px]
-
-
-
-          lg:text-[16px]
-
-        "
-
+          ${
+            light
+              ? "text-[#201A57]"
+              : "text-white"
+          }
+        `}
       >
-
         {children}
-
       </span>
-
     </div>
-
   );
-
 }
 
-
-
 /* =========================================================
-
-   PREMIUM CARD LIGHT SWEEP
-
+   DARK INFORMATION CARD
 ========================================================= */
 
-
-
-function CardLightSweep({
-
-  light = false,
-
+function DarkInfoCard({
+  label,
+  title,
+  items,
+  delay = 0,
 }: {
-
-  light?: boolean;
-
+  label: string;
+  title: string;
+  items: string[];
+  delay?: number;
 }) {
-
-  return (
-
-    <span
-
-      aria-hidden="true"
-
-      className={`
-
-        pointer-events-none
-
-
-
-        absolute
-
-        inset-y-0
-
-        -left-1/2
-
-
-
-        w-1/3
-
-
-
-        -translate-x-full
-
-        -skew-x-12
-
-
-
-        bg-gradient-to-r
-
-        from-transparent
-
-        ${light
-
-          ? "via-[#3F80CF]/10"
-
-          : "via-white/[0.08]"
-
-        }
-
-        to-transparent
-
-
-
-        opacity-0
-
-
-
-        transition-[transform,opacity]
-
-        duration-[1200ms]
-
-        ease-out
-
-
-
-        group-hover:translate-x-[520%]
-
-        group-hover:opacity-100
-
-      `}
-
-    />
-
-  );
-
-}
-
-
-
-/* =========================================================
-
-   WHO WE ARE
-
-========================================================= */
-
-
-
-export function WhoWeAre() {
-
   const reduced = useReducedMotion();
 
+  return (
+    <motion.div
+      initial={
+        reduced
+          ? false
+          : {
+              opacity: 0,
+              y: 24,
+            }
+      }
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.25,
+      }}
+      transition={{
+        delay,
+        duration: 0.8,
+        ease: easePremium,
+      }}
+      whileHover={
+        reduced
+          ? undefined
+          : {
+              y: -4,
+              transition: {
+                duration: 0.35,
+                ease: easePremium,
+              },
+            }
+      }
+      className="h-full"
+    >
+      <div
+        className="
+          relative
+          h-full
 
+          overflow-hidden
+
+          rounded-[18px]
+
+          border
+          border-white/10
+
+          bg-white/[0.035]
+
+          p-5
+
+          transition-colors
+          duration-300
+
+          hover:border-[#3F80CF]/40
+          hover:bg-white/[0.05]
+
+          sm:p-6
+        "
+      >
+        {/* ACTIVE BLUE SIDE LINE */}
+
+        <span
+          className="
+            absolute
+            left-0
+            top-0
+
+            h-full
+            w-[3px]
+
+            bg-[#3F80CF]
+          "
+        />
+
+        <p
+          className="
+            font-sans
+
+            text-[10px]
+            font-medium
+
+            uppercase
+
+            tracking-[0.18em]
+
+            text-[#3F80CF]
+
+            sm:text-[11px]
+          "
+        >
+          {label}
+        </p>
+
+        <h3
+          className="
+            mt-2
+
+            font-display
+
+            text-[19px]
+            font-medium
+
+            leading-tight
+
+            tracking-[-0.02em]
+
+            text-white
+
+            sm:text-[20px]
+
+            lg:text-[21px]
+          "
+        >
+          {title}
+        </h3>
+
+        <ul
+          className="
+            mt-4
+            space-y-2.5
+          "
+        >
+          {items.map((item) => (
+            <li
+              key={item}
+              className="
+                flex
+                items-start
+
+                gap-3
+
+                font-sans
+
+                text-[13px]
+
+                leading-6
+
+                text-white/65
+
+                sm:text-[14px]
+              "
+            >
+              <span
+                className="
+                  mt-[9px]
+
+                  h-[4px]
+                  w-[4px]
+
+                  shrink-0
+
+                  rounded-full
+
+                  bg-[#3F80CF]
+                "
+              />
+
+              <span>
+                {item}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </motion.div>
+  );
+}
+
+/* =========================================================
+   WHO WE ARE
+========================================================= */
+
+export function WhoWeAre() {
+  const reduced = useReducedMotion();
 
   return (
-
     <section
-
       id="who-we-are"
-
       className="
-
         relative
-
-
 
         overflow-hidden
 
-
-
-        bg-core
-
+        bg-[#201A57]
       "
-
     >
-
-      {/* BACKGROUND GLOW */}
-
-
-
-      <div
-
-        className="
-
-          pointer-events-none
-
-
-
-          absolute
-
-
-
-          -right-[220px]
-
-          top-[50px]
-
-
-
-          h-[480px]
-
-          w-[480px]
-
-
-
-          rounded-full
-
-
-
-          bg-[#3F80CF]/[0.06]
-
-
-
-          blur-[120px]
-
-        "
-
-      />
-
-
-
-      <div
-
-        className="
-
-          pointer-events-none
-
-
-
-          absolute
-
-
-
-          -left-[220px]
-
-          bottom-[100px]
-
-
-
-          h-[450px]
-
-          w-[450px]
-
-
-
-          rounded-full
-
-
-
-          bg-[#6859D1]/[0.045]
-
-
-
-          blur-[130px]
-
-        "
-
-      />
-
-
-
       {/* =====================================================
-
           CONTAINER
-
       ====================================================== */}
 
-
-
       <div
-
         className="
-
           relative
-
           z-10
-
-
 
           mx-auto
 
-
-
           w-full
-
           max-w-[1380px]
 
-
-
           px-4
-
-
-
           pb-14
-
-          pt-4
-
-
+          pt-6
 
           sm:px-5
-
           sm:pb-16
-
-          sm:pt-5
-
-
+          sm:pt-8
 
           md:px-7
-
-          md:pb-18
-
-          md:pt-6
-
-
+          md:pb-20
+          md:pt-10
 
           lg:px-8
-
-          lg:pb-20
-
-          lg:pt-7
-
-
+          lg:pb-24
+          lg:pt-12
 
           xl:px-10
-
-          xl:pb-24
-
-          xl:pt-8
-
-
+          xl:pb-28
+          xl:pt-14
 
           2xl:px-0
-
         "
-
       >
-
         {/* =====================================================
-
-            COMPACT INTRO
-
+            INTRO
         ====================================================== */}
 
-
-
         <Reveal>
-
           <div
-
             className="
-
               grid
-
-
 
               gap-8
 
-
-
               border-b
-
               border-white/10
 
+              pb-9
 
+              sm:gap-10
+              sm:pb-11
 
-              pb-8
-
-
-
-              sm:pb-10
-
-
-
-              lg:grid-cols-[0.95fr_1.05fr]
-
+              lg:grid-cols-[0.9fr_1.1fr]
               lg:items-center
-
               lg:gap-14
-
-
+              lg:pb-12
 
               xl:gap-20
-
             "
-
           >
-
-            {/* =============================================
-
-                LEFT
-
-            ============================================== */}
-
-
+            {/* LEFT */}
 
             <div>
-
               <SectionLabel>
-
-                About Kunnected FM
-
+                About KUnnected FM
               </SectionLabel>
 
-
-
               <h2
-
                 className="
-
                   mt-5
 
+                  max-w-[650px]
 
+                  font-display
 
-                  text-[2.1rem]
+                  text-[2rem]
+                  font-medium
 
+                  leading-[1.05]
 
-
-                  font-bold
-
-
-
-                  leading-[1]
-
-
-
-                  tracking-[-0.045em]
-
-
+                  tracking-[-0.035em]
 
                   text-white
 
+                  min-[380px]:text-[2.15rem]
 
+                  sm:text-[2.55rem]
 
-                  sm:text-[2.6rem]
+                  md:text-[2.9rem]
 
+                  lg:text-[3.25rem]
 
-
-                  md:text-[3rem]
-
-
-
-                  lg:text-[3.35rem]
-
-
-
-                  xl:text-[3.65rem]
-
+                  xl:text-[3.55rem]
                 "
-
               >
-
                 Who We Are
-
               </h2>
 
-
-
               <SectionUnderline />
-
             </div>
 
-
-
-            {/* =============================================
-
-                RIGHT
-
-            ============================================== */}
-
-
+            {/* RIGHT */}
 
             <div
-
               className="
-
                 border-t
-
                 border-white/10
-
-
 
                 pt-6
 
-
-
                 lg:border-l
-
                 lg:border-t-0
 
-
-
                 lg:pl-10
-
                 lg:pt-0
 
-
-
                 xl:pl-12
-
               "
-
             >
-
               <p
-
                 className="
-
                   max-w-[760px]
 
+                  font-display
 
-
-                  text-[1.4rem]
-
-
-
+                  text-[1.3rem]
                   font-normal
 
+                  leading-[1.25]
 
+                  tracking-[-0.02em]
 
-                  leading-[1.2]
+                  text-white
 
+                  sm:text-[1.55rem]
 
+                  md:text-[1.7rem]
 
-                  tracking-[-0.025em]
+                  lg:text-[1.85rem]
 
-
-
-                  text-white/95
-
-
-
-                  sm:text-[1.6rem]
-
-
-
-                  md:text-[1.75rem]
-
-
-
-                  lg:text-[1.9rem]
-
-
-
-                  xl:text-[2.05rem]
-
+                  xl:text-[2rem]
                 "
-
               >
-
-                We don't just maintain facilities.
-
+                We don&apos;t just maintain facilities.
                 We enable better everyday experiences.
-
               </p>
 
-
-
               <p
-
                 className="
-
                   mt-4
-
-
 
                   max-w-[680px]
 
-
+                  font-sans
 
                   text-[14px]
 
-
-
                   leading-7
-
-
 
                   text-white/65
 
-
-
                   sm:text-[15px]
 
-
-
                   lg:text-[16px]
-
                   lg:leading-8
-
                 "
-
               >
-
                 Creating reliable, comfortable and
-
                 well-managed environments that support
-
                 student life, wellbeing and everyday
-
                 campus experiences.
-
               </p>
-
             </div>
-
           </div>
-
         </Reveal>
 
-
-
         {/* =====================================================
-
             IMAGE + STORY
-
         ====================================================== */}
 
-
-
-        {/* =====================================================
-
-    IMAGE + STORY
-
-====================================================== */}
-
-
-
         <div
-
           className="
+            mt-8
 
-    mt-7
+            grid
 
+            gap-8
 
+            sm:mt-10
+            sm:gap-9
 
-    grid
+            lg:grid-cols-[0.9fr_1.1fr]
+            lg:items-stretch
+            lg:gap-10
 
-    gap-7
-
-
-
-    sm:mt-8
-
-    sm:gap-8
-
-
-
-    lg:grid-cols-[0.88fr_1.12fr]
-
-    lg:items-stretch
-
-    lg:gap-10
-
-
-
-    xl:gap-12
-
-  "
-
+            xl:gap-14
+          "
         >
-
           {/* =================================================
-
-      IMAGE
-
-  ================================================== */}
-
-
+              IMAGE
+          ================================================== */}
 
           <motion.div
-
             initial={
-
               reduced
-
                 ? false
-
                 : {
-
-                  opacity: 0,
-
-                  x: -42,
-
-                  scale: 0.975,
-
-                  clipPath:
-
-                    "inset(0 10% 0 0 round 24px)",
-
-                }
-
+                    opacity: 0,
+                    x: -32,
+                  }
             }
-
             whileInView={{
-
               opacity: 1,
-
               x: 0,
-
-              scale: 1,
-
-              clipPath:
-
-                "inset(0 0% 0 0 round 24px)",
-
             }}
-
             viewport={{
-
               once: true,
-
-              amount: 0.25,
-
+              amount: 0.2,
             }}
-
             transition={{
-
-              duration: 1.45,
-
-              ease: [0.22, 1, 0.36, 1],
-
+              duration: 0.9,
+              ease: easePremium,
             }}
-
-            whileHover={
-
-              reduced
-
-                ? undefined
-
-                : {
-
-                  y: -4,
-
-                  transition: {
-
-                    duration: 0.7,
-
-                    ease: [0.22, 1, 0.36, 1],
-
-                  },
-
-                }
-
-            }
-
-            className="h-full"
-
+            className="
+              h-full
+              min-w-0
+            "
           >
-
-            <motion.div
-
+            <div
               className="
+                relative
 
-        group
+                h-[280px]
 
+                overflow-hidden
 
+                rounded-[18px]
 
-        relative
+                border
+                border-white/10
 
+                bg-white/[0.03]
 
+                min-[420px]:h-[320px]
 
-        h-[320px]
+                sm:h-[380px]
+                sm:rounded-[20px]
 
-        overflow-hidden
+                md:h-[430px]
 
+                lg:h-full
+                lg:min-h-[510px]
 
-
-        rounded-[22px]
-
-
-
-        border
-
-        border-white/10
-
-
-
-        bg-white/[0.03]
-
-
-
-        shadow-[0_24px_65px_rgba(0,0,0,0.20)]
-
-
-
-        sm:h-[380px]
-
-        lg:h-full
-        lg:min-h-0
-
-        xl:rounded-[24px]
-
-      "
-
-              transition={{
-
-                duration: 0.7,
-
-                ease: [0.22, 1, 0.36, 1],
-
-              }}
-
+                xl:min-h-[540px]
+                xl:rounded-[22px]
+              "
             >
-
               <Parallax
-
-                distance={24}
-
+                distance={20}
                 className="
-
-          h-full
-
-          w-full
-
-        "
-
+                  h-full
+                  w-full
+                "
               >
-
                 <motion.img
-
                   src={engineerAsset}
-
-                  alt="Facilities management engineer at work"
-
+                  alt="Modern student accommodation campus environment"
                   width={1408}
-
                   height={1008}
-
                   loading="lazy"
-
                   initial={
-
                     reduced
-
                       ? false
-
                       : {
-
-                        scale: 1.08,
-
-                      }
-
+                          scale: 1.04,
+                        }
                   }
-
                   whileInView={{
-
                     scale: 1,
-
                   }}
-
                   viewport={{
-
                     once: true,
-
-                    amount: 0.25,
-
+                    amount: 0.2,
                   }}
-
-                  whileHover={
-
-                    reduced
-
-                      ? undefined
-
-                      : {
-
-                        scale: 1.035,
-
-                      }
-
-                  }
-
                   transition={{
-
-                    duration: 1.8,
-
-                    ease: [0.22, 1, 0.36, 1],
-
+                    duration: 1.2,
+                    ease: easePremium,
                   }}
-
                   className="
+                    h-full
+                    w-full
 
-            h-full
-
-            w-full
-
-
-
-            object-cover
-
-          "
-
+                    object-cover
+                  "
                 />
-
               </Parallax>
 
-
+              {/* FLAT BRAND OVERLAY */}
 
               <div
-
                 className="
+                  pointer-events-none
 
-          pointer-events-none
+                  absolute
+                  inset-0
 
-
-
-          absolute
-
-          inset-0
-
-
-
-          bg-gradient-to-t
-
-
-
-          from-[#15113f]/60
-
-          via-transparent
-
-          to-transparent
-
-        "
-
+                  bg-[#201A57]/20
+                "
               />
 
-
-
-              {!reduced && (
-
-                <motion.span
-
-                  aria-hidden="true"
-
-                  initial={{
-
-                    x: "-150%",
-
-                    opacity: 0,
-
-                  }}
-
-                  whileInView={{
-
-                    x: "340%",
-
-                    opacity: [0, 0.28, 0],
-
-                  }}
-
-                  viewport={{
-
-                    once: true,
-
-                    amount: 0.3,
-
-                  }}
-
-                  transition={{
-
-                    delay: 0.65,
-
-                    duration: 1.9,
-
-                    ease: [0.22, 1, 0.36, 1],
-
-                  }}
-
-                  className="
-
-            pointer-events-none
-
-
-
-            absolute
-
-            inset-y-0
-
-            left-0
-
-
-
-            w-1/3
-
-
-
-            -skew-x-12
-
-
-
-            bg-gradient-to-r
-
-            from-transparent
-
-            via-white/30
-
-            to-transparent
-
-
-
-            blur-sm
-
-          "
-
-                />
-
-              )}
-
-
-
               <motion.div
-
                 initial={
-
                   reduced
-
                     ? false
-
                     : {
-
-                      opacity: 0,
-
-                      y: 14,
-
-                    }
-
+                        opacity: 0,
+                        y: 10,
+                      }
                 }
-
                 whileInView={{
-
                   opacity: 1,
-
                   y: 0,
-
                 }}
-
                 viewport={{
-
                   once: true,
-
                 }}
-
                 transition={{
-
-                  delay: 0.9,
-
-                  duration: 0.8,
-
-                  ease: [0.22, 1, 0.36, 1],
-
+                  delay: 0.35,
+                  duration: 0.6,
+                  ease: easePremium,
                 }}
-
                 className="
+                  absolute
 
-          absolute
+                  bottom-4
+                  left-4
 
+                  rounded-full
 
+                  border
+                  border-white/20
 
-          bottom-4
+                  bg-[#201A57]/90
 
-          left-4
+                  px-3
+                  py-1.5
 
+                  font-sans
 
+                  text-[9px]
+                  font-medium
 
-          rounded-full
+                  uppercase
 
+                  tracking-[0.14em]
 
+                  text-white
 
-          border
-
-          border-white/15
-
-
-
-          bg-[#201A57]/70
-
-
-
-          px-3.5
-
-          py-1.5
-
-
-
-          text-[9px]
-
-
-
-          font-semibold
-
-          uppercase
-
-
-
-          tracking-[0.15em]
-
-
-
-          text-white/80
-
-
-
-          backdrop-blur-lg
-
-
-
-          sm:bottom-5
-
-          sm:left-5
-
-          sm:text-[10px]
-
-        "
-
+                  sm:bottom-5
+                  sm:left-5
+                  sm:px-3.5
+                  sm:text-[10px]
+                "
               >
-
                 Student-Centred Facilities
-
               </motion.div>
-
-            </motion.div>
-
+            </div>
           </motion.div>
 
-
-
           {/* =================================================
-
-      RIGHT STORY
-
-  ================================================== */}
-
-
+              RIGHT STORY
+          ================================================== */}
 
           <div
-
             className="
+              flex
+              min-w-0
 
-      flex
+              flex-col
 
-      min-w-0
-
-      flex-col
-
-    "
-
+              lg:justify-center
+            "
           >
-
             <Reveal delay={0.08}>
-
               <p
-
                 className="
+                  max-w-3xl
 
-          max-w-3xl
-
-
-
-          text-[14px]
-
-          leading-7
-
-
-
-          text-white/65
-
-
-
-          sm:text-[15px]
-
-
-
-          lg:text-[16px]
-
-          lg:leading-8
-
-        "
-
-              >
-
-                {company.purposeBody}
-
-              </p>
-
-            </Reveal>
-
-
-
-            <Reveal delay={0.12}>
-
-              <p
-
-                className="
-
-          mt-3
-
-
-
-          max-w-3xl
-
-
-
-          text-[14px]
-
-          leading-7
-
-
-
-          text-white/65
-
-
-
-          sm:text-[15px]
-
-
-
-          lg:text-[16px]
-
-          lg:leading-8
-
-        "
-
-              >
-
-                {company.purposeExtended}
-
-              </p>
-
-            </Reveal>
-
-
-
-            {/* =================================================
-
-        VISION / PROMISE
-
-    ================================================== */}
-
-
-
-            <div
-
-              className="
-
-        mt-5
-
-
-
-        grid
-
-        gap-4
-
-
-
-        sm:mt-6
-
-        sm:grid-cols-2
-
-        sm:gap-4
-
-
-
-        lg:pt-4
-
-      "
-
-            >
-
-              {/* =============================================
-
-          VISION
-
-      ============================================== */}
-
-
-
-              <motion.div
-
-                initial={
-
-                  reduced
-
-                    ? false
-
-                    : {
-
-                      opacity: 0,
-
-                      y: 28,
-
-                      rotate: -1,
-
-                    }
-
-                }
-
-                whileInView={{
-
-                  opacity: 1,
-
-                  y: 0,
-
-                  rotate: 0,
-
-                  transition: {
-
-                    delay: 0.25,
-
-                    duration: 1.1,
-
-                    ease: [0.22, 1, 0.36, 1],
-
-                  },
-
-                }}
-
-                viewport={{
-
-                  once: true,
-
-                  amount: 0.3,
-
-                }}
-
-                transition={{
-
-                  duration: 0.65,
-
-                  ease: [0.22, 1, 0.36, 1],
-
-                }}
-
-                whileHover={
-
-                  reduced
-
-                    ? undefined
-
-                    : {
-
-                      y: -6,
-
-                      rotate: -0.25,
-
-                      transition: {
-
-                        delay: 0,
-
-                        duration: 0.65,
-
-                        ease: [0.22, 1, 0.36, 1],
-
-                      },
-
-                    }
-
-                }
-
-                className="h-full"
-
-              >
-
-                <motion.div
-
-                  className="
-
-            group
-
-
-
-            relative
-
-
-
-            h-full
-
-
-
-            overflow-hidden
-
-
-
-            rounded-[18px]
-
-
-
-            border
-
-            border-white/10
-
-
-
-            bg-white/[0.04]
-
-
-
-            p-4
-
-
-
-            backdrop-blur-sm
-
-
-
-            transition-[border-color,background-color,box-shadow]
-
-            duration-700
-
-
-
-            hover:border-[#4E94E5]/35
-
-            hover:bg-white/[0.06]
-
-            hover:shadow-[0_22px_55px_rgba(7,5,35,0.28)]
-
-
-
-            sm:p-5
-
-          "
-
-                >
-
-                  <CardLightSweep />
-
-
-
-                  <span
-
-                    className="
-
-              absolute
-
-
-
-              left-0
-
-              top-0
-
-
-
-              h-full
-
-              w-[3px]
-
-
-
-              bg-active
-
-            "
-
-                  />
-
-
-
-                  <div
-
-                    className="
-
-              flex
-
-              items-center
-
-              justify-between
-
-            "
-
-                  >
-
-                    <p
-
-                      className="
-
-                text-[9px]
-
-
-
-                font-bold
-
-                uppercase
-
-
-
-                tracking-[0.17em]
-
-
-
-                text-[#6FA9EF]
-
-              "
-
-                    >
-
-                      Vision
-
-                    </p>
-
-
-
-                  </div>
-
-
-
-                  <h3
-
-                    className="
-
-              mt-2
-
-
-
-              text-[19px]
-
-
-
-              font-bold
-
-
-
-              tracking-[-0.025em]
-
-
-
-              text-white
-
-
-
-              sm:text-[20px]
-
-            "
-
-                  >
-
-                    Our Vision
-
-                  </h3>
-
-
-
-                  <ul
-
-                    className="
-
-              mt-3
-
-              space-y-2.5
-
-            "
-
-                  >
-
-                    {vision.map((item) => (
-
-                      <li
-
-                        key={item}
-
-                        className="
-
-                  flex
-
-                  items-start
-
-
-
-                  gap-2.5
-
-
-
-                  text-[12px]
-
-                  leading-5
-
-
-
-                  text-white/68
-
-
-
-                  sm:text-[13px]
-
-                  sm:leading-6
-
-                "
-
-                      >
-
-                        <span
-
-                          className="
-
-                    mt-[8px]
-
-
-
-                    h-[4px]
-
-                    w-[4px]
-
-
-
-                    shrink-0
-
-
-
-                    rounded-full
-
-
-
-                    bg-active
-
-                  "
-
-                        />
-
-
-
-                        <span>
-
-                          {item}
-
-                        </span>
-
-                      </li>
-
-                    ))}
-
-                  </ul>
-
-                </motion.div>
-
-              </motion.div>
-
-
-
-              {/* =============================================
-
-          PROMISE
-
-      ============================================== */}
-
-
-
-              <motion.div
-
-                initial={
-
-                  reduced
-
-                    ? false
-
-                    : {
-
-                      opacity: 0,
-
-                      x: 32,
-
-                      rotate: 1,
-
-                    }
-
-                }
-
-                whileInView={{
-
-                  opacity: 1,
-
-                  x: 0,
-
-                  rotate: 0,
-
-                  transition: {
-
-                    delay: 0.42,
-
-                    duration: 1.15,
-
-                    ease: [0.22, 1, 0.36, 1],
-
-                  },
-
-                }}
-
-                viewport={{
-
-                  once: true,
-
-                  amount: 0.3,
-
-                }}
-
-                transition={{
-
-                  duration: 0.65,
-
-                  ease: [0.22, 1, 0.36, 1],
-
-                }}
-
-                whileHover={
-
-                  reduced
-
-                    ? undefined
-
-                    : {
-
-                      y: -6,
-
-                      rotate: 0.25,
-
-                      transition: {
-
-                        delay: 0,
-
-                        duration: 0.65,
-
-                        ease: [0.22, 1, 0.36, 1],
-
-                      },
-
-                    }
-
-                }
-
-                className="h-full"
-
-              >
-
-                <motion.div
-
-                  className="
-
-            group
-
-
-
-            relative
-
-
-
-            h-full
-
-
-
-            overflow-hidden
-
-
-
-            rounded-[18px]
-
-
-
-            border
-
-            border-white/10
-
-
-
-            bg-white/[0.04]
-
-
-
-            p-4
-
-
-
-            backdrop-blur-sm
-
-
-
-            transition-[border-color,background-color,box-shadow]
-
-            duration-700
-
-
-
-            hover:border-[#4E94E5]/35
-
-            hover:bg-white/[0.06]
-
-            hover:shadow-[0_22px_55px_rgba(7,5,35,0.28)]
-
-
-
-            sm:p-5
-
-          "
-
-                >
-
-                  <CardLightSweep />
-
-
-
-                  <span
-
-                    className="
-
-              absolute
-
-
-
-              left-0
-
-              top-0
-
-
-
-              h-full
-
-              w-[3px]
-
-
-
-              bg-active
-
-            "
-
-                  />
-
-
-
-                  <div
-
-                    className="
-
-              flex
-
-              items-center
-
-              justify-between
-
-            "
-
-                  >
-
-                    <p
-
-                      className="
-
-                text-[9px]
-
-
-
-                font-bold
-
-                uppercase
-
-
-
-                tracking-[0.17em]
-
-
-
-                text-[#6FA9EF]
-
-              "
-
-                    >
-
-                      Promise
-
-                    </p>
-
-
-
-                  </div>
-
-
-
-                  <h3
-
-                    className="
-
-              mt-2
-
-
-
-              text-[19px]
-
-
-
-              font-bold
-
-
-
-              tracking-[-0.025em]
-
-
-
-              text-white
-
-
-
-              sm:text-[20px]
-
-            "
-
-                  >
-
-                    Our Promise
-
-                  </h3>
-
-
-
-                  <ul
-
-                    className="
-
-              mt-3
-
-              space-y-2.5
-
-            "
-
-                  >
-
-                    {promise.map((item) => (
-
-                      <li
-
-                        key={item}
-
-                        className="
-
-                  flex
-
-                  items-start
-
-
-
-                  gap-2.5
-
-
-
-                  text-[12px]
-
-                  leading-5
-
-
-
-                  text-white/68
-
-
-
-                  sm:text-[13px]
-
-                  sm:leading-6
-
-                "
-
-                      >
-
-                        <span
-
-                          className="
-
-                    mt-[8px]
-
-
-
-                    h-[4px]
-
-                    w-[4px]
-
-
-
-                    shrink-0
-
-
-
-                    rounded-full
-
-
-
-                    bg-active
-
-                  "
-
-                        />
-
-
-
-                        <span>
-
-                          {item}
-
-                        </span>
-
-                      </li>
-
-                    ))}
-
-                  </ul>
-
-                </motion.div>
-
-              </motion.div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-        {/* =====================================================
-
-            FOUNDATION
-
-        ====================================================== */}
-
-
-
-        <div
-
-          className="
-
-            mt-12
-
-
-
-            border-t
-
-            border-white/10
-
-
-
-            pt-9
-
-
-
-            sm:mt-14
-
-            sm:pt-10
-
-
-
-            lg:mt-16
-
-            lg:pt-12
-
-          "
-
-        >
-
-          {/* =============================================
-
-              FOUNDATION INTRO
-
-          ============================================== */}
-
-
-
-          <Reveal>
-
-            <div
-
-              className="
-
-                grid
-
-
-
-                gap-6
-
-
-
-                lg:grid-cols-[1fr_0.7fr]
-
-                lg:items-end
-
-                lg:gap-12
-
-              "
-
-            >
-
-              <div>
-
-                <SectionLabel>
-
-                  Our Foundation
-
-                </SectionLabel>
-
-
-
-                <h3
-
-                  className="
-
-                    mt-5
-
-
-
-                    max-w-[720px]
-
-
-
-                    text-[1.9rem]
-
-
-
-                    font-bold
-
-
-
-                    leading-[1.08]
-
-
-
-                    tracking-[-0.035em]
-
-
-
-                    text-white
-
-
-
-                    sm:text-[2.25rem]
-
-
-
-                    md:text-[2.45rem]
-
-
-
-                    lg:text-[2.7rem]
-
-                  "
-
-                >
-
-                  The principles behind
-
-                  how we work.
-
-                </h3>
-
-
-
-                <SectionUnderline />
-
-              </div>
-
-
-
-              <p
-
-                className="
-
-                  max-w-[500px]
-
-
+                  font-sans
 
                   text-[14px]
 
-
-
                   leading-7
 
-
-
-                  text-white/55
-
-
+                  text-white/65
 
                   sm:text-[15px]
 
+                  lg:text-[16px]
+                  lg:leading-8
+                "
+              >
+                {company.purposeBody}
+              </p>
+            </Reveal>
 
+            <Reveal delay={0.12}>
+              <p
+                className="
+                  mt-4
+
+                  max-w-3xl
+
+                  font-sans
+
+                  text-[14px]
+
+                  leading-7
+
+                  text-white/65
+
+                  sm:text-[15px]
+
+                  lg:text-[16px]
+                  lg:leading-8
+                "
+              >
+                {company.purposeExtended}
+              </p>
+            </Reveal>
+
+            {/* =================================================
+                VISION / PROMISE
+            ================================================== */}
+
+            <div
+              className="
+                mt-6
+
+                grid
+
+                gap-4
+
+                sm:mt-7
+                sm:grid-cols-2
+                sm:gap-5
+
+                lg:mt-8
+              "
+            >
+              <DarkInfoCard
+                label="Vision"
+                title="Our Vision"
+                items={vision}
+                delay={0.15}
+              />
+
+              <DarkInfoCard
+                label="Promise"
+                title="Our Promise"
+                items={promise}
+                delay={0.25}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* =====================================================
+            FOUNDATION
+        ====================================================== */}
+
+        <div
+          className="
+            mt-12
+
+            border-t
+            border-white/10
+
+            pt-10
+
+            sm:mt-14
+            sm:pt-12
+
+            lg:mt-16
+            lg:pt-14
+
+            xl:mt-20
+            xl:pt-16
+          "
+        >
+          {/* =================================================
+              FOUNDATION INTRO
+          ================================================== */}
+
+          <Reveal>
+            <div
+              className="
+                grid
+
+                gap-7
+
+                lg:grid-cols-[1fr_0.7fr]
+                lg:items-end
+                lg:gap-12
+              "
+            >
+              <div>
+                <SectionLabel>
+                  Our Foundation
+                </SectionLabel>
+
+                <h3
+                  className="
+                    mt-5
+
+                    max-w-[720px]
+
+                    font-display
+
+                    text-[1.8rem]
+                    font-medium
+
+                    leading-[1.1]
+
+                    tracking-[-0.03em]
+
+                    text-white
+
+                    sm:text-[2.15rem]
+
+                    md:text-[2.4rem]
+
+                    lg:text-[2.65rem]
+                  "
+                >
+                  The principles behind
+                  how we work.
+                </h3>
+
+                <SectionUnderline />
+              </div>
+
+              <p
+                className="
+                  max-w-[500px]
+
+                  font-sans
+
+                  text-[14px]
+
+                  leading-7
+
+                  text-white/60
+
+                  sm:text-[15px]
 
                   lg:justify-self-end
-
+                  lg:text-[16px]
                 "
-
               >
-
                 Consistent standards,
-
                 responsible operations and
-
-                a people-first approach
-
-                guide every service we
-
-                deliver.
-
+                a people-first approach guide
+                every service we deliver.
               </p>
-
             </div>
-
           </Reveal>
 
-
-
-          {/* =============================================
-
-              FOUR FOUNDATION CARDS
-
-          ============================================== */}
-
-
+          {/* =================================================
+              FOUNDATION CARDS
+          ================================================== */}
 
           <div
-
             className="
-
               mt-8
 
-
-
               grid
-
-
-
               grid-cols-1
-
-
 
               gap-4
 
-
-
+              sm:mt-10
               sm:grid-cols-2
-
               sm:gap-5
 
-
-
               lg:grid-cols-4
+              lg:gap-5
 
+              xl:gap-6
             "
-
           >
-
             {foundations.map(
-
-              (
-
-                foundation,
-
-                index,
-
-              ) => (
-
+              (foundation, index) => (
                 <motion.div
-
-                  key={
-
-                    foundation.n
-
-                  }
-
+                  key={foundation.n}
                   initial={
-
                     reduced
-
                       ? false
-
                       : {
-
-                        opacity: 0,
-
-                        x:
-
-                          index % 2 === 0
-
-                            ? -20
-
-                            : 20,
-
-                        y: 26,
-
-                        rotate:
-
-                          index % 2 === 0
-
-                            ? -1
-
-                            : 1,
-
-                      }
-
+                          opacity: 0,
+                          y: 24,
+                        }
                   }
-
                   whileInView={{
-
                     opacity: 1,
-
-                    x: 0,
-
                     y: 0,
-
-                    rotate: 0,
-
-                    transition: {
-
-                      delay: 0.12 * index,
-
-                      duration: 1.1,
-
-                      ease: [0.22, 1, 0.36, 1],
-
-                    },
-
                   }}
-
                   viewport={{
-
                     once: true,
-
-                    amount: 0.25,
-
+                    amount: 0.2,
                   }}
-
                   transition={{
+                    delay:
+                      0.08 * index,
 
-                    duration: 0.65,
+                    duration: 0.75,
 
-                    ease: [0.22, 1, 0.36, 1],
-
+                    ease:
+                      easePremium,
                   }}
-
                   whileHover={
-
                     reduced
-
                       ? undefined
-
                       : {
+                          y: -4,
 
-                        y: -7,
+                          transition: {
+                            duration:
+                              0.3,
 
-                        scale: 1.015,
-
-                        transition: {
-
-                          delay: 0,
-
-                          duration: 0.65,
-
-                          ease: [0.22, 1, 0.36, 1],
-
-                        },
-
-                      }
-
+                            ease:
+                              easePremium,
+                          },
+                        }
                   }
-
-                  className="
-
-                    h-full
-
-                  "
-
+                  className="h-full"
                 >
-
                   <div
-
                     className="
-
                       group
-
-
 
                       relative
 
-
-
                       flex
-
-
-
-                      h-auto
-
-                      lg:h-full
+                      h-full
 
                       flex-col
 
-
-
                       overflow-hidden
 
-
-
-                      rounded-[20px]
-
-
+                      rounded-[18px]
 
                       border
-
                       border-white/10
-
-
 
                       bg-white/[0.035]
 
+                      p-5
+                      pt-6
 
+                      transition-colors
+                      duration-300
 
-                      p-4
+                      hover:border-[#3F80CF]/40
+                      hover:bg-white/[0.05]
 
-
-
-                      transition-[border-color,background-color,box-shadow]
-
-                      duration-700
-
-
-
-                      hover:border-[#4E94E5]/35
-
-
-
-                      hover:bg-white/[0.055]
-
-
-
-                      hover:shadow-[0_18px_45px_rgba(0,0,0,0.16)]
-
-
-
-                      sm:p-5
-
-                      lg:p-5
-
-                      xl:p-6
-
+                      sm:p-6
+                      sm:pt-7
                     "
-
                   >
-
-                    <CardLightSweep />
-
-
-
-                    {/* TOP LINE */}
-
-
+                    {/* BRAND TOP LINE */}
 
                     <span
-
                       className="
-
                         absolute
 
-
-
                         left-0
-
                         top-0
 
-
-
                         h-[3px]
+                        w-full
 
-                        w-0
-
-
-
-                        bg-active
-
-
-
-                        transition-all
-
-                        duration-700
-
-
-
-                        group-hover:w-full
-
+                        bg-[#3F80CF]
                       "
-
                     />
-
-
 
                     {/* TITLE */}
 
-
-
                     <h4
-
                       className="
-
-                        mt-1
-
-
+                        font-display
 
                         text-[18px]
-
-
-
-                        font-bold
-
-
+                        font-medium
 
                         leading-[1.25]
 
-
-
                         tracking-[-0.02em]
 
-
-
                         text-white
-
-
-
-                        transition-transform
-
-                        duration-700
-
-
-
-                        group-hover:translate-x-1
-
-
 
                         sm:text-[19px]
 
                         lg:text-[20px]
-
                       "
-
                     >
-
-                      {foundation.title}
-
+                      {
+                        foundation.title
+                      }
                     </h4>
-
-
 
                     {/* BODY */}
 
-
-
                     <p
-
                       className="
-
                         mt-3
 
+                        flex-1
 
+                        font-sans
 
                         text-[13px]
 
-
-
                         leading-6
 
-
-
-                        text-white/58
-
-
+                        text-white/60
 
                         sm:text-[14px]
-
                         sm:leading-7
-
                       "
-
                     >
-
-                      {foundation.body}
-
+                      {
+                        foundation.body
+                      }
                     </p>
 
-
-
-                    <div
-
+                    <span
                       className="
-
                         mt-5
 
+                        block
+
+                        h-px
+                        w-full
+
+                        bg-white/10
                       "
-
-                    >
-
-                      <span
-
-                        className="
-
-                          block
-
-
-
-                          h-px
-
-                          w-full
-
-
-
-                          bg-white/10
-
-                        "
-
-                      />
-
-                    </div>
-
+                    />
                   </div>
-
                 </motion.div>
-
               ),
-
             )}
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
   );
-
 }
 
-
-
 /* =========================================================
-
    WHY CHOOSE US
-
 ========================================================= */
 
-
-
 export function WhyChooseUs() {
-
   const reduced = useReducedMotion();
 
-
-
   return (
-
     <section
-
       className="
-
         relative
-
-
 
         overflow-hidden
 
-
-
         border-y
+        border-[#201A57]/10
 
-        border-slate-200/70
-
-
-
-        bg-light-mesh
-
+        bg-white
       "
-
     >
-
       <div
-
         className="
-
-          blur-circle-1
-
-
-
-          pointer-events-none
-
-
-
-          -left-20
-
-          -top-20
-
-        "
-
-      />
-
-
-
-      <div
-
-        className="
-
-          blur-circle-2
-
-
-
-          pointer-events-none
-
-
-
-          -bottom-40
-
-          -right-40
-
-        "
-
-      />
-
-
-
-      <div
-
-        className="
-
-          relative
-
-          z-10
-
-
-
           mx-auto
 
-
-
           w-full
-
           max-w-[1380px]
 
-
-
           px-4
-
           py-12
 
-
-
           sm:px-5
-
           sm:py-14
 
-
-
           md:px-7
-
           md:py-16
 
-
-
           lg:px-8
-
           lg:py-20
 
-
-
           xl:px-10
-
           xl:py-24
 
-
-
           2xl:px-0
-
         "
-
       >
-
-        {/* =============================================
-
+        {/* =================================================
             HEADING
-
-        ============================================== */}
-
-
+        ================================================== */}
 
         <Reveal>
-
-          <div
-
-            className="
-
-              max-w-4xl
-
-            "
-
-          >
-
-            <div
-
-              className="
-
-                inline-flex
-
-
-
-                items-center
-
-
-
-                gap-2.5
-
-
-
-                rounded-full
-
-
-
-                border
-
-                border-[#3F80CF]/15
-
-
-
-                bg-[#3F80CF]/[0.06]
-
-
-
-                px-4
-
-                py-2
-
-              "
-
-            >
-
-              <span
-
-                className="
-
-                  h-[6px]
-
-                  w-[6px]
-
-
-
-                  rounded-full
-
-
-
-                  bg-active
-
-
-
-                  shadow-[0_0_10px_rgba(63,128,207,0.45)]
-
-                "
-
-              />
-
-
-
-              <p
-
-                className="
-
-                  text-[14px]
-
-
-
-                  font-bold
-
-
-
-                  tracking-[-0.01em]
-
-
-
-                  text-[#201A57]
-
-
-
-                  sm:text-[15px]
-
-
-
-                  lg:text-[16px]
-
-                "
-
-              >
-
-                Why Choose Us
-
-              </p>
-
-            </div>
-
-
+          <div className="max-w-4xl">
+            <SectionLabel light>
+              Why Choose Us
+            </SectionLabel>
 
             <h2
-
               className="
-
                 mt-5
 
+                max-w-[760px]
 
+                font-display
 
-                text-[2rem]
-
-
-
-                font-bold
-
-
+                text-[1.9rem]
+                font-medium
 
                 leading-[1.08]
 
-
-
                 tracking-[-0.035em]
-
-
 
                 text-[#201A57]
 
-
+                min-[380px]:text-[2rem]
 
                 sm:text-[2.4rem]
 
-
-
                 md:text-[2.7rem]
-
-
 
                 lg:text-[3rem]
 
+                xl:text-[3.15rem]
               "
-
             >
-
-              Our Standards &
-
-              Commitment
-
+              Our Standards & Commitment
             </h2>
 
-
-
             <SectionUnderline />
-
           </div>
-
         </Reveal>
-
-
 
         {/* USP */}
 
-
-
         <Reveal delay={0.08}>
-
           <p
-
             className="
-
               mt-5
-
-
 
               max-w-3xl
 
+              font-sans
 
-
-              text-[15px]
-
-
+              text-[14px]
 
               leading-7
 
+              text-[#565656]
 
-
-              text-slate-700
-
-
-
-              sm:text-[16px]
-
+              sm:text-[15px]
               sm:leading-8
 
-
+              md:text-[16px]
 
               lg:text-[17px]
-
             "
-
           >
-
             {company.usp}
-
           </p>
-
         </Reveal>
 
-
-
-        {/* =============================================
-
+        {/* =================================================
             STRENGTH CARDS
-
-        ============================================== */}
-
-
+        ================================================== */}
 
         <div
-
           className="
-
             mt-8
 
-
-
             grid
+            grid-cols-1
 
+            gap-4
 
-
-            gap-5
-
-
+            min-[520px]:grid-cols-2
 
             sm:mt-10
-
-            sm:grid-cols-2
-
-
+            sm:gap-5
 
             lg:grid-cols-3
 
-
-
             xl:grid-cols-5
-
           "
-
         >
-
           {keyStrengths.map(
-
-            (
-
-              strength,
-
-              index,
-
-            ) => (
-
+            (strength, index) => (
               <motion.div
-
-                key={
-
-                  strength.title
-
-                }
-
+                key={strength.title}
                 initial={
-
                   reduced
-
                     ? false
-
                     : {
-
-                      opacity: 0,
-
-                      x:
-
-                        index % 2 === 0
-
-                          ? -22
-
-                          : 22,
-
-                      y: 30,
-
-                      rotate:
-
-                        index % 2 === 0
-
-                          ? -1.2
-
-                          : 1.2,
-
-                    }
-
+                        opacity: 0,
+                        y: 24,
+                      }
                 }
-
                 whileInView={{
-
                   opacity: 1,
-
-                  x: 0,
-
                   y: 0,
-
-                  rotate: 0,
-
-                  transition: {
-
-                    delay: 0.13 * index,
-
-                    duration: 1.15,
-
-                    ease: [0.22, 1, 0.36, 1],
-
-                  },
-
                 }}
-
                 viewport={{
-
                   once: true,
-
                   amount: 0.2,
-
                 }}
-
                 transition={{
+                  delay:
+                    0.08 * index,
 
-                  duration: 0.7,
+                  duration: 0.75,
 
-                  ease: [0.22, 1, 0.36, 1],
-
+                  ease:
+                    easePremium,
                 }}
-
                 whileHover={
-
                   reduced
-
                     ? undefined
-
                     : {
+                        y: -4,
 
-                      y: -8,
+                        transition: {
+                          duration:
+                            0.3,
 
-                      scale: 1.018,
-
-                      transition: {
-
-                        delay: 0,
-
-                        duration: 0.7,
-
-                        ease: [0.22, 1, 0.36, 1],
-
-                      },
-
-                    }
-
+                          ease:
+                            easePremium,
+                        },
+                      }
                 }
-
-                className="
-
-                  h-full
-
-                "
-
+                className="h-full"
               >
-
                 <div
-
                   className="
-
                     group
-
-
 
                     relative
 
-
-
+                    flex
                     h-full
 
-
+                    flex-col
 
                     overflow-hidden
 
-
-
-                    rounded-[20px]
-
-
+                    rounded-[18px]
 
                     border
+                    border-[#201A57]/10
 
-                    border-slate-200/70
-
-
-
-                    bg-white/75
-
-
+                    bg-white
 
                     p-5
+                    pt-6
 
+                    transition-colors
+                    duration-300
 
-
-                    shadow-[0_10px_30px_rgba(32,26,87,0.06)]
-
-
-
-                    backdrop-blur-md
-
-
-
-                    transform-gpu
-
-
-
-                    transition-[border-color,box-shadow,background-color]
-
-                    duration-700
-
-
-
-                    hover:border-[#3F80CF]/25
-
-
-
-                    hover:bg-white/90
-
-
-
-                    hover:shadow-[0_26px_60px_rgba(32,26,87,0.14)]
-
-
+                    hover:border-[#3F80CF]/45
 
                     sm:p-6
-
+                    sm:pt-7
                   "
-
                 >
-
-                  <CardLightSweep light />
-
-
+                  {/* BRAND TOP LINE */}
 
                   <span
-
                     className="
-
-                      pointer-events-none
-
-
-
                       absolute
-
-                      -right-12
-
-                      -top-12
-
-
-
-                      h-32
-
-                      w-32
-
-
-
-                      scale-50
-
-
-
-                      rounded-full
-
-
-
-                      bg-[#3F80CF]/10
-
-
-
-                      opacity-0
-
-
-
-                      blur-2xl
-
-
-
-                      transition-all
-
-                      duration-700
-
-
-
-                      group-hover:scale-100
-
-                      group-hover:opacity-100
-
-                    "
-
-                  />
-
-
-
-                  <span
-
-                    className="
-
-                      absolute
-
-
 
                       left-0
-
                       top-0
 
-
-
                       h-[3px]
+                      w-full
 
-                      w-0
-
-
-
-                      bg-active
-
-
-
-                      transition-all
-
-                      duration-800
-
-
-
-                      group-hover:w-full
-
+                      bg-[#3F80CF]
                     "
-
                   />
 
-
-
-                  <span
-
-                    className="
-
-                      font-display
-
-
-
-                      text-[11px]
-
-
-
-                      font-semibold
-
-
-
-                      tracking-[0.18em]
-
-
-
-                      text-active
-
-
-
-                      transition-all
-
-                      duration-800
-
-
-
-                      group-hover:tracking-[0.24em]
-
-                    "
-
-                  >
-
-                    {String(
-
-                      index + 1,
-
-                    ).padStart(
-
-                      2,
-
-                      "0",
-
-                    )}
-
-                  </span>
-
-
+                  {/* TITLE */}
 
                   <h3
-
                     className="
+                      font-display
 
-                      mt-4
-
-
-
-                      text-[18px]
-
-
-
-                      font-bold
-
-
+                      text-[17px]
+                      font-medium
 
                       leading-snug
 
-
-
                       tracking-[-0.02em]
-
-
 
                       text-[#201A57]
 
+                      sm:text-[18px]
 
-
-                      transition-transform
-
-                      duration-700
-
-
-
-                      group-hover:translate-x-1
-
-
-
-                      sm:text-[19px]
-
+                      lg:text-[19px]
                     "
-
                   >
-
-                    {strength.title}
-
+                    {
+                      strength.title
+                    }
                   </h3>
 
-
+                  {/* BODY */}
 
                   <p
-
                     className="
-
                       mt-3
 
+                      flex-1
 
+                      font-sans
 
                       text-[13px]
 
-
-
                       leading-6
 
-
-
-                      text-slate-600
-
-
+                      text-[#565656]
 
                       sm:text-[14px]
-
                       sm:leading-7
-
                     "
-
                   >
-
-                    {strength.body}
-
+                    {
+                      strength.body
+                    }
                   </p>
 
+                  <span
+                    className="
+                      mt-5
+
+                      block
+
+                      h-px
+                      w-full
+
+                      bg-[#201A57]/10
+                    "
+                  />
                 </div>
-
               </motion.div>
-
             ),
-
           )}
-
         </div>
-
       </div>
-
     </section>
-
   );
-
 }

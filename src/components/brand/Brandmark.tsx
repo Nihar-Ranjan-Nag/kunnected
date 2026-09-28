@@ -9,7 +9,6 @@ type BrandmarkProps = {
 
 export function Brandmark({
   className,
-  tone = "core",
 }: BrandmarkProps) {
   return (
     <img
@@ -21,26 +20,27 @@ export function Brandmark({
         `
           block
 
-          h-[40px]
+          h-[42px]
           w-auto
 
-          max-w-[220px]
+          max-w-[185px]
 
           shrink-0
 
           object-contain
           object-left
 
-          sm:h-[70px]
+          sm:h-[46px]
+          sm:max-w-[200px]
 
-          md:h-[70px]
+          md:h-[48px]
+          md:max-w-[210px]
 
-          lg:h-[85px]
+          lg:h-[50px]
+          lg:max-w-[220px]
 
-          xl:h-[85px]
+          xl:h-[52px]
         `,
-        tone === "invert" &&
-          "brightness-0 invert",
         className,
       )}
     />
@@ -54,7 +54,7 @@ type ArcPatternProps = {
 
 export function ArcPattern({
   className,
-  opacity = 0.08,
+  opacity = 0.04,
 }: ArcPatternProps) {
   return (
     <svg

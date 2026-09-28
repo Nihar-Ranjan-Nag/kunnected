@@ -3,7 +3,7 @@ export const company = {
   legalName: "KUnnected Living Facilities Management Services LLC",
   tagline:
     "To manage student living at Khalifa University with professionalism and heart, ensuring comfort, safety, and peace of mind every day.",
-  purpose: "Exclusively Serving",
+  purpose: "",
   purposeBody:
     "We operate with a clear purpose — to ensure every space across student accommodation functions seamlessly, efficiently, and reliably. We don't just maintain facilities; we enable experiences.",
   purposeExtended:

@@ -1471,7 +1471,7 @@ export function CtaBand() {
           mt-3
           max-w-[540px]
           font-sans
-          text-[25px]
+          text-[15px]
           leading-6
           text-white/60
           sm:text-[14px]
@@ -1564,7 +1564,7 @@ export function CtaBand() {
           className="
             mt-3
             font-sans
-            text-[20px]
+            text-[15px]
             leading-6
             text-white/60
             sm:text-[13px]

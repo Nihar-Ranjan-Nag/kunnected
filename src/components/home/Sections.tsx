@@ -1389,7 +1389,7 @@ export function CtaBand() {
 
                         tracking-[0.15em]
 
-                        text-white/50
+                        text-white
                       "
                     >
                       Website
@@ -1422,189 +1422,163 @@ export function CtaBand() {
           {/* =================================================
               OFFICE HOURS
           ================================================== */}
+ {/* =================================================
+    OFFICE HOURS
+================================================== */}
 
-          <Reveal
-            delay={0.18}
-            className="h-full"
-          >
-            <div
-              className="
-                flex
-                h-full
+<Reveal
+  delay={0.18}
+  className="h-full"
+>
+  <div
+    className="
+      flex
+      h-full
+      flex-col
+      rounded-[18px]
+      border
+      border-white/10
+      bg-white/[0.035]
+      p-5
+      sm:p-6
+      lg:p-8
+    "
+  >
+    <span
+      className="
+        block
+        h-[3px]
+        w-[48px]
+        bg-[#3F80CF]
+      "
+    />
 
-                flex-col
+    <h3
+      className="
+        mt-5
+        font-display
+        text-[18px]
+        font-medium
+        text-white
+        sm:text-[20px]
+      "
+    >
+      Office Hours & Support
+    </h3>
+{/* NEW OFFICE HOURS SUPPORT TEXT */}
+      <p
+        className="
+          mt-3
+          max-w-[540px]
+          font-sans
+          text-[25px]
+          leading-6
+          text-white/60
+          sm:text-[14px]
+        "
+      >
+        {company.officeHoursSupport}
+      </p>
+    <div
+      className="
+        mt-6
+        border-t
+        border-white/10
+        pt-6
+      "
+    >
+      <h4
+        className="
+          font-sans
+          text-[10px]
+          font-medium
+          uppercase
+          tracking-[0.15em]
+          text-white
+          sm:text-[11px]
+        "
+      >
+        Office Hours
+      </h4>
 
-                rounded-[18px]
+      <p
+        className="
+          mt-2
+          font-sans
+          text-[14px]
+          leading-6
+          text-white/80
+        "
+      >
+        {company.hours}
+      </p>
 
-                border
-                border-white/10
+       
+    </div>
 
-                bg-white/[0.035]
+    <div
+      className="
+        mt-auto
+        pt-8
+      "
+    >
+      <div
+        className="
+          border-t
+          border-white/10
+          pt-6
+        "
+      >
+        <span
+          className="
+            inline-flex
+            max-w-full
+            items-center
+            gap-2
+            rounded-full
+            border
+            border-[#3F80CF]/25
+            px-2
+            py-1.5
+            font-sans
+            text-[11px]
+            font-medium
+            text-[#3F80CF]
+            sm:text-xs
+          "
+        >
+          <span
+            className="
+              h-1.5
+              w-1.5
+              shrink-0
+              rounded-full
+              bg-[#3F80CF]
+            "
+          />
 
-                p-5
+          24/7 Operations Helpdesk
+        </span>
 
-                sm:p-6
-
-                lg:p-8
-              "
-            >
-              <span
-                className="
-                  block
-
-                  h-[3px]
-                  w-[48px]
-
-                  bg-[#3F80CF]
-                "
-              />
-
-              <h3
-                className="
-                  mt-5
-
-                  font-display
-
-                  text-[18px]
-                  font-medium
-
-                  text-white
-
-                  sm:text-[20px]
-                "
-              >
-                Office Hours & Support
-              </h3>
-
-              <div
-                className="
-                  mt-6
-
-                  border-t
-                  border-white/10
-
-                  pt-6
-                "
-              >
-                <h4
-                  className="
-                    font-sans
-
-                    text-[10px]
-                    font-medium
-
-                    uppercase
-
-                    tracking-[0.15em]
-
-                    text-white/50
-
-                    sm:text-[11px]
-                  "
-                >
-                  Office Hours
-                </h4>
-
-                <p
-                  className="
-                    mt-2
-
-                    font-sans
-
-                    text-[14px]
-
-                    leading-6
-
-                    text-white/80
-                  "
-                >
-                  {company.hours}
-                </p>
-              </div>
-
-              <div
-                className="
-                  mt-auto
-
-                  pt-8
-                "
-              >
-                <div
-                  className="
-                    border-t
-                    border-white/10
-
-                    pt-6
-                  "
-                >
-                  <span
-                    className="
-                      inline-flex
-
-                      max-w-full
-
-                      items-center
-
-                      gap-2
-
-                      rounded-full
-
-                      border
-                      border-[#3F80CF]/25
-
-                      px-3
-                      py-1.5
-
-                      font-sans
-
-                      text-[11px]
-                      font-medium
-
-                      text-[#3F80CF]
-
-                      sm:text-xs
-                    "
-                  >
-                    <span
-                      className="
-                        h-1.5
-                        w-1.5
-
-                        shrink-0
-
-                        rounded-full
-
-                        bg-[#3F80CF]
-                      "
-                    />
-
-                    24/7 Operations Helpdesk
-                  </span>
-
-                  <p
-                    className="
-                      mt-3
-
-                      font-sans
-
-                      text-[12px]
-
-                      leading-6
-
-                      text-white/60
-
-                      sm:text-[13px]
-                    "
-                  >
-                    A staffed helpdesk and emergency
-                    response team remains active 24/7/365
-                    to handle any immediate residential or
-                    accommodation infrastructure issues.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
+        <p
+          className="
+            mt-3
+            font-sans
+            text-[20px]
+            leading-6
+            text-white/60
+            sm:text-[13px]
+          "
+        >
+          A staffed helpdesk and emergency
+          response team remains active 24/7/365
+          to handle any immediate residential or
+          accommodation infrastructure issues.
+        </p>
+      </div>
+    </div>
+  </div>
+</Reveal>
         </div>
       </div>
     </section>

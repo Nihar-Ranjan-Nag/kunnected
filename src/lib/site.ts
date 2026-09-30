@@ -330,6 +330,7 @@ export const projectScope = {
     "Linen / Towels",
     "Laundry / Dry Cleaning",
     "Shuttle / Transport Service",
+    "Concierge Services"
   ],
 
   studentWelfare: [

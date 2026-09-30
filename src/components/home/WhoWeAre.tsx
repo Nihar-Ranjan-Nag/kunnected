@@ -18,7 +18,7 @@ import {
   vision,
 } from "@/lib/site";
 
-import engineerAsset from "@/assets/hero-campus.jpg";
+import engineerAsset from "@/assets/main.jpeg";
 
 /* =========================================================
    SHARED MOTION
